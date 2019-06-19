@@ -28,12 +28,16 @@
     "typescript": "^3.4.5"
   },
   "private": true,
-  "pre-commit": "lint-staged",
   "lint-staged": {
     "*.tsx": [
       "yarn lint",
       "prettier",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
