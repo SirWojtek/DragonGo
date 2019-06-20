@@ -895,10 +895,33 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@types/fbemitter@^2.0.32":
+"@types/expo@^32.0.13":
+  version "32.0.13"
+  resolved "https://registry.yarnpkg.com/@types/expo/-/expo-32.0.13.tgz#c43c9c0ada5e62a466ea427cc922c495345f55a7"
+  integrity sha512-kKU0zpkiyGGB4+A26vT9QmWbQ8/ccu9ui8ek7gDsz8FAk8atAvHQq9WaZpARSNqH6jTn+Ww2tKUo3Mw/cutoQQ==
+  dependencies:
+    "@types/fbemitter" "*"
+    "@types/react" "*"
+    "@types/react-native" "*"
+    react-native-maps "*"
+    react-native-svg "*"
+
+"@types/fbemitter@*", "@types/fbemitter@^2.0.32":
   version "2.0.32"
   resolved "https://registry.yarnpkg.com/@types/fbemitter/-/fbemitter-2.0.32.tgz#8ed204da0f54e9c8eaec31b1eec91e25132d082c"
   integrity sha1-jtIE2g9U6cjq7DGx7skeJRMtCCw=
+
+"@types/google-maps@*":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@types/google-maps/-/google-maps-3.2.1.tgz#68b84f74773960fbf4c76e2d2bc62838b8cd5026"
+  integrity sha512-0JeYMqVUeolC2hC1v8s49vjg5zt/tQXDzzcZfWxzx8Kcu1xDSpULFkhI33CIUZ/r8PmGvrud9EEZqFhJlOE4/A==
+  dependencies:
+    "@types/googlemaps" "*"
+
+"@types/googlemaps@*", "@types/googlemaps@^3.36.5":
+  version "3.36.5"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.36.5.tgz#9fa57d430e4982ce9f2352e1a48dfe5c294fe868"
+  integrity sha512-ft36SAiK2eJIC+dovC8iJNbfREYAq7toDizRttCLV7tX427s72LXwSW9aWjbS+pLRbMhjV29WBR8iGvtytRuNg==
 
 "@types/invariant@^2.2.29":
   version "2.2.29"
@@ -917,6 +940,13 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.134.tgz#9032b440122db3a2a56200e91191996161dde5b9"
   integrity sha512-2/O0khFUCFeDlbi7sZ7ZFRCcT812fAeOLm7Ev4KbwASkZ575TDrDcY7YyaoHdTOzKcNbfiwLYZqPmoC4wadrsw==
 
+"@types/markerclustererplus@^2.1.33":
+  version "2.1.33"
+  resolved "https://registry.yarnpkg.com/@types/markerclustererplus/-/markerclustererplus-2.1.33.tgz#0542a2fabdf46fa474a3de00df5b0b399f5694a5"
+  integrity sha512-ZDxsLUp8BmK9MVZZeQVDDzVrEXgRL0021AQcfXqfreFhdfZ9+PS0P6o4nZBvoIVYTmGSBemdCdI6mL6hf9yWvg==
+  dependencies:
+    "@types/google-maps" "*"
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
@@ -932,7 +962,7 @@
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.5.3.tgz#1c3b71b091eaeaf5924538006b7f70603ce63d38"
   integrity sha512-Jugo5V/1bS0fRhy2z8+cUAHEyWOATaz4rbyLVvcFs7+dXp5HfwpEwzF1Q11bB10ApUqHf+yTauxI0UXQDwGrbA==
 
-"@types/react-native@^0.57.60":
+"@types/react-native@*", "@types/react-native@^0.57.60":
   version "0.57.63"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.57.63.tgz#56cc7e6426ffe8e3d149c86d3396496370a75396"
   integrity sha512-viAtvjgb/6cn4gu7eEUhTxhlYZ8oOG+1OdHznWac1BgbiPEGcDmamnW/+KZR9gRjsXY9qZY+nfyzVjcwhYmlkw==
@@ -4915,7 +4945,7 @@ react-native-gesture-handler@1.2.1:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-maps@0.24.2, react-native-maps@~0.24.0:
+react-native-maps@*, react-native-maps@0.24.2, react-native-maps@~0.24.0:
   version "0.24.2"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.24.2.tgz#19974f967cb0c2e24dab74ca879118e0932571b2"
   integrity sha512-1iNIDikp2dkCG+8DguaEviYZiMSYyvwqYT7pO2YTZvuFRDSc/P9jXMhTUnSh4wNDlEeQ47OJ09l0pwWVBZ7wxg==
@@ -4936,6 +4966,11 @@ react-native-screens@1.0.0-alpha.22:
   version "1.0.0-alpha.22"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.22.tgz#7a120377b52aa9bbb94d0b8541a014026be9289b"
   integrity sha512-kSyAt0AeVU6N7ZonfV6dP6iZF8B7Bce+tk3eujXhzBGsLg0VSLnU7uE9VqJF0xdQrHR91ZjGgVMieo/8df9KTA==
+
+react-native-svg@*:
+  version "9.5.1"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.5.1.tgz#eb21fa7eb5d71649620541e6549c6ed425d80240"
+  integrity sha512-cRGfomzG/5LEwuJ6ct3m5yccckeI9aj8BNYwDPVxOeJ84LuJuvk5OqcjlYNeEzOWmWiH+QrFXfpLH1ag04bUeQ==
 
 react-native-svg@9.4.0:
   version "9.4.0"
@@ -5154,7 +5189,7 @@ redux-thunk@^2.2.0:
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
 
-redux@^4.0.0:
+redux@^4.0.0, redux@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
   integrity sha512-R7bAtSkk7nY6O/OYMVR9RiBI+XghjF9rlbl5806HJbQph0LJVHZrU5oaO4q70eUKiqMRqm4y07KLTlMZ2BlVmg==
@@ -5351,7 +5386,7 @@ rx-lite@*, rx-lite@^4.0.8:
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
   integrity sha1-Cx4Rr4vESDbwSmQH6S2kJGe3lEQ=
 
-rxjs@^6.3.3:
+rxjs@^6.3.3, rxjs@^6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.2.tgz#2e35ce815cd46d84d02a209fb4e5921e051dbec7"
   integrity sha512-HUb7j3kvb7p7eCUHE3FqjoDsC1xfZQ4AHFWfTKSpZ+sAhhz5X1WX0ZuUqWbzB2QhSLp3DoLUG+hMdEDKqWo2Zg==
