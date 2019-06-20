@@ -9,6 +9,7 @@
       "android",
       "web"
     ],
+    "entryPoint": "./src/app/AppEntry",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
