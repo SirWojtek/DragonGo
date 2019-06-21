@@ -1,9 +1,10 @@
 import React from 'react';
 import { Text } from 'react-native';
-import MapView, { Camera, LatLng, Point } from 'react-native-maps';
+import MapView, { Camera, LatLng, Marker, Point } from 'react-native-maps';
 import { connect } from 'react-redux';
 import { IStoreState } from '../../store/store';
 import { IUser } from '../../store/types/IUser';
+import PlayerMarker from './PlayerMarker';
 
 interface IProps {
   user: IUser;
@@ -61,7 +62,9 @@ class MapContainer extends React.Component<IProps, IState> {
           altitude: 1000,
           zoom: 16
         }}
-      />
+      >
+        <PlayerMarker coordinate={this.props.user.location} />
+      </MapView>
     );
   }
 }
