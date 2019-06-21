@@ -1,14 +1,7 @@
 import {Location} from 'expo';
 import {createSlice} from 'redux-starter-kit';
-
-export interface ILocation {
-  latitude: number;
-  longitude: number;
-}
-
-export interface IUser {
-  location: ILocation;
-}
+import {ILocation} from '../types/ILocation';
+import {IUser} from '../types/IUser';
 
 const userSlice = createSlice({
   slice: 'user',
