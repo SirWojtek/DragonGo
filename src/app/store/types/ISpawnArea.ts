@@ -1,6 +1,8 @@
 import {IViewport} from './Iviewport';
 
 export interface ISpawnArea {
-  viewport: IViewport;
+  id: string;
   name: string;
+  viewport: IViewport;
+  monsterIds: string[];
 }

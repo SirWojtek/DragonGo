@@ -9,10 +9,12 @@ import {combineEpics, createEpicMiddleware} from 'redux-observable';
 import fetchSpawnAreasEpic from './epics/fetchSpawnAreasEpic';
 import spawnAreasSlice, {SpawnAreaActions} from './slices/spawnAreasSlice';
 import userSlice, {UserActions} from './slices/userSlice';
+import {ISpawnArea} from './types/ISpawnArea';
 import {IUser} from './types/IUser';
 
 export interface IStoreState {
   user: IUser;
+  spawnAreas: ISpawnArea[];
 }
 
 const reducers = combineReducers({

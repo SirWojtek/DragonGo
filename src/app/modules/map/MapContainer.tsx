@@ -5,14 +5,10 @@ import { connect } from 'react-redux';
 import { IStoreState } from '../../store/store';
 import { IUser } from '../../store/types/IUser';
 import PlayerMarker from './PlayerMarker';
+import SpawnAreasContainer from './SpawnAreasContainer';
 
 interface IProps {
   user: IUser;
-}
-
-interface IState {
-  heading: number;
-  cord: LatLng;
 }
 
 function mapStateToProps(state: IStoreState): IProps {
@@ -21,21 +17,7 @@ function mapStateToProps(state: IStoreState): IProps {
   };
 }
 
-class MapContainer extends React.Component<IProps, IState> {
-
-  constructor(props: IProps) {
-    super(props);
-
-
-    this.state = {
-      heading: 0,
-      cord: {
-        latitude: 0,
-        longitude: 0,
-      }
-    };
-
-  }
+class MapContainer extends React.Component<IProps> {
 
   public render() {
     if (!this.props.user.location) {
@@ -58,12 +40,13 @@ class MapContainer extends React.Component<IProps, IState> {
             longitude: this.props.user.location.longitude,
           },
           pitch: 45,
-          heading: this.state.heading,
+          heading: 0,
           altitude: 1000,
           zoom: 16
         }}
       >
         <PlayerMarker coordinate={this.props.user.location} />
+        <SpawnAreasContainer />
       </MapView>
     );
   }

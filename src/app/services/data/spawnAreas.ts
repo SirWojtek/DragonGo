@@ -1,5 +1,9 @@
-export const spawnAreas = [
+import {ISpawnArea} from '../../store/types/ISpawnArea';
+
+export const spawnAreas: ISpawnArea[] = [
   {
+    id: '1',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.08155798029149,
@@ -13,6 +17,8 @@ export const spawnAreas = [
     name: 'PRACOWNIA ARCHITEKTURY KRAJOBRAZU "GREENOWNIA" Monika Bilewicz',
   },
   {
+    id: '2',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.08085258029151,
@@ -26,6 +32,8 @@ export const spawnAreas = [
     name: 'Wybieg dla czworonogów',
   },
   {
+    id: '3',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.08190208029151,
@@ -39,6 +47,8 @@ export const spawnAreas = [
     name: 'Park Słoneczny',
   },
   {
+    id: '4',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.08004778029149,
@@ -52,6 +62,8 @@ export const spawnAreas = [
     name: 'Ogródki działkowe na Krzykach',
   },
   {
+    id: '5',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0775186302915,
@@ -65,6 +77,8 @@ export const spawnAreas = [
     name: 'Park Wzgórze Gajowe',
   },
   {
+    id: '6',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.07977958029149,
@@ -78,6 +92,8 @@ export const spawnAreas = [
     name: 'Bruk-Garden',
   },
   {
+    id: '7',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.07781963029149,
@@ -91,6 +107,9 @@ export const spawnAreas = [
     name: 'ROD "Jelcz"',
   },
   {
+    id: '8',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.08714398029149,
@@ -104,6 +123,8 @@ export const spawnAreas = [
     name: 'ROD "Pokój"',
   },
   {
+    id: '9',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.07633388029149,
@@ -117,6 +138,8 @@ export const spawnAreas = [
     name: 'Ogródki działkowe',
   },
   {
+    id: '10',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0887250802915,
@@ -130,6 +153,8 @@ export const spawnAreas = [
     name: 'plac Ludwika Zamenhofa',
   },
   {
+    id: '11',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.09730715,
@@ -143,6 +168,8 @@ export const spawnAreas = [
     name: 'Las Rakowiecki',
   },
   {
+    id: '12',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.09939845,
@@ -156,6 +183,8 @@ export const spawnAreas = [
     name: 'Park Biskupiński',
   },
   {
+    id: '13',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0637623302915,
@@ -169,6 +198,8 @@ export const spawnAreas = [
     name: 'Park Kleciński',
   },
   {
+    id: '14',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.1065266802915,
@@ -182,6 +213,8 @@ export const spawnAreas = [
     name: 'Park Staromiejski',
   },
   {
+    id: '15',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.10672803029151,
@@ -195,6 +228,8 @@ export const spawnAreas = [
     name: 'Fontanna Krasnali',
   },
   {
+    id: '16',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0768796802915,
@@ -208,6 +243,8 @@ export const spawnAreas = [
     name: 'Park Południowy',
   },
   {
+    id: '17',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.1113357302915,
@@ -221,6 +258,8 @@ export const spawnAreas = [
     name: 'Japanese Garden',
   },
   {
+    id: '18',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.10981878029149,
@@ -234,6 +273,8 @@ export const spawnAreas = [
     name: 'Internet Trade Sp.zo.o.',
   },
   {
+    id: '19',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0590680302915,
@@ -247,6 +288,8 @@ export const spawnAreas = [
     name: 'Green & Snow',
   },
   {
+    id: '20',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0858384302915,
@@ -260,6 +303,8 @@ export const spawnAreas = [
     name: 'Green Garden , Projektowanie ogrodów',
   },
   {
+    id: '21',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.08155798029149,
@@ -273,6 +318,8 @@ export const spawnAreas = [
     name: 'PRACOWNIA ARCHITEKTURY KRAJOBRAZU "GREENOWNIA" Monika Bilewicz',
   },
   {
+    id: '22',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.07697758029149,
@@ -286,6 +333,8 @@ export const spawnAreas = [
     name: 'ROD Tarnogaj',
   },
   {
+    id: '23',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0749730802915,
@@ -299,6 +348,8 @@ export const spawnAreas = [
     name: 'Wzgórze Tarnogajskie',
   },
   {
+    id: '24',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0822405302915,
@@ -312,6 +363,8 @@ export const spawnAreas = [
     name: 'Skowroni Park',
   },
   {
+    id: '25',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0716330802915,
@@ -325,6 +378,8 @@ export const spawnAreas = [
     name: 'ROD ZŁOCIEŃ',
   },
   {
+    id: '26',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0860351802915,
@@ -338,6 +393,8 @@ export const spawnAreas = [
     name: 'Park Wschodni',
   },
   {
+    id: '27',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.10928858029148,
@@ -351,6 +408,8 @@ export const spawnAreas = [
     name: 'Ogród Społeczny',
   },
   {
+    id: '28',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.11078670000001,
@@ -364,6 +423,8 @@ export const spawnAreas = [
     name: 'Wrocław Multimedia Fountain',
   },
   {
+    id: '29',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.1177345302915,
@@ -377,6 +438,8 @@ export const spawnAreas = [
     name: 'Botanical Garden of the University of Wrocław',
   },
   {
+    id: '30',
+    monsterIds: ['1', '2', '3', '4', '5', '6', '7', '8'],
     viewport: {
       northeast: {
         latitude: 51.0648524802915,
