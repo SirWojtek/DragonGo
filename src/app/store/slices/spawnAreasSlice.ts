@@ -3,15 +3,15 @@ import {Action, createSlice, PayloadAction} from 'redux-starter-kit';
 import {ILocation} from '../types/ILocation';
 import {ISpawnArea} from '../types/ISpawnArea';
 
-export const SET_SPAWN_AREAS = 'setSpawnAreas';
+export const SET_SPAWN_AREAS = 'spawnAreas/setSpawnAreas';
 
 const spawnAreasSlice = createSlice({
   slice: 'spawnAreas',
   initialState: [] as ISpawnArea[],
   reducers: {
-    setSpawnAreas: (state, action: {payload: ISpawnArea[]}) => {
-      state = action.payload;
-    },
+    setSpawnAreas: (state, action: {payload: ISpawnArea[]}) => [
+      ...action.payload,
+    ],
   },
 });
 

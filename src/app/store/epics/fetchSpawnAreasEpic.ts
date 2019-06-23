@@ -1,6 +1,6 @@
 import {Epic, ofType} from 'redux-observable';
 import {Action} from 'redux-starter-kit';
-import {flatMap, map} from 'rxjs/operators';
+import {filter, flatMap, map, tap} from 'rxjs/operators';
 import SpawnAreaService from '../../services/SpawnAreaService';
 import spawnAreasSlice, {SetSpawnAreasAction} from '../slices/spawnAreasSlice';
 import {SET_LOCATION, SetLocationAction} from '../slices/userSlice';

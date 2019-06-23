@@ -3,15 +3,15 @@ import {createSlice, PayloadAction} from 'redux-starter-kit';
 import {ILocation} from '../types/ILocation';
 import {IUser} from '../types/IUser';
 
-export const SET_LOCATION = 'setLocation';
+export const SET_LOCATION = 'user/setLocation';
 
 const userSlice = createSlice({
   slice: 'user',
   initialState: {} as IUser,
   reducers: {
-    SetLocation: (state, action: {payload: ILocation}) => {
-      state.location = action.payload;
-    },
+    setLocation: (state, action: {payload: ILocation}) => ({
+      location: {...action.payload},
+    }),
   },
 });
 
