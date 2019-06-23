@@ -39,7 +39,12 @@ class SpawnAreasContainer extends React.Component<IProps> {
     }
 
     return this.props.spawnAreas.map((area, i) =>
-      <Polygon key={'area-' + i} coordinates={area} />
+      <Polygon
+        key={'area-' + i}
+        coordinates={area}
+        strokeWidth={3}
+        fillColor={'rgba(0, 255, 0, 0.3)'}
+      />
     );
   }
 }
