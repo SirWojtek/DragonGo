@@ -45,6 +45,11 @@
       "yarn lint",
       "prettier",
       "git add"
+    ],
+    "*.ts": [
+      "yarn lint",
+      "prettier",
+      "git add"
     ]
   },
   "husky": {
