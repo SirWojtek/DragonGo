@@ -12,6 +12,7 @@
     "expo": "^33.0.0",
     "expo-location": "~5.0.1",
     "expo-permissions": "~5.0.1",
+    "lodash": "^4.17.11",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
