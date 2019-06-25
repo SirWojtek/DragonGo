@@ -22,7 +22,7 @@ class MonsterMarker extends React.Component<IProps> {
 const markerStyle: StyleProp<ViewStyle> = {
   height: 8,
   width: 8,
-  backgroundColor: 'yellow',
+  backgroundColor: 'orange',
   borderRadius: 4,
 };
 
