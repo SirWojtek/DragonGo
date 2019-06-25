@@ -1,0 +1,967 @@
+[
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.09479,
+        "lng": 17.0753504
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.09730715,
+          "lng": 17.0860193
+        },
+        "southwest": {
+          "lat": 51.09073695000001,
+          "lng": 17.06804610000001
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "b3b0afa732608d8a96b905daef347a260bf11d80",
+    "name": "Las Rakowiecki",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 4128,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/116722814739532472880/photos\"\u003eAnia C.\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAydHeszCoNFAkn2CWaNJ6ndL46FFutLI9L4ynKvAhNuAGDTismAuZIZm2rvvJsF0AsAGna31TgdSN_dy8NLlBUWV7f6Ljj8Pjx0_QVPn1G_H-BRcH6Hp2ruBdm5YLN-EnEhCYPQHNLybxknInPJ_mVPFQGhR2ES8mHFDrmLJdMk1JrV0Y-ZTLWg",
+        "width": 2322
+      }
+    ],
+    "place_id": "ChIJYcRJ35nCD0cRlP36H0FNIr8",
+    "plus_code": {
+      "compound_code": "33VG+W4 Wrocław, Poland",
+      "global_code": "9F3V33VG+W4"
+    },
+    "rating": 4.4,
+    "reference": "ChIJYcRJ35nCD0cRlP36H0FNIr8",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 56,
+    "vicinity": "Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.097193,
+        "lng": 17.1044546
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.09939845,
+          "lng": 17.1224365
+        },
+        "southwest": {
+          "lat": 51.09593624999999,
+          "lng": 17.0896309
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "e7149c3e8f7064492df1a4a3c79311cd43114659",
+    "name": "Park Biskupiński",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3456,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/107727060059913996604/photos\"\u003erupak sahoo\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAQ4iVd9f_DSgjcXsbR7xmWKYUE7JSpbAi4VJNOUGmLVDrFz7fAu6v5boY2RvUoFl4kLWZAso77cVi_6lQOpNtvUx7vWmnDidXvcz3lIxlThcJzB5gXQxIYpTGJVLluJvHEhDObKJ2do8pr4HpOmoXNKs1GhSGCYQjtXLl-LiX-WFT4nn1W631rA",
+        "width": 4608
+      }
+    ],
+    "place_id": "ChIJjdR2a6nCD0cRu_Bzf5tCV8s",
+    "plus_code": {
+      "compound_code": "34W3+VQ Wrocław, Poland",
+      "global_code": "9F3V34W3+VQ"
+    },
+    "rating": 4.7,
+    "reference": "ChIJjdR2a6nCD0cRu_Bzf5tCV8s",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 439,
+    "vicinity": "Biskupin, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.06269409999999,
+        "lng": 16.9892622
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.0637623302915,
+          "lng": 16.99169535
+        },
+        "southwest": {
+          "lat": 51.0610643697085,
+          "lng": 16.98845115
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "b924eb494431d1fb13400998b7756a9615ed685a",
+    "name": "Park Kleciński",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 2160,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/109852551491642249873/photos\"\u003eLuke Swimmer\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAHQtVspUz_ilFBTX6GWwK-VehSiMUNoiZg6JoH0r6V2JtabH3NNnHjafbXN5Q2SW_FtxHdQkylkmBMm_ATqdaGTXKCmSAfqDP6ayOmUaoLoGa_nn4t6cM6u_iuyHKoyXaEhBi7qTWGEcQzjY3_5PqvU22GhR7ou8D-lJ7U2mj0sB_ThrxK3ceoA",
+        "width": 3840
+      }
+    ],
+    "place_id": "ChIJlz6xh8bDD0cR6mXsUD6CCu8",
+    "plus_code": {
+      "compound_code": "3X7Q+3P Wrocław, Poland",
+      "global_code": "9F3R3X7Q+3P"
+    },
+    "rating": 4.5,
+    "reference": "ChIJlz6xh8bDD0cR6mXsUD6CCu8",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 1153,
+    "vicinity": "Partynicka, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.1050088,
+        "lng": 17.0343214
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.1065266802915,
+          "lng": 17.0357206802915
+        },
+        "southwest": {
+          "lat": 51.1038287197085,
+          "lng": 17.0330227197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "5b523e3b0d91cc426c74495a9a8b5d10c3ad2e1b",
+    "name": "Park Staromiejski",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3462,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/110914192492906660688/photos\"\u003eNick Pinchuk\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAhWgylfb9pjWjtDNgN_4iZLSazG0lFXdsFL5mckJ_ptqgcTXfpoWbSI0QGTtHR54qaKpHAib6que_3pCw4NlVqHmaRj99QJIHCFt71e5u1fQ-9lcYrakrGugF6xvDtSrLEhAEYYIk57IR0KWdAyEFJyDfGhTlKgz99iqBqgoZuJqtESZNeJ2IWQ",
+        "width": 4621
+      }
+    ],
+    "place_id": "ChIJO0omFnHCD0cRtuMQv6VWJUE",
+    "plus_code": {
+      "compound_code": "424M+2P Wrocław, Poland",
+      "global_code": "9F3V424M+2P"
+    },
+    "rating": 4.7,
+    "reference": "ChIJO0omFnHCD0cRtuMQv6VWJUE",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 2081,
+    "vicinity": "Teatralna, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.105342,
+        "lng": 17.0331272
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.10672803029151,
+          "lng": 17.03439258029151
+        },
+        "southwest": {
+          "lat": 51.10403006970851,
+          "lng": 17.0316946197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "a429f9c1a62acdb0afa7e0cd12be8cf946b155d2",
+    "name": "Fontanna Krasnali",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3456,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/102731169035232083311/photos\"\u003eBeata Olejniczak\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAdi9KhUCx04b-SYMI6MePNOfWz_4qBVGZdSzD_lIaLAm8nOwZ9G6LDokK3QtQ3WVQnWA_f2eDCWcq-zhmeK_5sDaDQkkz71PMTsxSd2DRGCvDMX-U_0tT4k--fwhzq2zpEhDncjIpEx9Z_pESc4kvtOl8GhTmG6RvrqdAR3s36X_J6HOKqDOFlA",
+        "width": 4608
+      }
+    ],
+    "place_id": "ChIJjfI1Q3HCD0cRyEdLjE5Y9LI",
+    "plus_code": {
+      "compound_code": "424M+47 Wrocław, Poland",
+      "global_code": "9F3V424M+47"
+    },
+    "rating": 4.6,
+    "reference": "ChIJjfI1Q3HCD0cRyEdLjE5Y9LI",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 54,
+    "vicinity": "plac Teatralny, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.0755307,
+        "lng": 17.010487
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.0768796802915,
+          "lng": 17.0118359802915
+        },
+        "southwest": {
+          "lat": 51.07418171970851,
+          "lng": 17.0091380197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "95682bec2b68589ab4d00c53eebe0bd5f7904f25",
+    "name": "Park Południowy",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 1792,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/111630915025178750360/photos\"\u003ePaweł Frankiewicz\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAh71YIataI5IrFoQlzKnrgSp8WstE-aI3rn9AS2jFwPxha-XQWCyRcCcgOVjeKv38EYFcus2ZcBL-Ln8qk1uTjWithqHKj1tcnYHcb_z9c3eiXrYN8As80r-DnI4Py8KMEhAipa89-Fu3H_-sx3Eia2WCGhS2EIoNImp5sYhYljTS1bAMBTTT_w",
+        "width": 3872
+      }
+    ],
+    "place_id": "ChIJednzhEnCD0cRMXd_58SaLn8",
+    "plus_code": {
+      "compound_code": "32G6+65 Wrocław, Poland",
+      "global_code": "9F3V32G6+65"
+    },
+    "rating": 4.7,
+    "reference": "ChIJednzhEnCD0cRMXd_58SaLn8",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 4230,
+    "vicinity": "Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.1096604,
+        "lng": 17.0790447
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.1113357302915,
+          "lng": 17.0801560302915
+        },
+        "southwest": {
+          "lat": 51.1086377697085,
+          "lng": 17.0774580697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "1bef78660baf5a3098fca0e93bbdcdcf2b5f57d0",
+    "name": "Japanese Garden",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 1456,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/108785029521374640277/photos\"\u003eFroze_Man\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAA26NiBnNg4b0ifEgI29U9Pt70UAPGCkojpLpWg4R-EGsPA3jHonafXlPLGpA4IuiccLcg4BZCTzjNuOYivFYvPnB7pgcx1tSVbAzICQPC-kT3V_5oayrRWoCYx3LJ2_jtEhBfjwCKZfDyH0U63ysvpyYuGhSqIGe0I7NAPL3aQFtzv2JHPodb7A",
+        "width": 2592
+      }
+    ],
+    "place_id": "ChIJg1sdgyboD0cR2Nhu9MSp4_8",
+    "plus_code": {
+      "compound_code": "435H+VJ Wrocław, Poland",
+      "global_code": "9F3V435H+VJ"
+    },
+    "rating": 4.5,
+    "reference": "ChIJg1sdgyboD0cR2Nhu9MSp4_8",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 6178,
+    "vicinity": "Adama Mickiewicza 1, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.1084719,
+        "lng": 16.9994788
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.10981878029149,
+          "lng": 17.0008268802915
+        },
+        "southwest": {
+          "lat": 51.10712081970849,
+          "lng": 16.9981289197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+    "id": "ee849d5581f577c1e995efa2a000c54d4c861495",
+    "name": "Internet Trade Sp.zo.o.",
+    "photos": [
+      {
+        "height": 528,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/118055562921995961654/photos\"\u003eInternet Trade Sp.zo.o.\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAoEVFLi8IXQy2mXhxcxrtHfGmpRv7N2S7LATcABYf0xFxFmyXWSXFpa0pWwniK48tPnvfieI0w2QJaAIA_gxwFJyzh-B7xpLtAmBcWPKzHtxav8N5mI9tWjvKjRB0D2uXEhDjkHV_B3TBFRFpLsogptilGhSqi9DyFPpzPJZjCGKQcxYS8_2wOw",
+        "width": 384
+      }
+    ],
+    "place_id": "ChIJdxh8-APCD0cRKualD6T8_hE",
+    "plus_code": {
+      "compound_code": "4X5X+9Q Wrocław, Poland",
+      "global_code": "9F3R4X5X+9Q"
+    },
+    "rating": 5,
+    "reference": "ChIJdxh8-APCD0cRKualD6T8_hE",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 1,
+    "vicinity": "Góralska 5, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.05771999999999,
+        "lng": 17.0329579
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.0590680302915,
+          "lng": 17.0341029302915
+        },
+        "southwest": {
+          "lat": 51.0563700697085,
+          "lng": 17.0314049697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "639246f401eaa43f20ce48ae982f8c0af12f6d47",
+    "name": "Green & Snow",
+    "photos": [
+      {
+        "height": 565,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/102819981227594034539/photos\"\u003eGreen &amp; Snow\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAnC2GXoDeVpdo7hOr6KdLByovpr0I7vZASqHUbXcCizEBasT2R73V-umvkBRV_Btpj2lRSI0XfuZ3937Th7uiiwDOGfugLlJfqOg2C7gfflKobEMKqYbXak29YaCfdiKHEhBlBGiJY_FNLMUdFOBVjvp2GhQ4QJwEJbDinHxfMYy-ETqsK2kcuw",
+        "width": 849
+      }
+    ],
+    "place_id": "ChIJ_cBMrwjDD0cRvOgCU10D7VQ",
+    "plus_code": {
+      "compound_code": "325M+35 Wrocław, Poland",
+      "global_code": "9F3V325M+35"
+    },
+    "rating": 5,
+    "reference": "ChIJ_cBMrwjDD0cRvOgCU10D7VQ",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "general_contractor",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 2,
+    "vicinity": "Grota-Roweckiego 112, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.08443949999999,
+        "lng": 17.0204128
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.0858384302915,
+          "lng": 17.0217811802915
+        },
+        "southwest": {
+          "lat": 51.0831404697085,
+          "lng": 17.0190832197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+    "id": "e2a64efd4c4f69d39a32b855dfdf63e1142f6f76",
+    "name": "Green Garden , Projektowanie ogrodów",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 600,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/116704096123465975797/photos\"\u003eGreen Garden , Projektowanie ogrodów\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAA6WdBpLk7P2BHSLSo9bxsB82HvjJ6E7lOTMiRpv1bMMGe_Its-LMMJFlW8cFht1VRiLxqKyUG3fxoEW8Z35lbZLpCnBGqWIISZrUBO66nFOCUqRb2q9apx34iUmwSct-EhCiDOqNMU2dPoFt3Md9uRBZGhTYN39m2pjwLMo9JcAyf3dKBjJ1hA",
+        "width": 600
+      }
+    ],
+    "place_id": "ChIJccXPM0TCD0cRtG3tMNw52MM",
+    "plus_code": {
+      "compound_code": "32MC+Q5 Wrocław, Poland",
+      "global_code": "9F3V32MC+Q5"
+    },
+    "reference": "ChIJccXPM0TCD0cRtG3tMNw52MM",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "general_contractor",
+      "point_of_interest",
+      "establishment"
+    ],
+    "vicinity": "Piotra Wysockiego 3, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.080248,
+        "lng": 17.037585
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.08155798029149,
+          "lng": 17.0389348302915
+        },
+        "southwest": {
+          "lat": 51.0788600197085,
+          "lng": 17.0362368697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "d1a4d300865f344b32e7535c2e0374abd81ff9db",
+    "name": "PRACOWNIA ARCHITEKTURY KRAJOBRAZU \"GREENOWNIA\" Monika Bilewicz",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 1080,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/110768511664077708277/photos\"\u003eMonika Bilewicz\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAjuMEE4cBFjGuwsYip-CmZ3uxt0g5Yh4e63ApxnMne6KGOBppYi1gqf0GXRl1lVYyPR0cdnbwpTw8gCFBfH_F8zRW8lpvigROXL_N84zc1FmQDw73OJpZ_Btb0laaAd-OEhAIYTR_NXgZLKi8o8AhVdKkGhQ0glPQkA2FeNYEmwifPU1g0o2syw",
+        "width": 1920
+      }
+    ],
+    "place_id": "ChIJafYVR1jCD0cR82SLWx043P4",
+    "plus_code": {
+      "compound_code": "32JQ+32 Wrocław, Poland",
+      "global_code": "9F3V32JQ+32"
+    },
+    "rating": 4.7,
+    "reference": "ChIJafYVR1jCD0cR82SLWx043P4",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 3,
+    "vicinity": "Jabłeczna 22, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.07562859999999,
+        "lng": 17.0623179
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.07697758029149,
+          "lng": 17.0636668802915
+        },
+        "southwest": {
+          "lat": 51.07427961970849,
+          "lng": 17.0609689197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "dc7c8482fe8b2a5c59ebf8f089f1fe69eec732f9",
+    "name": "ROD Tarnogaj",
+    "photos": [
+      {
+        "height": 5312,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/100183141988487987625/photos\"\u003eWitold Janczewski\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAOQYXPOoIKd8AB-3xEV5FkDXoxyan_1GQkGBKZ4d47wdEVdzSliZ5k2ZsjQNiBtadP_oP--hgNYOrKQXOqx5lFbaAHwt7LQVSG8TOaREYw_SuPI4DjGl6ggzp9qi7WQbfEhAv5ISBfcJ5YAdu--cCN9CeGhSK3nnGqRU2CMKidugkSJkpFEF8aw",
+        "width": 2992
+      }
+    ],
+    "place_id": "ChIJIfp6pOjCD0cR6tqhv1p6VMM",
+    "plus_code": {
+      "compound_code": "33G6+7W Wrocław, Poland",
+      "global_code": "9F3V33G6+7W"
+    },
+    "rating": 4.8,
+    "reference": "ChIJIfp6pOjCD0cR6tqhv1p6VMM",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 10,
+    "vicinity": "Owocowa 3C, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.0734176,
+        "lng": 17.0633907
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.0749730802915,
+          "lng": 17.0646504302915
+        },
+        "southwest": {
+          "lat": 51.0722751197085,
+          "lng": 17.0619524697085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "8b334ea298830a4b5634e83d73f02cc4c7f1cddf",
+    "name": "Wzgórze Tarnogajskie",
+    "photos": [
+      {
+        "height": 2988,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/107015950136665529640/photos\"\u003eMarcin Spurtacz\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAlp4i_Vn4hQd02mcX0grAbJTESNQ6N-79IFAI_sUENTj_FmVltBWbS2Mosag-SruDtjs5MYNZFcK42Cn3E1l4k_qZMeEmS0S7iHR1miJ2FvwWNF4ryrk-7nR6KlR3j-eIEhB4Eu1oTdXywU7EfWYCjBogGhSKcL5AIPd_25QTAhlPPjelgYjzJQ",
+        "width": 5312
+      }
+    ],
+    "place_id": "ChIJ7UE3S-bCD0cRyEKLSMVdJBI",
+    "plus_code": {
+      "compound_code": "33F7+99 Wrocław, Poland",
+      "global_code": "9F3V33F7+99"
+    },
+    "rating": 4.5,
+    "reference": "ChIJ7UE3S-bCD0cRyEKLSMVdJBI",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 24,
+    "vicinity": "Owocowa 3B, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.0803212,
+        "lng": 17.0274375
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.0822405302915,
+          "lng": 17.03426855
+        },
+        "southwest": {
+          "lat": 51.0795425697085,
+          "lng": 17.02332354999999
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "086fa20fd9605afaeb536cb961d8edfc0061ff20",
+    "name": "Skowroni Park",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 4032,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/110861488522979323618/photos\"\u003eTadeusz Smolnicki\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAnWAyyKkS9iTB7ixaX9e2QMPe9ews3WHocoFmQjD4P_zyfjZxd6C3Ap_KlzGPdvNJn26ROoy3N2I_6c5tS8rHj_Bynhswjd8Beg3suNJDrtreHJz_QlqviEKqM0ieTkS-EhBVSAlOffIrq3pVgNYXa5iYGhQIt5JrGu41eartGDpNIEfR19GmbQ",
+        "width": 3024
+      }
+    ],
+    "place_id": "ChIJF2WdfFDCD0cRks0dDKLVGis",
+    "plus_code": {
+      "compound_code": "32JG+4X Wrocław, Poland",
+      "global_code": "9F3V32JG+4X"
+    },
+    "rating": 4.5,
+    "reference": "ChIJF2WdfFDCD0cRks0dDKLVGis",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 935,
+    "vicinity": "Spiska, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.0702841,
+        "lng": 17.0724498
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.0716330802915,
+          "lng": 17.0737987802915
+        },
+        "southwest": {
+          "lat": 51.0689351197085,
+          "lng": 17.07110081970849
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "f2b6eb0bc5bd0343c48a9593a4f57dd86bbe0121",
+    "name": "ROD ZŁOCIEŃ",
+    "photos": [
+      {
+        "height": 4608,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/108286724355458269972/photos\"\u003eAnna Morzyńska\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAK4iv1CBOdZ8qvmg6KkrF7JD0pfy55Qk-eWCaNecHclUOg0wZ0Dm6SZPYSm7vbEl72G4XEW0_lZbF-khG7aHiTOG9fijLYl4dywlMu6bZgl9tnybuI3H21exhy621ggOhEhCCePxQcBWxqjG-td4ZMmtSGhSyiQ1crQPFSTKw8x1zM4pG-o-Vzw",
+        "width": 2592
+      }
+    ],
+    "place_id": "ChIJg16getzCD0cRByIutviGTrc",
+    "plus_code": {
+      "compound_code": "33CC+4X Wrocław, Poland",
+      "global_code": "9F3V33CC+4X"
+    },
+    "rating": 4.3,
+    "reference": "ChIJg16getzCD0cRByIutviGTrc",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 35,
+    "vicinity": "Wiaduktowa 21, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.08468620000001,
+        "lng": 17.0841593
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.0860351802915,
+          "lng": 17.08550828029151
+        },
+        "southwest": {
+          "lat": 51.0833372197085,
+          "lng": 17.0828103197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "417985018bdb20cb7057b64445b49f17b83eb768",
+    "name": "Park Wschodni",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 1080,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/110149204803380754626/photos\"\u003eLukasz Tatys\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAOszLvtW9pHuWmiMgYtgGatVBmWC3P_j5eT1I6qYo8el4bGsv3Xk5Ynfx-qcdpk3o5fNQc57Pn6AhrPOPP_N57UsgBIDH58Kl-hyVHG_kpYwldjEXpY7TnHo4QR-45wz0EhCB7-XGCDLXvgKEeROfAem8GhQOFddUUoSMekao-3OOQbtOJOnrbw",
+        "width": 1920
+      }
+    ],
+    "place_id": "ChIJOZcv3bjCD0cRIuOQqxqm0tU",
+    "plus_code": {
+      "compound_code": "33MM+VM Wrocław, Poland",
+      "global_code": "9F3V33MM+VM"
+    },
+    "rating": 4.6,
+    "reference": "ChIJOZcv3bjCD0cRIuOQqxqm0tU",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 907,
+    "vicinity": "50-001, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.10805569999999,
+        "lng": 17.0498538
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.10928858029148,
+          "lng": 17.0512988802915
+        },
+        "southwest": {
+          "lat": 51.10659061970849,
+          "lng": 17.04860091970849
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "1573a4c9413ea0b72fbdeefb0bee379ee5d164ab",
+    "name": "Ogród Społeczny",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3000,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/105757345703500941042/photos\"\u003eDominik Drexler\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAATvlp1PGNTDa7C2PvrTvy7yvXWYWrtCyWBnSbmMMRzpHWceJHRHE_syOYW3U7dZQrLUdNRiO-rlJZPyvBgn3QAIgEA3QXhFsXvaeiaVSdf5d6tySpS1HpwL2Dn425zQ4aEhBJMkOsICjQZShcqFPejQd-GhRtTzU5af1rKbJrjAVnrP213OJVwA",
+        "width": 4000
+      }
+    ],
+    "place_id": "ChIJ9cD2Sn_CD0cR7zz0CoP0n60",
+    "plus_code": {
+      "compound_code": "425X+6W Wrocław, Poland",
+      "global_code": "9F3V425X+6W"
+    },
+    "rating": 4,
+    "reference": "ChIJ9cD2Sn_CD0cR7zz0CoP0n60",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 1,
+    "vicinity": "plac Powstańców Warszawy 1, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.1076427,
+        "lng": 17.07758
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.11078670000001,
+          "lng": 17.0821563
+        },
+        "southwest": {
+          "lat": 51.10354509999999,
+          "lng": 17.0701555
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+    "id": "ceaab329af93f77cc71907f4a070b7dcbde3200b",
+    "name": "Wrocław Multimedia Fountain",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 1960,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/105891028873598804999/photos\"\u003eClaudia Domeyer\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAGS1hrgWflIssGtJ4MQOTvu9ZfvAQuv3Y3rs54w3YFS5j7ueZwxIxqpEhL0PAlQHQYkz--ueggmeMBdmAh8wB_Ag10fzYB1Hw4u3McWFO724PDN2wUy1qxK4bTV8yJXMGEhBO5uGg-urvJGLzczZ0fzglGhRTBjQa6UamzdbvC5uyT3AKMQMFHw",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJX5cfeijoD0cRSLGsxqvLLKA",
+    "plus_code": {
+      "compound_code": "435H+32 Wrocław, Poland",
+      "global_code": "9F3V435H+32"
+    },
+    "rating": 4.7,
+    "reference": "ChIJX5cfeijoD0cRSLGsxqvLLKA",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 6227,
+    "vicinity": "Wystawowa 1, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.1158737,
+        "lng": 17.0475612
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.1177345302915,
+          "lng": 17.0490737802915
+        },
+        "southwest": {
+          "lat": 51.1150365697085,
+          "lng": 17.0463758197085
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "444e7a18803116d2855e012d58845e550cd78f92",
+    "name": "Botanical Garden of the University of Wrocław",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3008,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/112100648121431224640/photos\"\u003ePaweł Bielawski\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAION0v6-nl2_lYhHqI_rxSA_1qIdQjEP6buPEW8hPuvQ-3oPe7DApRfx1TNeMDYNOpJDeiXioUKfKv_eeEa7fOvWfOn8-bYCEOxR3-dQ2Q62g-uM3l_N1T1H0KlQGUDZAEhB50k4eo2-h44w6c9Sq-1VzGhSCKnap3Z1EJP0vElPqQH9VjoPwaQ",
+        "width": 5344
+      }
+    ],
+    "place_id": "ChIJA-TdBt_pD0cRmMlI7p6Kmtw",
+    "plus_code": {
+      "compound_code": "428X+82 Wrocław, Poland",
+      "global_code": "9F3V428X+82"
+    },
+    "rating": 4.7,
+    "reference": "ChIJA-TdBt_pD0cRmMlI7p6Kmtw",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 3655,
+    "vicinity": "Sienkiewicza 23, Wrocław"
+  },
+  {
+    "geometry": {
+      "location": {
+        "lat": 51.0630266,
+        "lng": 17.0718649
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 51.0648524802915,
+          "lng": 17.0733694802915
+        },
+        "southwest": {
+          "lat": 51.06215451970851,
+          "lng": 17.07067151970849
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "423c2f89ac7dc86e52586c8773333e1fac911d86",
+    "name": "Park Brochowski",
+    "opening_hours": {
+      "open_now": true
+    },
+    "photos": [
+      {
+        "height": 3096,
+        "html_attributions": [
+          "\u003ca href=\"https://maps.google.com/maps/contrib/105426865010099452634/photos\"\u003eRyszard Chojnacki\u003c/a\u003e"
+        ],
+        "photo_reference": "CmRaAAAAPSy1TURZPjYq6kokYZawg2sf2thiDMLQPpw766sfZwYeCHOhQlQ3-4U1-l_lE5fUx8fJWZKN1s83qyuKRVGfd-9NrtdZEo60-QuB0LfYdAklk-J-Z47mzWI00Jc1WgDnEhBdSbmWLV85huAsJWZ6tvtWGhTYr98sLdpk2YcqMAgCMkaVKFJgIA",
+        "width": 4128
+      }
+    ],
+    "place_id": "ChIJZSmdoCfDD0cR7mz7NHqVxCk",
+    "plus_code": {
+      "compound_code": "337C+6P Wrocław, Poland",
+      "global_code": "9F3V337C+6P"
+    },
+    "rating": 4.6,
+    "reference": "ChIJZSmdoCfDD0cR7mz7NHqVxCk",
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "user_ratings_total": 814,
+    "vicinity": "Konduktorska, Wrocław"
+  }
+]
