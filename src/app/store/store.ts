@@ -8,7 +8,10 @@ import {
 import {combineEpics, createEpicMiddleware} from 'redux-observable';
 import fetchMonstersEpic from './epics/fetchMonstersEpic';
 import fetchSpawnAreasEpic from './epics/fetchSpawnAreasEpic';
-import monstersSlice, {MonstersActions} from './slices/monstersSlice';
+import monstersSlice, {
+  IMonsterStore,
+  MonstersActions,
+} from './slices/monstersSlice';
 import spawnAreasSlice, {SpawnAreaActions} from './slices/spawnAreasSlice';
 import userSlice, {UserActions} from './slices/userSlice';
 import {ISpawnArea} from './types/ISpawnArea';
@@ -17,6 +20,7 @@ import {IUser} from './types/IUser';
 export interface IStoreState {
   user: IUser;
   spawnAreas: ISpawnArea[];
+  monsters: IMonsterStore;
 }
 
 const reducers = combineReducers({

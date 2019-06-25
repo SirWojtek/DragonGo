@@ -1,6 +1,6 @@
 import {ISpawnArea} from '../../store/types/ISpawnArea';
 
-const spawnAreas: ISpawnArea[] = [
+export const spawnAreas: ISpawnArea[] = [
   {
     viewport: {
       northeast: {latitude: 51.08155798029149, longitude: 17.0389348302915},

@@ -4,7 +4,7 @@ import {IMonster} from '../types/IMonster';
 export const UPDATE_MONSTERS = 'monstersSlice/updateMonsters';
 export const FETCH_MONSTERS = 'monstersSlice/fetchMonsters';
 
-interface IMonsterStore {
+export interface IMonsterStore {
   [id: string]: IMonster;
 }
 

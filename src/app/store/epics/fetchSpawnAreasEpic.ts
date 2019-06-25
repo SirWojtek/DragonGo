@@ -10,7 +10,7 @@ import {Actions, IStoreState} from '../store';
 import {ISpawnArea} from '../types/ISpawnArea';
 
 function extractMonsterIds(spawnAreas: ISpawnArea[]): string[] {
-  return uniq(flatten(spawnAreas.map(m => m.monsterIds)));
+  return uniq(flatten(spawnAreas.map(m => m.id)));
 }
 
 const fetchSpawnAreasEpic: Epic<Action, Action, void> = action =>
