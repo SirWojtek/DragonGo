@@ -4,7 +4,7 @@ import MapView, { Camera, LatLng, Marker, Point } from 'react-native-maps';
 import { connect } from 'react-redux';
 import { IStoreState } from '../../store/store';
 import { IUser } from '../../store/types/IUser';
-import PlayerMarker from './PlayerMarker';
+import PlayerMarker from './markers/PlayerMarker';
 import SpawnAreasContainer from './SpawnAreasContainer';
 
 interface IProps {
