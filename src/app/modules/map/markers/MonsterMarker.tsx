@@ -14,7 +14,7 @@ class MonsterMarker extends React.Component<IProps> {
     return (
       <Marker
         coordinate={this.props.coordinate}
-        title={this.getTitle()}
+        title={`${this.props.monster.name} (${this.props.monster.level} lvl)`}
       >
         <View style={markerStyle} />
       </Marker>
@@ -22,7 +22,7 @@ class MonsterMarker extends React.Component<IProps> {
   }
 
   private getTitle() {
-    return `${this.props.monster.name} (${this.props.monster.level})`;
+    return ;
   }
 
 }
