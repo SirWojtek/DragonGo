@@ -4,6 +4,7 @@ import MapView, { Camera, LatLng, Marker, Point } from 'react-native-maps';
 import { connect } from 'react-redux';
 import { IStoreState } from '../../store/store';
 import { IUser } from '../../store/types/IUser';
+import { pointDistance } from '../../utils/distance';
 import PlayerMarker from './markers/PlayerMarker';
 import SpawnAreasContainer from './SpawnAreasContainer';
 
@@ -77,13 +78,10 @@ class MapContainer extends React.Component<IProps, IState> {
 
   private onPanDrag(position: Point, timestamp: number) {
     if (timestamp - this.state.previousTimestamp < PAN_EVENT_TIMESTAMP_MAX_DELTA  && this.state.previousPosition) {
-      const delta: Point = {
-        x: position.x - this.state.previousPosition.x,
-        y: position.y - this.state.previousPosition.y,
-      };
+      const deltaX = position.x - this.state.previousPosition.x;
 
-      let alpha = Math.sqrt(delta.x * delta.x + delta.y * delta.y);
-      if (delta.x < 0) {
+      let alpha = pointDistance(position, this.state.previousPosition);
+      if (deltaX < 0) {
         alpha = - alpha;
       }
       const newHeading = this.state.heading + PANNING_SPEED * alpha;

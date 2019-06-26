@@ -1,12 +1,14 @@
 import React from 'react';
 import { View } from 'react-native';
-import { LatLng, Polygon } from 'react-native-maps';
+import { LatLng, MapEvent, Polygon } from 'react-native-maps';
 import { connect } from 'react-redux';
 import { IMonsterStore } from '../../store/slices/monstersSlice';
 import { IStoreState } from '../../store/store';
 import { ILocation } from '../../store/types/ILocation';
 import { IMonster } from '../../store/types/IMonster';
 import { ISpawnArea } from '../../store/types/ISpawnArea';
+import { IUser } from '../../store/types/IUser';
+import { latLngDistance } from '../../utils/distance';
 import MonsterMarker from './markers/MonsterMarker';
 
 interface IMonsterWithLocation extends IMonster {
@@ -18,6 +20,7 @@ interface IProps {
     coordinates: LatLng[];
     monsters: IMonsterWithLocation[];
   }>;
+  user: IUser;
 }
 
 function mapStateToProps(state: IStoreState): IProps {
@@ -46,6 +49,7 @@ function mapStateToProps(state: IStoreState): IProps {
         ...state.monsters[m.id]
       })),
     })),
+    user: state.user,
   };
 }
 
@@ -68,12 +72,23 @@ class SpawnAreasContainer extends React.Component<IProps> {
               key={'area-' + i + '-monster-' + j}
               coordinate={monster.location}
               monster={monster}
+              onPress={event => this.onMonsterMarkerPress(event) }
             />
           )
         }
       </View>
     );
+
   }
+
+  public onMonsterMarkerPress(event: MapEvent<{ action: "marker-press"; id: string; }>) {
+    const distance = latLngDistance(event.nativeEvent.coordinate, this.props.user.location);
+
+    if (distance > this.props.user.maxRange) {
+      // TODO: show a snackbar
+    }
+  }
+
 }
 
 export default connect(mapStateToProps)(SpawnAreasContainer);
