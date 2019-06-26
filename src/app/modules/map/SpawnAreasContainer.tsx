@@ -67,6 +67,7 @@ class SpawnAreasContainer extends React.Component<IProps> {
             <MonsterMarker
               key={'area-' + i + '-monster-' + j}
               coordinate={monster.location}
+              monster={monster}
             />
           )
         }
