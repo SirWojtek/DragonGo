@@ -66,7 +66,10 @@ class MapContainer extends React.Component<IProps, IState> {
         }}
         onPanDrag={event => this.onPanDrag(event.nativeEvent.position, event.timeStamp)}
       >
-        <PlayerMarker coordinate={this.props.user.location} />
+        <PlayerMarker
+          coordinate={this.props.user.location}
+          range={this.props.user.maxRange}
+      />
         <SpawnAreasContainer />
       </MapView>
     );

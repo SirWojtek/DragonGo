@@ -5,11 +5,16 @@ import {IUser} from '../types/IUser';
 
 export const SET_LOCATION = 'user/setLocation';
 
+const USER_MAX_RANGE = 100;
+
 const userSlice = createSlice({
   slice: 'user',
-  initialState: {} as IUser,
+  initialState: {
+    maxRange: 100,
+  } as IUser,
   reducers: {
     setLocation: (state, action: {payload: ILocation}) => ({
+      ...state,
       location: {...action.payload},
     }),
   },
