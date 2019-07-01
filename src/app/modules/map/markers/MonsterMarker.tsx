@@ -6,17 +6,19 @@ import { IMonster } from "../../../store/types/IMonster";
 interface IProps {
   coordinate: LatLng;
   monster: IMonster;
-  onPress: (event: MapEvent<{ action: "marker-press"; id: string; }>) => void;
+  onPress: (markerRef: Marker | null, event: MapEvent<{ action: "marker-press"; id: string; }>) => void;
 }
 
 class MonsterMarker extends React.Component<IProps> {
+  public markerRef: Marker | null = null;
 
   public render() {
     return (
       <Marker
+        ref={ref => this.markerRef = ref}
         coordinate={this.props.coordinate}
         title={`${this.props.monster.name} (${this.props.monster.level} lvl)`}
-        onPress={this.props.onPress}
+        onPress={event => this.props.onPress(this.markerRef, event)}
       >
         <View style={markerStyle} />
       </Marker>

@@ -1,9 +1,12 @@
+import { isPointWithinRadius } from 'geolib';
 import React from 'react';
 import { View } from 'react-native';
-import { LatLng, MapEvent, Polygon } from 'react-native-maps';
+import { LatLng, MapEvent, Marker, Polygon } from 'react-native-maps';
+import { Snackbar } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { IMonsterStore } from '../../store/slices/monstersSlice';
-import { IStoreState } from '../../store/store';
+import snackbarSlice from '../../store/slices/snackbarSlice';
+import store, { IStoreState } from '../../store/store';
 import { ILocation } from '../../store/types/ILocation';
 import { IMonster } from '../../store/types/IMonster';
 import { ISpawnArea } from '../../store/types/ISpawnArea';
@@ -21,6 +24,10 @@ interface IProps {
     monsters: IMonsterWithLocation[];
   }>;
   user: IUser;
+}
+
+interface IState {
+  rangeLimitMessageVisible: boolean;
 }
 
 function mapStateToProps(state: IStoreState): IProps {
@@ -53,7 +60,15 @@ function mapStateToProps(state: IStoreState): IProps {
   };
 }
 
-class SpawnAreasContainer extends React.Component<IProps> {
+class SpawnAreasContainer extends React.Component<IProps, IState> {
+
+  constructor(props: IProps) {
+    super(props);
+
+    this.state = {
+      rangeLimitMessageVisible: false
+    };
+  }
 
   public render() {
     if (!this.props.spawnAreas) {
@@ -72,7 +87,7 @@ class SpawnAreasContainer extends React.Component<IProps> {
               key={'area-' + i + '-monster-' + j}
               coordinate={monster.location}
               monster={monster}
-              onPress={event => this.onMonsterMarkerPress(event) }
+              onPress={(markerRef, event) => this.onMonsterMarkerPress(markerRef, event) }
             />
           )
         }
@@ -81,12 +96,19 @@ class SpawnAreasContainer extends React.Component<IProps> {
 
   }
 
-  public onMonsterMarkerPress(event: MapEvent<{ action: "marker-press"; id: string; }>) {
-    const distance = latLngDistance(event.nativeEvent.coordinate, this.props.user.location);
-
-    if (distance > this.props.user.maxRange) {
-      // TODO: show a snackbar
+  public onMonsterMarkerPress(markerRef: Marker | null, event: MapEvent<{ action: "marker-press"; id: string; }>) {
+    if (isPointWithinRadius(event.nativeEvent.coordinate, this.props.user.location, this.props.user.maxRange)) {
+      return;
     }
+    if (!markerRef) {
+      return;
+    }
+
+    store.dispatch(snackbarSlice.actions.show({
+      content: 'You are out of range!',
+      duration: 3000
+    }));
+    markerRef.hideCallout();
   }
 
 }

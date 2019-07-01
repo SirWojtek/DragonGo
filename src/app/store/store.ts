@@ -12,6 +12,10 @@ import monstersSlice, {
   IMonsterStore,
   MonstersActions,
 } from './slices/monstersSlice';
+import snackbarSlice, {
+  ISnackbarStore,
+  SnackbarActions,
+} from './slices/snackbarSlice';
 import spawnAreasSlice, {SpawnAreaActions} from './slices/spawnAreasSlice';
 import userSlice, {UserActions} from './slices/userSlice';
 import {ISpawnArea} from './types/ISpawnArea';
@@ -21,12 +25,14 @@ export interface IStoreState {
   user: IUser;
   spawnAreas: ISpawnArea[];
   monsters: IMonsterStore;
+  snackbar: ISnackbarStore;
 }
 
 const reducers = combineReducers({
   user: userSlice.reducer,
   spawnAreas: spawnAreasSlice.reducer,
   monsters: monstersSlice.reducer,
+  snackbar: snackbarSlice.reducer,
 });
 
 const epics = combineEpics(fetchSpawnAreasEpic, fetchMonstersEpic);
@@ -40,6 +46,10 @@ const store: Store<IStoreState> = createStore(
 
 epicMiddleware.run(epics);
 
-export type Actions = UserActions | SpawnAreaActions | MonstersActions;
+export type Actions =
+  | UserActions
+  | SpawnAreaActions
+  | MonstersActions
+  | SnackbarActions;
 
 export default store;
