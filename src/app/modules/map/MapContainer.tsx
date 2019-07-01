@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { IStoreState } from '../../store/store';
 import { IUser } from '../../store/types/IUser';
 import { pointDistance } from '../../utils/distance';
+import { mapStyle } from './data/mapStyle';
 import PlayerMarker from './markers/PlayerMarker';
 import SpawnAreasContainer from './SpawnAreasContainer';
 
@@ -47,6 +48,7 @@ class MapContainer extends React.Component<IProps, IState> {
     return (
       <MapView
         style={{ flex: 1 }}
+        customMapStyle={mapStyle}
         minZoomLevel={16}
         maxZoomLevel={16}
         scrollEnabled={false}
