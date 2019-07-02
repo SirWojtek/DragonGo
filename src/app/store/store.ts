@@ -8,6 +8,7 @@ import {
 import {combineEpics, createEpicMiddleware} from 'redux-observable';
 import fetchMonstersEpic from './epics/fetchMonstersEpic';
 import fetchSpawnAreasEpic from './epics/fetchSpawnAreasEpic';
+import modalSlice, {IModalStore, ModalActions} from './slices/modalSlice';
 import monstersSlice, {
   IMonsterStore,
   MonstersActions,
@@ -26,6 +27,7 @@ export interface IStoreState {
   spawnAreas: ISpawnArea[];
   monsters: IMonsterStore;
   snackbar: ISnackbarStore;
+  modal: IModalStore;
 }
 
 const reducers = combineReducers({
@@ -33,6 +35,7 @@ const reducers = combineReducers({
   spawnAreas: spawnAreasSlice.reducer,
   monsters: monstersSlice.reducer,
   snackbar: snackbarSlice.reducer,
+  modal: modalSlice.reducer,
 });
 
 const epics = combineEpics(fetchSpawnAreasEpic, fetchMonstersEpic);
@@ -50,6 +53,7 @@ export type Actions =
   | UserActions
   | SpawnAreaActions
   | MonstersActions
-  | SnackbarActions;
+  | SnackbarActions
+  | ModalActions;
 
 export default store;

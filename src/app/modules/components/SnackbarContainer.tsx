@@ -22,10 +22,6 @@ function mapStateToProps(state: IStoreState): IProps {
 class SnackbarContainer extends React.Component<IProps> {
 
   public render() {
-    if (!this.props.visible) {
-      return null;
-    }
-
     return <Snackbar
       visible={this.props.visible}
       duration={this.props.duration}

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Provider as PaperProvider } from 'react-native-paper';
+import { Modal, Portal, Provider as PaperProvider, Text } from 'react-native-paper';
 import { Provider as StoreProvider } from 'react-redux'
+import ModalContainer from './modules/components/ModalContainer';
 import SnackbarContainer from './modules/components/SnackbarContainer';
 import MapContainer from './modules/map/MapContainer';
 import LocationService from './services/LocationService';
@@ -17,6 +18,7 @@ export default class App extends React.Component {
         <PaperProvider>
             <MapContainer />
             <SnackbarContainer />
+            <ModalContainer />
         </PaperProvider>
       </StoreProvider>
     );

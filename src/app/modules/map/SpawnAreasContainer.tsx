@@ -1,9 +1,10 @@
 import { isPointWithinRadius } from 'geolib';
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { LatLng, MapEvent, Marker, Polygon } from 'react-native-maps';
-import { Snackbar } from 'react-native-paper';
+import { Modal, Portal, Snackbar } from 'react-native-paper';
 import { connect } from 'react-redux';
+import modalSlice from '../../store/slices/modalSlice';
 import { IMonsterStore } from '../../store/slices/monstersSlice';
 import snackbarSlice from '../../store/slices/snackbarSlice';
 import store, { IStoreState } from '../../store/store';
@@ -97,6 +98,9 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
 
   public onMonsterMarkerPress(event: MapEvent<{ action: "marker-press"; id: string; }>) {
     if (__DEV__ || isPointWithinRadius(event.nativeEvent.coordinate, this.props.user.location, this.props.user.maxRange)) {
+      store.dispatch(modalSlice.actions.show({
+        content: <Text>hello modal</Text>
+      }));
       // TODO: show monster modal
     } else {
       store.dispatch(snackbarSlice.actions.show({
