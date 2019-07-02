@@ -86,8 +86,7 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
             <MonsterMarker
               key={'area-' + i + '-monster-' + j}
               coordinate={monster.location}
-              monster={monster}
-              onPress={(markerRef, event) => this.onMonsterMarkerPress(markerRef, event) }
+              onPress={event => this.onMonsterMarkerPress(event) }
             />
           )
         }
@@ -96,19 +95,15 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
 
   }
 
-  public onMonsterMarkerPress(markerRef: Marker | null, event: MapEvent<{ action: "marker-press"; id: string; }>) {
-    if (isPointWithinRadius(event.nativeEvent.coordinate, this.props.user.location, this.props.user.maxRange)) {
-      return;
+  public onMonsterMarkerPress(event: MapEvent<{ action: "marker-press"; id: string; }>) {
+    if (__DEV__ || isPointWithinRadius(event.nativeEvent.coordinate, this.props.user.location, this.props.user.maxRange)) {
+      // TODO: show monster modal
+    } else {
+      store.dispatch(snackbarSlice.actions.show({
+        content: 'You are out of range!',
+        duration: 3000
+      }));
     }
-    if (!markerRef) {
-      return;
-    }
-
-    store.dispatch(snackbarSlice.actions.show({
-      content: 'You are out of range!',
-      duration: 3000
-    }));
-    markerRef.hideCallout();
   }
 
 }
