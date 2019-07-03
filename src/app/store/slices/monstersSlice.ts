@@ -20,9 +20,8 @@ const monstersSlice = createSlice({
         }),
         state,
       ),
-    fetchMonsters: (state, action: FetchMonstersAction) => {
-      // NOTE: fetching logic in the epic
-    },
+    // NOTE: fetch logic in epic
+    fetchMonsters: (state, action: FetchMonstersAction) => state,
   },
 });
 
