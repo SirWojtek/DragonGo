@@ -4,8 +4,9 @@ import { LatLng, MapEvent, Marker } from "react-native-maps";
 import { IMonster } from "../../../store/types/IMonster";
 
 interface IProps {
+  monster: IMonster;
   coordinate: LatLng;
-  onPress: (event: MapEvent<{ action: "marker-press"; id: string; }>) => void;
+  onPress: (coordinate: LatLng, monster: IMonster) => void;
 }
 
 class MonsterMarker extends React.Component<IProps> {
@@ -14,7 +15,7 @@ class MonsterMarker extends React.Component<IProps> {
     return (
       <Marker
         coordinate={this.props.coordinate}
-        onPress={event => this.props.onPress(event)}
+        onPress={event => this.props.onPress(event.nativeEvent.coordinate, this.props.monster)}
       >
         <View style={markerStyle} />
       </Marker>

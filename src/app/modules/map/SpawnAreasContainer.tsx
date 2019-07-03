@@ -13,6 +13,7 @@ import { IMonster } from '../../store/types/IMonster';
 import { ISpawnArea } from '../../store/types/ISpawnArea';
 import { IUser } from '../../store/types/IUser';
 import { latLngDistance } from '../../utils/distance';
+import MonsterInfo from '../monster/MonsterInfo';
 import MonsterMarker from './markers/MonsterMarker';
 
 interface IMonsterWithLocation extends IMonster {
@@ -87,7 +88,8 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
             <MonsterMarker
               key={'area-' + i + '-monster-' + j}
               coordinate={monster.location}
-              onPress={event => this.onMonsterMarkerPress(event) }
+              monster={monster}
+              onPress={(coords, m) => this.onMonsterMarkerPress(coords, m) }
             />
           )
         }
@@ -96,12 +98,14 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
 
   }
 
-  public onMonsterMarkerPress(event: MapEvent<{ action: "marker-press"; id: string; }>) {
-    if (__DEV__ || isPointWithinRadius(event.nativeEvent.coordinate, this.props.user.location, this.props.user.maxRange)) {
+  public onMonsterMarkerPress(coords: LatLng, monster: IMonster) {
+    if (__DEV__ || isPointWithinRadius(coords, this.props.user.location, this.props.user.maxRange)) {
       store.dispatch(modalSlice.actions.show({
-        content: <Text>hello modal</Text>
+        content: <MonsterInfo
+            monster={monster}
+            onExitClick={() => store.dispatch(modalSlice.actions.hide({})) }
+          />
       }));
-      // TODO: show monster modal
     } else {
       store.dispatch(snackbarSlice.actions.show({
         content: 'You are out of range!',
