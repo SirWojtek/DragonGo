@@ -5,20 +5,24 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import CharacterContainer from './modules/character/CharacterContainer';
 import MapContainer from './modules/map/MapContainer';
 
+interface ITabBarIconArgs {
+  tintColor: string;
+}
+
 const AppNavigator = createMaterialBottomTabNavigator({
   World: {
     screen: MapContainer,
     navigationOptions: {
-      tabBarIcon: () => (
-        <Ionicons name="md-map" size={30} color="white" />
+      tabBarIcon: ({ tintColor }: ITabBarIconArgs) => (
+        <Ionicons name="md-map" size={30} color={tintColor} />
       )
     }
   },
   Character: {
     screen: CharacterContainer,
     navigationOptions: {
-      tabBarIcon: () => (
-        <Ionicons name="md-man" size={30} color="white" />
+      tabBarIcon: ({ tintColor }: ITabBarIconArgs) => (
+        <Ionicons name="md-man" size={30} color={tintColor} />
       )
     }
   },
