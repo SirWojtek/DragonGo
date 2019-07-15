@@ -8,3 +8,4 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
+src/app/**/*.d.ts

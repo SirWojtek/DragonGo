@@ -2,6 +2,7 @@ import React, { BaseSyntheticEvent } from "react";
 import { StyleProp, View, ViewStyle } from "react-native";
 import { LatLng, MapEvent, Marker } from "react-native-maps";
 import { IMonster } from "../../../store/types/IMonster";
+import styles from './MonsterMarker.scss';
 
 interface IProps {
   monster: IMonster;
@@ -17,17 +18,10 @@ class MonsterMarker extends React.Component<IProps> {
         coordinate={this.props.coordinate}
         onPress={event => this.props.onPress(event.nativeEvent.coordinate, this.props.monster)}
       >
-        <View style={markerStyle} />
+        <View style={styles.monsterMarker as StyleProp<ViewStyle>} />
       </Marker>
     );
   }
 }
-
-const markerStyle: StyleProp<ViewStyle> = {
-  height: 8,
-  width: 8,
-  backgroundColor: 'orange',
-  borderRadius: 4,
-};
 
 export default MonsterMarker;
