@@ -3,7 +3,8 @@ import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { Card, DefaultTheme, Text } from 'react-native-paper';
 import { connect } from 'react-redux';
-import { IStoreState } from '../../store/store';
+import userSlice from '../../store/slices/userSlice';
+import store, { IStoreState } from '../../store/store';
 import { IUser } from '../../store/types/IUser';
 import CharacterNameView from './views/CharacterNameView';
 import CharacterStatsView from './views/CharacterStatsView';
@@ -20,7 +21,17 @@ function mapStateToProps(state: IStoreState): IProps {
 }
 
 class CharacterContainer extends React.Component<IProps> {
+  public componentDidMount() {
+    store.dispatch(userSlice.actions.fetchUser({}));
+  }
+
   public render() {
+    if (!this.props.user.levelInfo) {
+      return <Card style={cardStyle}>
+        <Text>Loading user</Text>
+      </Card>
+    }
+
     return <Card style={cardStyle}>
       <CharacterNameView
         name={this.props.user.name}
