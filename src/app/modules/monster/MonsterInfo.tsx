@@ -3,7 +3,6 @@ import { StyleProp, ViewStyle } from 'react-native';
 import { Avatar, Button, Card, Paragraph, Title } from 'react-native-paper';
 import { defaultIfEmpty } from 'rxjs/operators';
 import { IMonster } from '../../store/types/IMonster';
-import styles from './MonsterInfo.scss';
 
 interface IProps {
   monster: IMonster;
@@ -28,14 +27,14 @@ class MonsterInfo extends React.Component<IProps> {
           <Title>{this.props.monster.name}</Title>
           <Paragraph>Monster level: {this.props.monster.level}</Paragraph>
         </Card.Content>
-        <Card.Actions style={styles.actionsStyle as StyleProp<ViewStyle>}>
+        <Card.Actions style={actionsStyle}>
           <Button
-            style={styles.buttonStyle as StyleProp<ViewStyle>}
+            style={buttonStyle}
             mode="contained"
             onPress={() => this.props.onExitClick() }
           >Exit</Button>
           <Button
-            style={styles.buttonStyle as StyleProp<ViewStyle>}
+            style={buttonStyle}
             mode="contained"
             disabled={true}
           >Fight</Button>
@@ -44,5 +43,14 @@ class MonsterInfo extends React.Component<IProps> {
     )
   }
 }
+
+const actionsStyle: StyleProp<ViewStyle> = {
+  display: 'flex',
+  justifyContent: 'center'
+};
+
+const buttonStyle: StyleProp<ViewStyle> = {
+  marginRight: 8,
+};
 
 export default MonsterInfo;

@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleProp, View, ViewStyle } from "react-native";
 import { Circle, LatLng, Marker } from "react-native-maps";
-import styles from './PlayerMarker.scss';
 
 interface IProps {
   coordinate: LatLng;
@@ -16,7 +15,7 @@ class PlayerMarker extends React.Component<IProps> {
         <Marker
           coordinate={this.props.coordinate}
         >
-          <View style={styles.playerMarker as StyleProp<ViewStyle>} />
+          <View style={markerStyle} />
         </Marker>
         <Circle
           center={this.props.coordinate}
@@ -28,5 +27,12 @@ class PlayerMarker extends React.Component<IProps> {
     );
   }
 }
+
+const markerStyle: StyleProp<ViewStyle> = {
+  height: 12,
+  width: 12,
+  backgroundColor: 'red',
+  borderRadius: 6,
+};
 
 export default PlayerMarker;

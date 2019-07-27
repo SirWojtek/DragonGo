@@ -9,9 +9,6 @@
       "android",
       "web"
     ],
-    "packagerOpts": {
-      "config": "metro.config.js"
-    },
     "entryPoint": "./src/app/AppEntry",
     "version": "1.0.0",
     "orientation": "portrait",
