@@ -38,30 +38,11 @@
     "@types/react-navigation-material-bottom-tabs": "^0.3.1",
     "@types/react-redux": "^7.1.0",
     "babel-preset-expo": "^5.1.1",
-    "husky": "^2.4.1",
-    "lint-staged": "^8.2.1",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^4.0.0",
     "typescript": "^3.4.5"
   },
-  "private": true,
-  "lint-staged": {
-    "*.tsx": [
-      "yarn lint",
-      "prettier",
-      "git add"
-    ],
-    "*.ts": [
-      "yarn lint",
-      "prettier",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  }
+  "private": true
 }

@@ -1,0 +1,35 @@
+{
+  "name": "DragonGo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:SirWojtek/DragonGo.git",
+  "author": "SirWojtek",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "lint:frontend": "cd frontend && yarn lint",
+    "lint:backend": "cd backend && yarn lint",
+    "lint": "yarn lint:frontend && yarn lint:backend"
+  },
+  "lint-staged": {
+    "*.tsx": [
+      "yarn lint",
+      "prettier",
+      "git add"
+    ],
+    "*.ts": [
+      "yarn lint",
+      "prettier",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "husky": "^3.0.2",
+    "lint-staged": "^9.2.1"
+  }
+}
