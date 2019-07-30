@@ -7,6 +7,8 @@ import { JwtStrategy } from './auth/jwt-strategy';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth/constants';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from '../models/user.entity';
 
 @Module({
   imports: [
@@ -14,6 +16,7 @@ import { jwtConstants } from './auth/constants';
     JwtModule.register({
       secret: jwtConstants.secret,
     }),
+    TypeOrmModule.forFeature([User]),
   ],
   providers: [UsersService, AuthService, LocalStrategy, JwtStrategy],
   controllers: [UsersController],

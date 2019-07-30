@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User, UsersService } from '../users.service';
+import { UsersService } from '../users.service';
+import { User } from 'src/models/user.entity';
 
 export interface JwtPayload {
   email: string;
@@ -18,7 +19,7 @@ export class AuthService {
     email: string,
     pass: string,
   ): Promise<Partial<User> | null> {
-    const user = await this.usersService.findOne(email);
+    const user = await this.usersService.findByEmail(email);
 
     if (user && user.password === pass) {
       const { password, ...result } = user;
