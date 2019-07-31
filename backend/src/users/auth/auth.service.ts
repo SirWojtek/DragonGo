@@ -4,7 +4,7 @@ import { UsersService } from '../users.service';
 import { User } from 'src/models/user.entity';
 
 export interface JwtPayload {
-  email: string;
+  username: string;
   sub: string;
 }
 
@@ -16,10 +16,10 @@ export class AuthService {
   ) {}
 
   async validateUser(
-    email: string,
+    username: string,
     pass: string,
   ): Promise<Partial<User> | null> {
-    const user = await this.usersService.findByEmail(email);
+    const user = await this.usersService.findByUsername(username);
 
     if (user && user.password === pass) {
       const { password, ...result } = user;
@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   async login(user: User): Promise<{ access_token: string }> {
-    const payload: JwtPayload = { email: user.email, sub: user.id };
+    const payload: JwtPayload = { username: user.username, sub: user.id };
 
     return { access_token: this.jwtService.sign(payload) };
   }
