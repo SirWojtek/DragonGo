@@ -11,7 +11,10 @@ export class UsersService {
   ) {}
 
   async findByUsername(username: string): Promise<UserEntity | null> {
-    return this.userRepository.findOne({ where: { username } });
+    const lowerCaseUsername = username.toLowerCase();
+    return this.userRepository.findOne({
+      where: { username: lowerCaseUsername },
+    });
   }
 
   async addUser(

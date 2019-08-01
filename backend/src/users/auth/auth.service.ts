@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { compare } from 'bcrypt';
 import { UsersService } from '../users.service';
-import { UserEntity } from 'src/models/db/user.entity';
+import { UserEntity } from '../..//models/db/user.entity';
+import { compare } from '../../utils/bcrypt';
 
 export interface JwtPayload {
   username: string;

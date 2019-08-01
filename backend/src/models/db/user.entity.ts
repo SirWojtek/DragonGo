@@ -7,8 +7,7 @@ import {
   BeforeInsert,
   BeforeUpdate,
 } from 'typeorm';
-import { hash } from 'bcrypt';
-import { bcryptContants } from '../../users/auth/constants';
+import { hash } from '../../utils/bcrypt';
 
 @Entity('user')
 export class UserEntity {
@@ -34,6 +33,6 @@ export class UserEntity {
       return;
     }
 
-    this.password = await hash(this.password, bcryptContants.saltRounds);
+    this.password = await hash(this.password);
   }
 }
