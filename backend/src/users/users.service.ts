@@ -18,15 +18,18 @@ export class UsersService {
     username: string,
     password: string,
   ): Promise<UserEntity | null> {
-    const userExists = await this.findByUsername(username);
+    const lowerCaseUsername = username.toLowerCase();
+    const userExists = await this.findByUsername(lowerCaseUsername);
 
     if (userExists) {
       return null;
     }
 
-    return this.userRepository.create({
-      username,
+    const user = await this.userRepository.create({
+      username: lowerCaseUsername,
       password,
     });
+
+    return this.userRepository.save(user);
   }
 }

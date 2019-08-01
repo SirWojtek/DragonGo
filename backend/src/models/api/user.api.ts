@@ -1,6 +1,6 @@
 import { MinLength } from 'class-validator';
 
-export class AddUserRequest {
+export class RegisterRequest {
   @MinLength(4)
   username: string;
 

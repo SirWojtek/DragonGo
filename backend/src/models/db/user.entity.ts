@@ -10,7 +10,7 @@ import {
 import { hash } from 'bcrypt';
 import { bcryptContants } from '../../users/auth/constants';
 
-@Entity()
+@Entity('user')
 export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;

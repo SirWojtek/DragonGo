@@ -514,6 +514,13 @@
   dependencies:
     "@types/superagent" "*"
 
+"@types/uuid@^3.4.5":
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-3.4.5.tgz#d4dc10785b497a1474eae0ba7f0cb09c0ddfd6eb"
+  integrity sha512-MNL15wC3EKyw1VLF+RoVO4hJJdk9t/Hlv3rt1OL65Qvuadm4BYo6g9ZJQqoq7X8NBFSsQXgAujWciovh2lpVjA==
+  dependencies:
+    "@types/node" "*"
+
 "@types/yargs@^12.0.2", "@types/yargs@^12.0.9":
   version "12.0.12"
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.12.tgz#45dd1d0638e8c8f153e87d296907659296873916"
@@ -2959,7 +2966,7 @@ lodash.sortby@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
 
-lodash@^4.17.11, lodash@^4.17.13:
+lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.5:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -4631,6 +4638,13 @@ ts-jest@24.0.2:
     resolve "1.x"
     semver "^5.5"
     yargs-parser "10.x"
+
+ts-mockito@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/ts-mockito/-/ts-mockito-2.4.2.tgz#e3b383a3cbfbf5225dff7365d98ddc32af75b846"
+  integrity sha512-3AqLVXxjfdwlo2eC+xrzFsc5rsPtKBBhJZAnxWmyBmgT/PC+K26RIxiT2QLKcqjcJqZnuGZkwfPMx2gN31lFnw==
+  dependencies:
+    lodash "^4.17.5"
 
 ts-node@8.1.0:
   version "8.1.0"
