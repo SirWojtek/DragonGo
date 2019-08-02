@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Polygon } from 'geojson';
 import { MonsterInstanceEntity } from './monster-instance.entity';
+import { MonsterMetadataEntity } from './monster-metadata.entity';
 
 @Entity('spawn_area')
 export class SpawnAreaEnity {
@@ -15,6 +16,13 @@ export class SpawnAreaEnity {
 
   @Column()
   name: string;
+
+  @ManyToMany(
+    type => MonsterMetadataEntity,
+    monsterMetadata => monsterMetadata.id,
+  )
+  @JoinTable()
+  monstersMetadata: MonsterMetadataEntity[];
 
   @ManyToMany(
     type => MonsterInstanceEntity,
