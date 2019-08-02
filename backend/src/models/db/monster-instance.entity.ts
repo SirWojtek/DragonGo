@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   CreateDateColumn,
 } from 'typeorm';
+import { Point } from 'geojson';
 import { MonsterMetadataEntity } from './monster-metadata.entity';
 
 @Entity('monster_instance')
@@ -25,6 +26,9 @@ export class MonsterInstanceEntity {
     { eager: true },
   )
   monsterMetadata: MonsterMetadataEntity;
+
+  @Column('geography', { spatialFeatureType: Point })
+  latLng: Point;
 
   @UpdateDateColumn()
   updatedAt: Date;
