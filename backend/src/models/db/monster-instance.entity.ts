@@ -27,7 +27,7 @@ export class MonsterInstanceEntity {
   )
   monsterMetadata: MonsterMetadataEntity;
 
-  @Column('geometry', { spatialFeatureType: Point })
+  @Column('geometry', { spatialFeatureType: 'Point' })
   latLng: Point;
 
   @UpdateDateColumn()

@@ -31,6 +31,6 @@ export class SpawnAreaEnity {
   @JoinTable()
   monsterInstances: MonsterInstanceEntity[];
 
-  @Column('geometry', { spatialFeatureType: Polygon })
+  @Column('geometry', { spatialFeatureType: 'Polygon' })
   coords: Polygon;
 }
