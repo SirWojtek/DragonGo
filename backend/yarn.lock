@@ -139,6 +139,13 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@google/maps@^0.5.5":
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/@google/maps/-/maps-0.5.5.tgz#478a5791e3b8d444be966462daec3ee43eb331e0"
+  integrity sha512-RSZriyE2XViVhXgdEcQaEu3jMYh2A/jS0VahLHXqGO0VfPyEbDac4PAn7/hBJiTavWpxchKfe5OI9inJofFWxA==
+  dependencies:
+    uuid ">=2.2.1"
+
 "@jest/console@^24.7.1":
   version "24.7.1"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.7.1.tgz#32a9e42535a97aedfe037e725bd67e954b459545"
@@ -426,6 +433,18 @@
   version "7946.0.7"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.7.tgz#c8fa532b60a0042219cdf173ca21a975ef0666ad"
   integrity sha512-wE2v81i4C4Ol09RtsWFAqg3BUitWbHSpSlIo+bNdsCJijO9sjme+zm+73ZMCa/qMC8UEERxzGbvmr1cffo2SiQ==
+
+"@types/geolib@^2.0.23":
+  version "2.0.23"
+  resolved "https://registry.yarnpkg.com/@types/geolib/-/geolib-2.0.23.tgz#83aa8d2772f3898daec211eac176583bd466b418"
+  integrity sha512-afIUEoDag0RdcaeQ965SlGRZA361Ngz2OthkkxAVMlvYPVn/5wm/9dYl5yPXteTyjSYxkhKUhWdFyJdVG87hJg==
+  dependencies:
+    geolib "*"
+
+"@types/google__maps@^0.5.5":
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.5.tgz#e3dad3ee96195d3d97fdcc20c24f1be279671e0a"
+  integrity sha512-KfTC1mt5gyoCKFG7xM+tTp5ZALBUxpsKd1KnrpZPtBXXQRsXqNh+/1j5lmDu/SFqwBENQrm28+4wX/oeJlF6Zg==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
@@ -1857,6 +1876,11 @@ geojson@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/geojson/-/geojson-0.5.0.tgz#3cd6c96399be65b56ee55596116fe9191ce701c0"
   integrity sha1-PNbJY5m+ZbVu5VWWEW/pGRznAcA=
+
+geolib@*, geolib@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/geolib/-/geolib-3.0.4.tgz#63fd82cf4311f08cadc142aaa73a0941844266d1"
+  integrity sha512-IpbpPdfuVdjj2T909H0Kj0Crp0he+xfFYX6e1Wlvo5L2OVkfnfvpTLp9k0VYuu5ObbWhQ/TI2VKNsrAokss5vA==
 
 get-caller-file@^1.0.1:
   version "1.0.3"
@@ -4848,7 +4872,7 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
-uuid@3.3.2, uuid@^3.3.2:
+uuid@3.3.2, uuid@>=2.2.1, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==

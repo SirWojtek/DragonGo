@@ -11,7 +11,7 @@ export class Rect {
 }
 
 export class GetSpawnAreas {
-  viewport: Rect;
+  location: LatLng;
 }
 
 export class SpawnArea {

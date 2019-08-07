@@ -4,10 +4,12 @@ import {
   Column,
   ManyToMany,
   JoinTable,
+  ManyToOne,
 } from 'typeorm';
 import { Polygon } from 'geojson';
 import { MonsterInstanceEntity } from './monster-instance.entity';
 import { MonsterMetadataEntity } from './monster-metadata.entity';
+import { MapFragmentEntity } from './map-fragment.entity';
 
 @Entity('spawn_area')
 export class SpawnAreaEnity {
@@ -16,6 +18,9 @@ export class SpawnAreaEnity {
 
   @Column()
   name: string;
+
+  @Column('geometry', { spatialFeatureType: 'Polygon' })
+  coords: Polygon;
 
   @ManyToMany(
     type => MonsterMetadataEntity,
@@ -31,6 +36,6 @@ export class SpawnAreaEnity {
   @JoinTable()
   monsterInstances: MonsterInstanceEntity[];
 
-  @Column('geometry', { spatialFeatureType: 'Polygon' })
-  coords: Polygon;
+  @ManyToOne(type => MapFragmentEntity, mapFragment => mapFragment.id)
+  mapFragment: MapFragmentEntity;
 }
