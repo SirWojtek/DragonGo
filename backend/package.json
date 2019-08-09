@@ -46,7 +46,7 @@
     "@types/express": "4.16.1",
     "@types/geojson": "^7946.0.7",
     "@types/geolib": "^2.0.23",
-    "@types/google__maps": "^0.5.5",
+    "@types/google__maps": "^0.5.6",
     "@types/jest": "24.0.11",
     "@types/node": "11.13.4",
     "@types/supertest": "2.0.7",

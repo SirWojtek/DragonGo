@@ -441,10 +441,10 @@
   dependencies:
     geolib "*"
 
-"@types/google__maps@^0.5.5":
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.5.tgz#e3dad3ee96195d3d97fdcc20c24f1be279671e0a"
-  integrity sha512-KfTC1mt5gyoCKFG7xM+tTp5ZALBUxpsKd1KnrpZPtBXXQRsXqNh+/1j5lmDu/SFqwBENQrm28+4wX/oeJlF6Zg==
+"@types/google__maps@^0.5.6":
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/@types/google__maps/-/google__maps-0.5.6.tgz#c81f6429ae5e9ee7d97fa9cf4a45726b30ad1847"
+  integrity sha512-dk3Ci51uJG5EbhpamQWlHCX+EGKgoPQ0y+ikqpPmwj5oOTMoH0/O+jpdVoxC0HR302Zp7ZGm3nDGd8qeRZAcTg==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
