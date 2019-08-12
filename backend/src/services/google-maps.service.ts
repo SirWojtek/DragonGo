@@ -1,8 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import { createClient, PlaceSearchResult } from '@google/maps';
+import { Injectable, Logger } from '@nestjs/common';
+import {
+  createClient,
+  PlaceSearchResult,
+  GoogleMapsClient,
+} from '@google/maps';
 import { LatLng, Rect } from '../models/api/spawn-areas.api';
-
-const MAX_PAGES = 10;
+import { ConfigService, ConfigKeyEnum } from './config.service';
 
 export interface IPlace {
   name: string;
@@ -11,10 +14,16 @@ export interface IPlace {
 
 @Injectable()
 export class GoogleMapsService {
-  private client = createClient({
-    key: 'api key',
-    Promise,
-  });
+  private client: GoogleMapsClient;
+
+  private logger = new Logger(GoogleMapsService.name);
+
+  constructor(private configService: ConfigService) {
+    this.client = createClient({
+      key: this.configService.get(ConfigKeyEnum.GOOGLE_MAPS_API_KEY) as string,
+      Promise,
+    });
+  }
 
   async getPlaces(location: LatLng, radius: number): Promise<IPlace[]> {
     const places: IPlace[] = [];
@@ -22,6 +31,7 @@ export class GoogleMapsService {
       .placesNearby({
         location,
         radius,
+        type: 'park',
       })
       .asPromise();
 
@@ -29,7 +39,10 @@ export class GoogleMapsService {
 
     let pagetoken = response.json.next_page_token;
     let i = 0;
-    while (pagetoken && i < MAX_PAGES) {
+    while (
+      pagetoken &&
+      i < this.configService.get(ConfigKeyEnum.GOOGLE_MAPS_MAX_PAGES)
+    ) {
       const page = await this.client
         .placesNearby({ location, pagetoken })
         .asPromise();
@@ -38,10 +51,8 @@ export class GoogleMapsService {
 
       pagetoken = page.json.next_page_token;
       i += 1;
-      // TODO: log this
+      this.logger.log(`Google Maps page: ${i + 1}`);
     }
-
-    // TODO: log if the limit was reached
 
     return places;
   }

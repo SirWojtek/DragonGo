@@ -2,6 +2,7 @@ import { Controller, Body, UseGuards, Post } from '@nestjs/common';
 import { GetSpawnAreas, SpawnArea } from '../models/api/spawn-areas.api';
 import { AuthGuard } from '@nestjs/passport';
 import { SpawnAreasService } from './spawn-areas.service';
+import { toRect } from '../utils/geojson';
 
 @Controller('spawn-areas')
 export class SpawnAreasController {
@@ -12,6 +13,20 @@ export class SpawnAreasController {
   async getSpawnAreas(
     @Body() getSpawnAreas: GetSpawnAreas,
   ): Promise<SpawnArea[]> {
-    return [];
+    const spawnAreaEntities = await this.spawnAreasService.findSpawnAreasForLocation(
+      getSpawnAreas.location,
+    );
+
+    return spawnAreaEntities.map(sa => ({
+      id: sa.id,
+      name: sa.name,
+      rect: toRect(sa.coords),
+      monsters: (sa.monsterInstances || []).map(m => ({
+        id: m.id,
+        level: m.level,
+        name: m.monsterMetadata.name,
+        description: m.monsterMetadata.description,
+      })),
+    }));
   }
 }

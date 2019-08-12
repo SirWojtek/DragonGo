@@ -5,6 +5,8 @@ import {
   ManyToMany,
   JoinTable,
   ManyToOne,
+  UpdateDateColumn,
+  CreateDateColumn,
 } from 'typeorm';
 import { Polygon } from 'geojson';
 import { MonsterInstanceEntity } from './monster-instance.entity';
@@ -38,4 +40,10 @@ export class SpawnAreaEnity {
 
   @ManyToOne(type => MapFragmentEntity, mapFragment => mapFragment.id)
   mapFragment: MapFragmentEntity;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }
