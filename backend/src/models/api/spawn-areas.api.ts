@@ -18,5 +18,4 @@ export class SpawnArea {
   id: string;
   rect: Rect;
   name: string;
-  monsters: Monster[];
 }

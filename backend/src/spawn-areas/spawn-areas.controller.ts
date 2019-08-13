@@ -21,12 +21,6 @@ export class SpawnAreasController {
       id: sa.id,
       name: sa.name,
       rect: toRect(sa.coords),
-      monsters: (sa.monsterInstances || []).map(m => ({
-        id: m.id,
-        level: m.level,
-        name: m.monsterMetadata.name,
-        description: m.monsterMetadata.description,
-      })),
     }));
   }
 }
