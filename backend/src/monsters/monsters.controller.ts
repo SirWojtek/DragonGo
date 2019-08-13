@@ -2,6 +2,7 @@ import { Controller, UseGuards, Post, Body } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GetMonstersRequest, Monster } from '../models/api/monsters.api';
 import { MonstersService } from './monsters.service';
+import { toMonster } from '../utils/mappers';
 
 @Controller('monsters')
 export class MonstersController {
@@ -16,11 +17,6 @@ export class MonstersController {
       getMonstersRequest.monsterIds,
     );
 
-    return monsterIntances.map(m => ({
-      id: m.id,
-      name: m.monsterMetadata.name,
-      description: m.monsterMetadata.description,
-      level: m.level,
-    }));
+    return monsterIntances.map(toMonster);
   }
 }

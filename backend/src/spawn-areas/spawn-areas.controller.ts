@@ -3,6 +3,7 @@ import { GetSpawnAreas, SpawnArea } from '../models/api/spawn-areas.api';
 import { AuthGuard } from '@nestjs/passport';
 import { SpawnAreasService } from './spawn-areas.service';
 import { toRect } from '../utils/geojson';
+import { toSpawnArea } from '../utils/mappers';
 
 @Controller('spawn-areas')
 export class SpawnAreasController {
@@ -17,10 +18,6 @@ export class SpawnAreasController {
       getSpawnAreas.location,
     );
 
-    return spawnAreaEntities.map(sa => ({
-      id: sa.id,
-      name: sa.name,
-      rect: toRect(sa.coords),
-    }));
+    return spawnAreaEntities.map(toSpawnArea);
   }
 }
