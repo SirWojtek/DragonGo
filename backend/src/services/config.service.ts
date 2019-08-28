@@ -17,6 +17,13 @@ export class ConfigService {
 
   constructor(filePath: string) {
     this.envConfig = dotenv.parse(fs.readFileSync(filePath));
+    const allPresent = Object.values(ConfigKeyEnum).every(
+      value => !!this.envConfig[value],
+    );
+
+    if (!allPresent) {
+      throw new Error('Some of config values are missing');
+    }
   }
 
   get(key: ConfigKeyEnum): string | number {
