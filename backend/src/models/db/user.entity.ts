@@ -20,6 +20,9 @@ export class UserEntity {
   @Column()
   password: string;
 
+  @Column({ default: 1 })
+  level: number;
+
   @CreateDateColumn()
   createdAt: Date;
 

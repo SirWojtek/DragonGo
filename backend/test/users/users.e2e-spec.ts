@@ -6,8 +6,8 @@ import { RegisterRequest } from '../../src/models/api/user.api';
 import uuid = require('uuid');
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UserEntity } from 'src/models/db/user.entity';
 import { hash } from '../../src/utils/bcrypt';
+import { UserEntity } from '../../src/models/db/user.entity';
 
 describe('UsersController (e2e)', () => {
   let app;

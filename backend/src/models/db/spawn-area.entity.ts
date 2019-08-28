@@ -25,13 +25,6 @@ export class SpawnAreaEnity {
   coords: Polygon;
 
   @ManyToMany(
-    type => MonsterMetadataEntity,
-    monsterMetadata => monsterMetadata.id,
-  )
-  @JoinTable()
-  monstersMetadata: MonsterMetadataEntity[];
-
-  @ManyToMany(
     type => MonsterInstanceEntity,
     monsterInstance => monsterInstance.id,
   )

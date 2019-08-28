@@ -13,5 +13,6 @@ import { ServicesModule } from '../services/services.module';
   ],
   controllers: [SpawnAreasController],
   providers: [SpawnAreasService],
+  exports: [SpawnAreasService],
 })
 export class SpawnAreasModule {}

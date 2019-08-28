@@ -8,6 +8,7 @@ import { MapFragmentEntity } from '../models/db/map-fragment.entity';
 import { toPolygon } from '../utils/geojson';
 import { GoogleMapsService, IPlace } from '../services/google-maps.service';
 import { ConfigService, ConfigKeyEnum } from '../services/config.service';
+import { MonsterInstanceEntity } from '../models/db/monster-instance.entity';
 
 const getMapFragmentsForRegionQuery = `
 select with_union.id, with_union.coords
@@ -39,9 +40,7 @@ export class SpawnAreasService {
     private googleMapsService: GoogleMapsService,
   ) {}
 
-  public findSpawnAreasForLocation(
-    location: LatLng,
-  ): Promise<SpawnAreaEnity[]> {
+  async findSpawnAreasForLocation(location: LatLng): Promise<SpawnAreaEnity[]> {
     const radius = this.configService.get(
       ConfigKeyEnum.SPAWN_AREAS_LOCATION_RADIUS,
     ) as number;
@@ -52,6 +51,18 @@ export class SpawnAreasService {
       northeast: { lat: northeast.latitude, lng: northeast.longitude },
       southwest: { lat: southwest.latitude, lng: southwest.longitude },
     });
+  }
+
+  async getSpawnArea(id: string): Promise<SpawnAreaEnity | null> {
+    return this.spawnAreaRepository.findOne(id);
+  }
+
+  async setMonsters(
+    spawnArea: SpawnAreaEnity,
+    monsterEntities: MonsterInstanceEntity[],
+  ): Promise<SpawnAreaEnity> {
+    spawnArea.monsterInstances = monsterEntities;
+    return this.spawnAreaRepository.save(spawnArea);
   }
 
   private async findSpawnAreasForRegion(

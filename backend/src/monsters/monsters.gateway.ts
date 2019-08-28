@@ -9,19 +9,30 @@ import { map } from 'rxjs/operators';
 import { Monster } from '../models/api/monsters.api';
 import { MonsterInstancesService } from './monster-instances.service';
 import { toMonster } from '../utils/mappers';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { WsJwtGuard } from '../users/auth/ws-jwt.guard';
+import { UserEntity } from '../models/db/user.entity';
 
-@WebSocketGateway(3000, { namespace: 'monsters' })
+@WebSocketGateway()
 export class MonstersGateway {
   constructor(private monsterInstancesService: MonsterInstancesService) {}
 
+  @UseGuards(WsJwtGuard)
   @SubscribeMessage('spawn-area-monsters')
-  handleSpawnAreaMonsters(
+  async handleSpawnAreaMonsters(
     client: Client,
-    spawnAreaId: string,
-  ): Observable<WsResponse<Monster[]>> {
-    return this.monsterInstancesService.observeSpawnArea(spawnAreaId).pipe(
+    data: any,
+  ): Promise<Observable<WsResponse<Monster[]>>> {
+    const user: UserEntity = data.user;
+    const monsters = await this.monsterInstancesService.observeSpawnAreaMonsters(
+      data.spawnAreaId,
+      user.level,
+    );
+
+    return monsters.pipe(
       map(monsterInstances => monsterInstances.map(toMonster)),
-      map(data => ({ event: 'spawn-area-monsters', data })),
+      map(m => ({ event: 'spawn-area-monsters', data: m })),
     );
   }
 }
