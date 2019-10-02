@@ -1,6 +1,6 @@
 import { MonsterInstanceEntity } from '../models/db/monster-instance.entity';
 import { Monster } from '../models/api/monsters.api';
-import { SpawnAreaEnity } from '../models/db/spawn-area.entity';
+import { SpawnAreaEntity } from '../models/db/spawn-area.entity';
 import { SpawnArea } from '../models/api/spawn-areas.api';
 import { toRect } from './geojson';
 
@@ -13,7 +13,7 @@ export function toMonster(entity: MonsterInstanceEntity): Monster {
   };
 }
 
-export function toSpawnArea(entity: SpawnAreaEnity): SpawnArea {
+export function toSpawnArea(entity: SpawnAreaEntity): SpawnArea {
   return {
     id: entity.id,
     name: entity.name,

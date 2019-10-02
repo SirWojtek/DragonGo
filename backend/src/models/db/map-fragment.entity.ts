@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
   CreateDateColumn,
 } from 'typeorm';
-import { SpawnAreaEnity } from './spawn-area.entity';
+import { SpawnAreaEntity } from './spawn-area.entity';
 
 @Entity('map_fragment')
 export class MapFragmentEntity {
@@ -17,8 +17,8 @@ export class MapFragmentEntity {
   @Column('geometry', { spatialFeatureType: 'Polygon' })
   coords: Polygon;
 
-  @OneToMany(type => SpawnAreaEnity, spawnArea => spawnArea.id)
-  spawnAreas: SpawnAreaEnity[];
+  @OneToMany(type => SpawnAreaEntity, spawnArea => spawnArea.id)
+  spawnAreas: SpawnAreaEntity[];
 
   @UpdateDateColumn()
   updatedAt: Date;

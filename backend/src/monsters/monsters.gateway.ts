@@ -2,6 +2,7 @@ import {
   WebSocketGateway,
   SubscribeMessage,
   WsResponse,
+  WsException,
 } from '@nestjs/websockets';
 import { Client } from 'socket.io';
 import { Observable } from 'rxjs';
@@ -9,12 +10,14 @@ import { map } from 'rxjs/operators';
 import { Monster } from '../models/api/monsters.api';
 import { MonsterInstancesService } from './monster-instances.service';
 import { toMonster } from '../utils/mappers';
-import { UseGuards } from '@nestjs/common';
+import { UseGuards, UseFilters } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { WsJwtGuard } from '../users/auth/ws-jwt.guard';
 import { UserEntity } from '../models/db/user.entity';
+import { HttpToWsExceptionFilter } from '../filters/HttpToWsExceptionFilter';
 
-@WebSocketGateway()
+@WebSocketGateway({ namespace: 'monsters' })
+@UseFilters(new HttpToWsExceptionFilter())
 export class MonstersGateway {
   constructor(private monsterInstancesService: MonsterInstancesService) {}
 

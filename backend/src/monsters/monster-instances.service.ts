@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { MonsterInstanceEntity } from '../models/db/monster-instance.entity';
 import { SpawnAreasService } from '../spawn-areas/spawn-areas.service';
@@ -6,13 +6,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { MonsterMetadataEntity } from '../models/db/monster-metadata.entity';
 import { Repository } from 'typeorm';
 import { ConfigService, ConfigKeyEnum } from '../services/config.service';
-import { SpawnAreaEnity } from '../models/db/spawn-area.entity';
+import { SpawnAreaEntity } from '../models/db/spawn-area.entity';
 import { map, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class MonsterInstancesService {
   private spawnAreaToMonsterInstancesBS: {
-    [spawnAreaId: string]: BehaviorSubject<SpawnAreaEnity>;
+    [spawnAreaId: string]: BehaviorSubject<SpawnAreaEntity>;
   } = {};
 
   constructor(
@@ -42,11 +42,11 @@ export class MonsterInstancesService {
   private async createSubject(
     spawnAreaId: string,
     userLevel: number,
-  ): Promise<BehaviorSubject<SpawnAreaEnity>> {
+  ): Promise<BehaviorSubject<SpawnAreaEntity>> {
     let spawnArea = await this.spawnAreasService.getSpawnArea(spawnAreaId);
 
     if (!spawnArea) {
-      throw Error('Cannot find spawn area with given id');
+      throw new BadRequestException('Cannot find spawn area with given id');
     }
 
     const currentMonsterCount = spawnArea.monsterInstances.length;
@@ -64,13 +64,14 @@ export class MonsterInstancesService {
       ]);
     }
 
-    return new BehaviorSubject<SpawnAreaEnity>(spawnArea);
+    return new BehaviorSubject<SpawnAreaEntity>(spawnArea);
   }
 
   private async getMonsterWithLevel(
     level: number,
     currentMonsterCount: number,
   ): Promise<MonsterInstanceEntity[]> {
+    // TODO: implement this
     return [];
   }
 }

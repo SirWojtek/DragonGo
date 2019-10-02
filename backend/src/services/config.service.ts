@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 
 export enum ConfigKeyEnum {
+  USE_JWT = 'USE_JWT',
   GOOGLE_MAPS_MAX_PAGES = 'GOOGLE_MAPS_MAX_PAGES',
   GOOGLE_MAPS_API_KEY = 'GOOGLE_MAPS_API_KEY',
   SPAWN_AREAS_LOCATION_RADIUS = 'SPAWN_AREAS_LOCATION_RADIUS',
@@ -11,9 +12,7 @@ export enum ConfigKeyEnum {
 }
 
 export class ConfigService {
-  private readonly envConfig: {
-    [key in keyof typeof ConfigKeyEnum]: string | number
-  };
+  private readonly envConfig: { [key in keyof typeof ConfigKeyEnum]: string };
 
   constructor(filePath: string) {
     this.envConfig = dotenv.parse(fs.readFileSync(filePath));
@@ -26,7 +25,17 @@ export class ConfigService {
     }
   }
 
-  get(key: ConfigKeyEnum): string | number {
-    return this.envConfig[key];
+  get(key: ConfigKeyEnum): string | number | boolean {
+    const value = this.envConfig[key];
+
+    if (!isNaN(+value)) {
+      return +value;
+    } else if (value.toLowerCase() === 'true') {
+      return true;
+    } else if (value.toLowerCase() === 'false') {
+      return false;
+    } else {
+      return value;
+    }
   }
 }

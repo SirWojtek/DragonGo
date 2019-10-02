@@ -4,10 +4,14 @@ import { jwtConstants } from './constants';
 import { JwtPayload } from './auth.service';
 import { UserEntity } from '../../models/db/user.entity';
 import { UsersService } from '../users.service';
+import { ConfigService, ConfigKeyEnum } from '../../services/config.service';
 
 @Injectable()
 export class WsJwtGuard implements CanActivate {
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private configService: ConfigService,
+  ) {}
 
   async canActivate(context: ExecutionContext) {
     const client = context.switchToWs().getClient();
@@ -16,7 +20,13 @@ export class WsJwtGuard implements CanActivate {
       return false;
     }
 
+    if (!this.configService.get(ConfigKeyEnum.USE_JWT)) {
+      // NOTE: for test envs, inject user from Authorization header
+      context.switchToWs().getData().user = JSON.parse(authorizationHeader);
+      return true;
+    }
     const token = authorizationHeader.replace('Bearer ', '');
+
     const jwtPayload = jwt.verify(token, jwtConstants.secret) as JwtPayload;
     if (!jwtPayload) {
       return false;

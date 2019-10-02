@@ -14,7 +14,7 @@ import { MonsterMetadataEntity } from './monster-metadata.entity';
 import { MapFragmentEntity } from './map-fragment.entity';
 
 @Entity('spawn_area')
-export class SpawnAreaEnity {
+export class SpawnAreaEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

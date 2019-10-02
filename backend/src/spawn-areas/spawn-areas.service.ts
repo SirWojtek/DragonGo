@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { getCenter, computeDestinationPoint } from 'geolib';
-import { SpawnAreaEnity } from '../models/db/spawn-area.entity';
+import { SpawnAreaEntity } from '../models/db/spawn-area.entity';
 import { Repository } from 'typeorm';
 import { Rect, LatLng } from '../models/api/spawn-areas.api';
 import { MapFragmentEntity } from '../models/db/map-fragment.entity';
@@ -32,15 +32,15 @@ export class SpawnAreasService {
   private logger = new Logger(SpawnAreasService.name);
 
   constructor(
-    @InjectRepository(SpawnAreaEnity)
-    private spawnAreaRepository: Repository<SpawnAreaEnity>,
+    @InjectRepository(SpawnAreaEntity)
+    private spawnAreaRepository: Repository<SpawnAreaEntity>,
     @InjectRepository(MapFragmentEntity)
     private mapFragmentEntityRepository: Repository<MapFragmentEntity>,
     private configService: ConfigService,
     private googleMapsService: GoogleMapsService,
   ) {}
 
-  async findSpawnAreasForLocation(location: LatLng): Promise<SpawnAreaEnity[]> {
+  async findSpawnAreasForLocation(location: LatLng): Promise<SpawnAreaEntity[]> {
     const radius = this.configService.get(
       ConfigKeyEnum.SPAWN_AREAS_LOCATION_RADIUS,
     ) as number;
@@ -53,21 +53,21 @@ export class SpawnAreasService {
     });
   }
 
-  async getSpawnArea(id: string): Promise<SpawnAreaEnity | null> {
+  async getSpawnArea(id: string): Promise<SpawnAreaEntity | null> {
     return this.spawnAreaRepository.findOne(id);
   }
 
   async setMonsters(
-    spawnArea: SpawnAreaEnity,
+    spawnArea: SpawnAreaEntity,
     monsterEntities: MonsterInstanceEntity[],
-  ): Promise<SpawnAreaEnity> {
+  ): Promise<SpawnAreaEntity> {
     spawnArea.monsterInstances = monsterEntities;
     return this.spawnAreaRepository.save(spawnArea);
   }
 
   private async findSpawnAreasForRegion(
     region: Rect,
-  ): Promise<SpawnAreaEnity[]> {
+  ): Promise<SpawnAreaEntity[]> {
     const mapFragments: MapFragmentEntity[] = await this.mapFragmentEntityRepository
       .query(getMapFragmentsForRegionQuery, [toPolygon(region)])
       .then((fragments: any[]) =>
@@ -85,7 +85,7 @@ export class SpawnAreasService {
     }
   }
 
-  private async fetchFragment(region: Rect): Promise<SpawnAreaEnity[]> {
+  private async fetchFragment(region: Rect): Promise<SpawnAreaEntity[]> {
     const center = getCenter([region.northeast, region.southwest]);
     if (!center) {
       throw new Error('Cannot get center of the region');
@@ -128,7 +128,7 @@ export class SpawnAreasService {
   private createSpawnArea(
     place: IPlace,
     mapFragment: MapFragmentEntity,
-  ): SpawnAreaEnity {
+  ): SpawnAreaEntity {
     return this.spawnAreaRepository.create({
       name: place.name,
       coords: toPolygon(place.viewport),

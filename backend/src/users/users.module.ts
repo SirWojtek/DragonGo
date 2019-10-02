@@ -10,6 +10,7 @@ import { jwtConstants } from './auth/constants';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from '../models/db/user.entity';
 import { WsJwtGuard } from './auth/ws-jwt.guard';
+import { ServicesModule } from '../services/services.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { WsJwtGuard } from './auth/ws-jwt.guard';
       secret: jwtConstants.secret,
     }),
     TypeOrmModule.forFeature([UserEntity]),
+    ServicesModule,
   ],
   providers: [
     UsersService,
