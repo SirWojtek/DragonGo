@@ -25,6 +25,7 @@ describe('UsersController (e2e)', () => {
       createdAt: new Date(),
       updatedAt: new Date(),
       hashPassword: null,
+      level: 1,
     };
     userRepositoryMock = mock(Repository);
 
