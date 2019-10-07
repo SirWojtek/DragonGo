@@ -58,6 +58,7 @@
     "@types/supertest": "2.0.7",
     "@types/uuid": "^3.4.5",
     "jest": "24.7.1",
+    "passport-custom": "^1.1.0",
     "prettier": "1.17.0",
     "socket.io": "^2.2.0",
     "supertest": "4.0.2",
