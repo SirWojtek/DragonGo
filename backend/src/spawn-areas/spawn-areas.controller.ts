@@ -10,7 +10,7 @@ export class SpawnAreasController {
   constructor(private spawnAreasService: SpawnAreasService) {}
 
   @UseGuards(AuthGuard('jwt'))
-  @Post('getSpawnAreas')
+  @Post('get-spawn-areas')
   async getSpawnAreas(
     @Body() getSpawnAreas: GetSpawnAreas,
   ): Promise<SpawnArea[]> {

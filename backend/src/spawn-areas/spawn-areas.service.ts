@@ -11,7 +11,7 @@ import { ConfigService, ConfigKeyEnum } from '../services/config.service';
 import { MonsterInstanceEntity } from '../models/db/monster-instance.entity';
 
 const getMapFragmentsForRegionQuery = `
-select with_union.id, with_union.coords
+select with_union.id
 from (
   select
     fr.id,
@@ -40,7 +40,9 @@ export class SpawnAreasService {
     private googleMapsService: GoogleMapsService,
   ) {}
 
-  async findSpawnAreasForLocation(location: LatLng): Promise<SpawnAreaEntity[]> {
+  async findSpawnAreasForLocation(
+    location: LatLng,
+  ): Promise<SpawnAreaEntity[]> {
     const radius = this.configService.get(
       ConfigKeyEnum.SPAWN_AREAS_LOCATION_RADIUS,
     ) as number;
@@ -70,9 +72,7 @@ export class SpawnAreasService {
   ): Promise<SpawnAreaEntity[]> {
     const mapFragments: MapFragmentEntity[] = await this.mapFragmentEntityRepository
       .query(getMapFragmentsForRegionQuery, [toPolygon(region)])
-      .then((fragments: any[]) =>
-        this.mapFragmentEntityRepository.create(fragments),
-      );
+      .then((ids: string[]) => this.mapFragmentEntityRepository.findByIds(ids));
 
     if (!mapFragments.length) {
       this.logger.log('Could not find map fragment in DB, calling google maps');
