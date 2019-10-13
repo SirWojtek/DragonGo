@@ -102,8 +102,8 @@ export class SpawnAreasService {
       lng: center.longitude,
     });
 
-    const spawnAreas = await places.map(place =>
-      this.createSpawnArea(place, mapFragment),
+    const spawnAreas = await Promise.all(
+      places.map(place => this.createSpawnArea(place, mapFragment)),
     );
     return this.spawnAreaRepository.save(spawnAreas);
   }

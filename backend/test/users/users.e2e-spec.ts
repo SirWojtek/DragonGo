@@ -16,7 +16,7 @@ describe('UsersController (e2e)', () => {
   let plainPassword: string;
   let userRepositoryMock: Repository<UserEntity>;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     plainPassword = 'test_pass';
     user = {
       id: 'test-id',
@@ -46,7 +46,7 @@ describe('UsersController (e2e)', () => {
     await app.init();
   });
 
-  afterAll(async () => {
+  afterEach(async () => {
     await app.close();
   });
 

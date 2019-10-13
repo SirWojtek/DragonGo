@@ -1,5 +1,3 @@
-import { Monster } from './monsters.api';
-
 export class LatLng {
   lat: number;
   lng: number;
