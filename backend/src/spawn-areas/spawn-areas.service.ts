@@ -102,9 +102,7 @@ export class SpawnAreasService {
       lng: center.longitude,
     });
 
-    const spawnAreas = await Promise.all(
-      places.map(place => this.createSpawnArea(place, mapFragment)),
-    );
+    const spawnAreas = await this.createSpawnAreas(places, mapFragment);
     return this.spawnAreaRepository.save(spawnAreas);
   }
 
@@ -125,14 +123,18 @@ export class SpawnAreasService {
     return this.mapFragmentEntityRepository.save(mapFragment);
   }
 
-  private createSpawnArea(
-    place: IPlace,
+  private createSpawnAreas(
+    places: IPlace[],
     mapFragment: MapFragmentEntity,
-  ): SpawnAreaEntity {
-    return this.spawnAreaRepository.create({
-      name: place.name,
-      coords: toPolygon(place.viewport),
-      mapFragment,
-    });
+  ): Promise<SpawnAreaEntity[]> {
+    return Promise.all(
+      places.map(place =>
+        this.spawnAreaRepository.create({
+          name: place.name,
+          coords: toPolygon(place.viewport),
+          mapFragment,
+        }),
+      ),
+    );
   }
 }

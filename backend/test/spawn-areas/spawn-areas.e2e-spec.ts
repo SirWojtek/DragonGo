@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 
 import { SpawnAreasModule } from '../../src/spawn-areas/spawn-areas.module';
@@ -16,7 +17,7 @@ import {
 } from '../../src/services/google-maps.service';
 
 describe('SpawnAreasController (e2e)', () => {
-  let app;
+  let app: INestApplication;
 
   let spawnAreaRepositoryMock: Repository<SpawnAreaEntity>;
   let mapFragmentRepositoryMock: Repository<MapFragmentEntity>;
@@ -27,13 +28,13 @@ describe('SpawnAreasController (e2e)', () => {
   let mapFragment: MapFragmentEntity;
 
   beforeEach(() => {
-      req = {
-        location: {
-          lat: 60,
-          lng: 60,
-        },
-      };
-      spawnArea = {
+    req = {
+      location: {
+        lat: 60,
+        lng: 60,
+      },
+    };
+    spawnArea = {
       id: 'test-spawn-area',
       name: 'Test Spawn Area',
       coords: toPolygon({
@@ -52,7 +53,7 @@ describe('SpawnAreasController (e2e)', () => {
       createdAt: new Date(),
     };
 
-      mapFragment = {
+    mapFragment = {
       id: 'test-map-fragment',
       coords: toPolygon({
         northeast: {
@@ -134,18 +135,18 @@ describe('SpawnAreasController (e2e)', () => {
       },
     };
 
+    when(googleMapsServiceMock.getPlaces(anything(), anything())).thenResolve([
+      place,
+    ]);
+
     when(mapFragmentRepositoryMock.query(anyString(), anything())).thenResolve(
       [],
     );
     when(mapFragmentRepositoryMock.findByIds(anything())).thenResolve([]);
-    when(googleMapsServiceMock.getPlaces(anything(), anything())).thenResolve([
-      place,
-    ]);
-    when(mapFragmentRepositoryMock.create(anything())).thenReturn([
-      mapFragment,
-    ]);
-    when(spawnAreaRepositoryMock.create(anything())).thenReturn([spawnArea]);
     when(mapFragmentRepositoryMock.save(anything())).thenCall(res => res);
+    when(mapFragmentRepositoryMock.create(anything())).thenCall(res => res);
+
+    when(spawnAreaRepositoryMock.create(anything())).thenCall(res => res);
     when(spawnAreaRepositoryMock.save(anything())).thenCall(res => res);
 
     const response = await request(app.getHttpServer())
@@ -156,9 +157,8 @@ describe('SpawnAreasController (e2e)', () => {
 
     expect(response.body).toEqual([
       {
-        id: spawnArea.id,
-        name: spawnArea.name,
-        rect: toRect(spawnArea.coords),
+        name: place.name,
+        rect: place.viewport,
       },
     ]);
   });
