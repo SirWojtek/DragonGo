@@ -1,5 +1,5 @@
-import { Monster } from '../models/api/monsters.api';
-import { SpawnArea } from '../models/api/spawn-areas.api';
+import { Monster } from '../../../api/monsters.api';
+import { SpawnArea } from '../../../api/spawn-areas.api';
 import { MonsterInstanceEntity } from '../models/db/monster-instance.entity';
 import { SpawnAreaEntity } from '../models/db/spawn-area.entity';
 import { toRect } from './geojson';

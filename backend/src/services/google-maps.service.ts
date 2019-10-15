@@ -4,7 +4,7 @@ import {
   PlaceSearchResult,
 } from '@google/maps';
 import { Injectable, Logger } from '@nestjs/common';
-import { LatLng, Rect } from '../models/api/spawn-areas.api';
+import { LatLng, Rect } from '../../../api/spawn-areas.api';
 import { ConfigKeyEnum, ConfigService } from './config.service';
 
 export interface IPlace {

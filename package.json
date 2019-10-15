@@ -27,5 +27,8 @@
   "devDependencies": {
     "husky": "^3.0.2",
     "lint-staged": "^9.2.1"
+  },
+  "dependencies": {
+    "class-validator": "^0.10.2"
   }
 }

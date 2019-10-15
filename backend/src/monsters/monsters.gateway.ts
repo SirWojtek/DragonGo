@@ -6,8 +6,8 @@ import {
 } from '@nestjs/websockets';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Monster } from '../../../api/monsters.api';
 import { HttpToWsExceptionFilter } from '../filters/HttpToWsExceptionFilter';
-import { Monster } from '../models/api/monsters.api';
 import { UserEntity } from '../models/db/user.entity';
 import { WsJwtGuard } from '../users/auth/ws-jwt.guard';
 import { toMonster } from '../utils/mappers';

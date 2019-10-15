@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { computeDestinationPoint, getCenter } from 'geolib';
 import { Repository } from 'typeorm';
-import { LatLng, Rect } from '../models/api/spawn-areas.api';
+import { LatLng, Rect } from '../../../api/spawn-areas.api';
 import { MapFragmentEntity } from '../models/db/map-fragment.entity';
 import { MonsterInstanceEntity } from '../models/db/monster-instance.entity';
 import { SpawnAreaEntity } from '../models/db/spawn-area.entity';

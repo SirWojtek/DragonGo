@@ -1,7 +1,6 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { GetSpawnAreas, SpawnArea } from '../models/api/spawn-areas.api';
-import { toRect } from '../utils/geojson';
+import { GetSpawnAreas, SpawnArea } from '../../../api/spawn-areas.api';
 import { toSpawnArea } from '../utils/mappers';
 import { SpawnAreasService } from './spawn-areas.service';
 
