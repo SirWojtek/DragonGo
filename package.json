@@ -6,19 +6,15 @@
   "author": "SirWojtek",
   "license": "MIT",
   "private": false,
-  "scripts": {
-    "lint:frontend": "cd frontend && yarn lint",
-    "lint:backend": "cd backend && yarn lint",
-    "lint": "yarn lint:frontend && yarn lint:backend"
-  },
+  "scripts": {},
   "lint-staged": {
     "*.tsx": [
-      "yarn lint",
+      "tslint --fix",
       "prettier",
       "git add"
     ],
     "*.ts": [
-      "yarn lint",
+      "tslint --fix",
       "prettier",
       "git add"
     ]
