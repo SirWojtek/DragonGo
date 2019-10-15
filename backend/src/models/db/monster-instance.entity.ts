@@ -1,12 +1,12 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  Column,
-  UpdateDateColumn,
-  CreateDateColumn,
-} from 'typeorm';
 import { Point } from 'geojson';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { MonsterMetadataEntity } from './monster-metadata.entity';
 
 @Entity('monster_instance')

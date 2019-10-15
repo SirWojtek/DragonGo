@@ -1,11 +1,11 @@
 import { Polygon } from 'geojson';
 import {
-  PrimaryGeneratedColumn,
-  Entity,
   Column,
-  OneToMany,
-  UpdateDateColumn,
   CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { SpawnAreaEntity } from './spawn-area.entity';
 

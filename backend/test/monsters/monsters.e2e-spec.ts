@@ -1,16 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import * as io from 'socket.io-client';
-import { mock, instance, when, deepEqual, anything } from 'ts-mockito';
-import uuid = require('uuid');
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { MonsterMetadataEntity } from '../../src/models/db/monster-metadata.entity';
-import { MonsterInstanceEntity } from '../../src/models/db/monster-instance.entity';
-import { MonstersModule } from '../../src/monsters/monsters.module';
-import { UserEntity } from '../../src/models/db/user.entity';
-import { SpawnAreaEntity } from '../../src/models/db/spawn-area.entity';
-import { MapFragmentEntity } from '../../src/models/db/map-fragment.entity';
 import { Socket } from 'socket.io';
+import * as io from 'socket.io-client';
+import { anything, deepEqual, instance, mock, when } from 'ts-mockito';
+import { Repository } from 'typeorm';
+import uuid = require('uuid');
+import { MapFragmentEntity } from '../../src/models/db/map-fragment.entity';
+import { MonsterInstanceEntity } from '../../src/models/db/monster-instance.entity';
+import { MonsterMetadataEntity } from '../../src/models/db/monster-metadata.entity';
+import { SpawnAreaEntity } from '../../src/models/db/spawn-area.entity';
+import { UserEntity } from '../../src/models/db/user.entity';
+import { MonstersModule } from '../../src/monsters/monsters.module';
 
 describe('MonstersGateway (e2e)', () => {
   let app;

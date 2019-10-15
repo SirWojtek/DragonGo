@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { GoogleMapsService } from './google-maps.service';
 import { ConfigService } from './config.service';
+import { GoogleMapsService } from './google-maps.service';
 
 if (!process.env.NODE_ENV) {
   throw new Error('Unrecognized environment');

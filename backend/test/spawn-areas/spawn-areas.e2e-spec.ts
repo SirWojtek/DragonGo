@@ -1,20 +1,20 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 
-import { SpawnAreasModule } from '../../src/spawn-areas/spawn-areas.module';
-import { GetSpawnAreas } from '../../src/models/api/spawn-areas.api';
+import { anyString, anything, instance, mock, when } from 'ts-mockito';
 import { Repository } from 'typeorm';
-import { SpawnAreaEntity } from '../../src/models/db/spawn-area.entity';
-import { mock, instance, when, anything, anyString } from 'ts-mockito';
+import { GetSpawnAreas } from '../../src/models/api/spawn-areas.api';
 import { MapFragmentEntity } from '../../src/models/db/map-fragment.entity';
-import { ServicesModule } from '../../src/services/services.module';
-import { toPolygon, toRect } from '../../src/utils/geojson';
-import { NoopStrategy } from '../auth/noop-strategy';
+import { SpawnAreaEntity } from '../../src/models/db/spawn-area.entity';
 import {
   GoogleMapsService,
   IPlace,
 } from '../../src/services/google-maps.service';
+import { ServicesModule } from '../../src/services/services.module';
+import { SpawnAreasModule } from '../../src/spawn-areas/spawn-areas.module';
+import { toPolygon, toRect } from '../../src/utils/geojson';
+import { NoopStrategy } from '../auth/noop-strategy';
 
 describe('SpawnAreasController (e2e)', () => {
   let app: INestApplication;

@@ -1,11 +1,11 @@
-import { Injectable, Logger } from '@nestjs/common';
 import {
   createClient,
-  PlaceSearchResult,
   GoogleMapsClient,
+  PlaceSearchResult,
 } from '@google/maps';
+import { Injectable, Logger } from '@nestjs/common';
 import { LatLng, Rect } from '../models/api/spawn-areas.api';
-import { ConfigService, ConfigKeyEnum } from './config.service';
+import { ConfigKeyEnum, ConfigService } from './config.service';
 
 export interface IPlace {
   name: string;

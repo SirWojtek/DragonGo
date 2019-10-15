@@ -1,5 +1,5 @@
 import { Point, Polygon } from 'geojson';
-import { uniq, flatten, sortBy } from 'lodash';
+import { flatten, sortBy, uniq } from 'lodash';
 import { LatLng, Rect } from '../models/api/spawn-areas.api';
 
 export function toPoint(latLng: LatLng): Point {

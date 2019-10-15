@@ -1,17 +1,17 @@
-import {
-  PrimaryGeneratedColumn,
-  Entity,
-  Column,
-  ManyToMany,
-  JoinTable,
-  ManyToOne,
-  UpdateDateColumn,
-  CreateDateColumn,
-} from 'typeorm';
 import { Polygon } from 'geojson';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { MapFragmentEntity } from './map-fragment.entity';
 import { MonsterInstanceEntity } from './monster-instance.entity';
 import { MonsterMetadataEntity } from './monster-metadata.entity';
-import { MapFragmentEntity } from './map-fragment.entity';
 
 @Entity('spawn_area')
 export class SpawnAreaEntity {

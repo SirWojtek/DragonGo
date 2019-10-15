@@ -1,14 +1,14 @@
 import {
-  Controller,
-  UseGuards,
-  Request,
-  Post,
   Body,
+  Controller,
   Logger,
+  Post,
+  Request,
+  UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthService } from './auth/auth.service';
 import { RegisterRequest } from '../models/api/user.api';
+import { AuthService } from './auth/auth.service';
 import { UsersService } from './users.service';
 
 @Controller('users')

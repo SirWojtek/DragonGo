@@ -1,17 +1,17 @@
+import { UseFilters, UseGuards } from '@nestjs/common';
 import {
-  WebSocketGateway,
   SubscribeMessage,
+  WebSocketGateway,
   WsResponse,
 } from '@nestjs/websockets';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Monster } from '../models/api/monsters.api';
-import { MonsterInstancesService } from './monster-instances.service';
-import { toMonster } from '../utils/mappers';
-import { UseGuards, UseFilters } from '@nestjs/common';
-import { WsJwtGuard } from '../users/auth/ws-jwt.guard';
-import { UserEntity } from '../models/db/user.entity';
 import { HttpToWsExceptionFilter } from '../filters/HttpToWsExceptionFilter';
+import { Monster } from '../models/api/monsters.api';
+import { UserEntity } from '../models/db/user.entity';
+import { WsJwtGuard } from '../users/auth/ws-jwt.guard';
+import { toMonster } from '../utils/mappers';
+import { MonsterInstancesService } from './monster-instances.service';
 
 @WebSocketGateway({ namespace: 'monsters' })
 @UseFilters(new HttpToWsExceptionFilter())

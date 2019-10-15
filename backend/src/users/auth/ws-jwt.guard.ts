@@ -1,10 +1,10 @@
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
-import { jwtConstants } from './constants';
-import { JwtPayload } from './auth.service';
 import { UserEntity } from '../../models/db/user.entity';
+import { ConfigKeyEnum, ConfigService } from '../../services/config.service';
 import { UsersService } from '../users.service';
-import { ConfigService, ConfigKeyEnum } from '../../services/config.service';
+import { JwtPayload } from './auth.service';
+import { jwtConstants } from './constants';
 
 @Injectable()
 export class WsJwtGuard implements CanActivate {

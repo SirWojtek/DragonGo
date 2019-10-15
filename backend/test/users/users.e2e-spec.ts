@@ -1,13 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import * as request from 'supertest';
-import { mock, instance, when, deepEqual } from 'ts-mockito';
-import { UsersModule } from '../../src/users/users.module';
-import { RegisterRequest } from '../../src/models/api/user.api';
-import uuid = require('uuid');
 import { TypeOrmModule } from '@nestjs/typeorm';
+import * as request from 'supertest';
+import { deepEqual, instance, mock, when } from 'ts-mockito';
 import { Repository } from 'typeorm';
-import { hash } from '../../src/utils/bcrypt';
+import uuid = require('uuid');
+import { RegisterRequest } from '../../src/models/api/user.api';
 import { UserEntity } from '../../src/models/db/user.entity';
+import { UsersModule } from '../../src/users/users.module';
+import { hash } from '../../src/utils/bcrypt';
 
 describe('UsersController (e2e)', () => {
   let app;

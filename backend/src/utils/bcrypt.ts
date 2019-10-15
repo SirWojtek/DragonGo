@@ -1,4 +1,4 @@
-import { hash as bhash, compare as bcompare } from 'bcrypt';
+import { compare as bcompare, hash as bhash } from 'bcrypt';
 
 const saltRounds = 10;
 

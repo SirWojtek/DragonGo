@@ -1,8 +1,8 @@
-import { Controller, UseGuards, Post, Body } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GetMonstersRequest, Monster } from '../models/api/monsters.api';
-import { MonstersService } from './monsters.service';
 import { toMonster } from '../utils/mappers';
+import { MonstersService } from './monsters.service';
 
 @Controller('monsters')
 export class MonstersController {
