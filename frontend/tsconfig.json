@@ -6,6 +6,8 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "isolatedModules": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
     "jsx": "react-native",
     "lib": [
       "es6"

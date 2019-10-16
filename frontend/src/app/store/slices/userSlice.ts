@@ -1,7 +1,6 @@
-import {Location} from 'expo';
-import {Action, createSlice, PayloadAction} from 'redux-starter-kit';
-import {ILocation} from '../types/ILocation';
-import {IUser} from '../types/IUser';
+import { Action, createSlice, PayloadAction } from 'redux-starter-kit';
+import { ILocation } from '../types/ILocation';
+import { IUser } from '../types/IUser';
 
 export const SET_LOCATION = 'user/setLocation';
 export const SET_USER = 'user/setUser';
@@ -12,20 +11,20 @@ const USER_MAX_RANGE = 100;
 const userSlice = createSlice({
   slice: 'user',
   initialState: {
-    maxRange: 100,
+    maxRange: USER_MAX_RANGE
   } as IUser,
   reducers: {
     setLocation: (state, action: SetLocationAction) => ({
       ...state,
-      location: {...action.payload},
+      location: { ...action.payload }
     }),
     setUser: (state, action: SetUserAction) => ({
       ...state,
-      ...action.payload,
+      ...action.payload
     }),
     // NOTE: fetch logic in epic
-    fetchUser: (state, action: FetchUserAction) => state,
-  },
+    fetchUser: state => state
+  }
 });
 
 export type SetLocationAction = PayloadAction<ILocation, string>;

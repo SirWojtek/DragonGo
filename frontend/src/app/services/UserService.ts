@@ -1,24 +1,28 @@
-import { from, Observable } from "rxjs";
-import { switchMap } from "rxjs/operators";
+import { from, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
-import { getEnv } from "../../environment/environment";
-import { IUser } from "../store/types/IUser";
-import { jsonHeaders } from "../utils/http-headers";
+import { LoginResponse, User } from '../../../../api/user.api';
+
+import { getEnv } from '../../environment/environment';
+import { jsonHeaders } from '../utils/http-headers';
 
 const env = getEnv();
 
 const UserService = {
-  fetchUser(): Observable<Partial<IUser>> {
+  fetchUser(): Observable<User> {
     return from(
       fetch(`${env.API_HOST}/api/users/login`, {
-        method: "POST",
+        method: 'POST',
         headers: jsonHeaders,
         body: JSON.stringify({
-          username: "sirwojtek",
-          password: "alamakota"
+          username: 'sirwojtek',
+          password: 'alamakota'
         })
       })
-    ).pipe(switchMap(res => res.json()));
+    ).pipe(
+      switchMap(res => res.json()),
+      map((res: LoginResponse) => res.user)
+    );
   }
 };
 

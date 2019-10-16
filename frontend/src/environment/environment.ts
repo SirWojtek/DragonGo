@@ -1,21 +1,16 @@
-import Constants from "expo-constants";
+import Constants from 'expo-constants';
 
 export interface IEnvironment {
   IS_PRODUCTION: boolean;
   API_HOST: string;
 }
 
-const debuggerHost = Constants.manifest.debuggerHost || "";
+const debuggerHost = Constants.manifest.debuggerHost || '';
 
 const envs: { [name: string]: IEnvironment } = {
   local: {
     IS_PRODUCTION: false,
-    API_HOST:
-      "http://" +
-      debuggerHost
-        .split(`:`)
-        .shift()
-        .concat(`:3000`)
+    API_HOST: 'http://' + debuggerHost.split(`:`)[0].concat(`:3000`)
   }
 };
 

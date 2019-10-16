@@ -1,3 +1,4 @@
+import {InitialProps} from 'expo/build/launch/withExpoRoot.types';
 import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { createAppContainer } from 'react-navigation';
@@ -10,7 +11,7 @@ import store from './store/store';
 
 const AppContainer = createAppContainer(AppNavigator);
 
-export default class App extends React.Component {
+export default class App extends React.Component<InitialProps> {
   public componentWillMount() {
     LocationService.init().then(() => {});
   }

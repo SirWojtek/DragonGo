@@ -1,14 +1,12 @@
 import Constants from 'expo-constants';
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { Card, DefaultTheme, Text } from 'react-native-paper';
+import { Card, Text } from 'react-native-paper';
 import { connect } from 'react-redux';
 import userSlice from '../../store/slices/userSlice';
 import store, { IStoreState } from '../../store/store';
 import { IUser } from '../../store/types/IUser';
 import CharacterNameView from './views/CharacterNameView';
-import CharacterStatsView from './views/CharacterStatsView';
-import CharacterXpView from './views/CharacterXpView';
 
 interface IProps {
   user: IUser;
@@ -22,7 +20,7 @@ function mapStateToProps(state: IStoreState): IProps {
 
 class CharacterContainer extends React.Component<IProps> {
   public componentDidMount() {
-    store.dispatch(userSlice.actions.fetchUser({}));
+    store.dispatch(userSlice.actions.fetchUser());
   }
 
   public render() {
@@ -37,11 +35,6 @@ class CharacterContainer extends React.Component<IProps> {
         name={this.props.user.name}
         logoUrl={this.props.user.logoUrl}
       />
-      <CharacterXpView
-        current={this.props.user.levelInfo.exp}
-        max={this.props.user.levelInfo.expToNextLvl}
-      />
-      <CharacterStatsView stats={this.props.user.stats} />
     </Card>
   }
 }

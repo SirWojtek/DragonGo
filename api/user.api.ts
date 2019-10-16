@@ -4,6 +4,7 @@ export class User {
   id: string;
   username: string;
   level: number;
+  maxRange: number;
 }
 
 export class RegisterRequest {
