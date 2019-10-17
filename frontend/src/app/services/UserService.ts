@@ -9,6 +9,8 @@ import { map, switchMap } from 'rxjs/operators';
 import { LoginResponse, User } from '../../../../api/user.api';
 
 import { getEnv } from '../../environment/environment';
+import userSlice from '../store/slices/userSlice';
+import store from '../store/store';
 import { jsonHeaders } from '../utils/http-headers';
 
 const env = getEnv();
@@ -20,9 +22,17 @@ export interface ICredentials {
 }
 
 const UserService = {
-  getSavedCredentials(): Observable<ICredentials | undefined> {
-    return from(getInternetCredentials(serverName)).pipe(
-      map(creds => (creds ? creds : undefined))
+  async init() {
+    const creds = await getInternetCredentials(serverName);
+    if (!creds) {
+      return;
+    }
+
+    store.dispatch(
+      userSlice.actions.setUser({
+        name: creds.username,
+        password: creds.password
+      })
     );
   },
   saveCredentials(creds: ICredentials): Observable<void> {

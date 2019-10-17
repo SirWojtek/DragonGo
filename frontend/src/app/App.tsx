@@ -1,26 +1,41 @@
-import {InitialProps} from 'expo/build/launch/withExpoRoot.types';
 import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { createAppContainer } from 'react-navigation';
-import { Provider as StoreProvider } from 'react-redux'
+import { connect, Provider as StoreProvider } from 'react-redux'
 import AppNavigator from './AppNavigator';
 import ModalContainer from './modules/components/ModalContainer';
 import SnackbarContainer from './modules/components/SnackbarContainer';
+import LoginContainer from './modules/login/LoginContainer';
 import LocationService from './services/LocationService';
-import store from './store/store';
+import UserService from './services/UserService';
+import store, {IStoreState} from './store/store';
 
 const AppContainer = createAppContainer(AppNavigator);
 
-export default class App extends React.Component<InitialProps> {
+interface IProps {
+  username: string | undefined;
+}
+
+function mapStateToProps(state: IStoreState) {
+  return {
+    username: state.user.name
+  }
+}
+
+class App extends React.Component<IProps> {
   public componentWillMount() {
     LocationService.init().then(() => {});
+    UserService.init().then(() => {});
   }
 
   public render() {
+    const element = this.props.username ?
+      <AppContainer /> : <LoginContainer />
+
     return (
       <StoreProvider store={store}>
         <PaperProvider>
-            <AppContainer />
+            { element }
             <SnackbarContainer />
             <ModalContainer />
         </PaperProvider>
@@ -28,3 +43,5 @@ export default class App extends React.Component<InitialProps> {
     );
   }
 }
+
+export default connect(mapStateToProps)(App);

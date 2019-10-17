@@ -14,7 +14,7 @@ const AppNavigator = createMaterialBottomTabNavigator({
     screen: MapContainer,
     navigationOptions: {
       tabBarIcon: ({ tintColor }: ITabBarIconArgs) => (
-        <Ionicons name="md-map" size={30} color={tintColor} />
+        <Ionicons name='md-map' size={30} color={tintColor} />
       )
     }
   },
@@ -22,7 +22,7 @@ const AppNavigator = createMaterialBottomTabNavigator({
     screen: CharacterContainer,
     navigationOptions: {
       tabBarIcon: ({ tintColor }: ITabBarIconArgs) => (
-        <Ionicons name="md-man" size={30} color={tintColor} />
+        <Ionicons name='md-man' size={30} color={tintColor} />
       )
     }
   },
