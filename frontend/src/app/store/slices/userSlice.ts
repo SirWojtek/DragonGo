@@ -1,4 +1,5 @@
 import { Action, createSlice, PayloadAction } from 'redux-starter-kit';
+import { ICredentials } from '../types/ICredentials';
 import { ILocation } from '../types/ILocation';
 import { IUser } from '../types/IUser';
 
@@ -22,6 +23,10 @@ const userSlice = createSlice({
       ...state,
       ...action.payload
     }),
+    setCredentials: (state, action: SetCredentialAction) => ({
+      ...state,
+      credentials: action.payload
+    }),
     // NOTE: fetch logic in epic
     fetchUser: state => state
   }
@@ -29,7 +34,11 @@ const userSlice = createSlice({
 
 export type SetLocationAction = PayloadAction<ILocation, string>;
 export type SetUserAction = PayloadAction<Partial<IUser>, string>;
+export type SetCredentialAction = PayloadAction<Partial<ICredentials>, string>;
 export type FetchUserAction = Action;
-export type UserActions = SetLocationAction | SetUserAction;
+export type UserActions =
+  | SetLocationAction
+  | SetUserAction
+  | SetCredentialAction;
 
 export default userSlice;
