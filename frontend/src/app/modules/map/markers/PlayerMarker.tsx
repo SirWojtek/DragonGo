@@ -1,6 +1,6 @@
-import React from "react";
-import { StyleProp, View, ViewStyle } from "react-native";
-import { Circle, LatLng, Marker } from "react-native-maps";
+import React from 'react';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import { Circle, LatLng, Marker } from 'react-native-maps';
 
 interface IProps {
   coordinate: LatLng;
