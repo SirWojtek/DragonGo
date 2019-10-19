@@ -9,20 +9,17 @@ import { jsonHeaders } from '../utils/http-headers';
 const env = getEnv();
 
 const UserService = {
-  fetchUser(): Observable<User> {
+  login(creds: {
+    username: string;
+    password: string;
+  }): Observable<LoginResponse> {
     return from(
       fetch(`${env.API_HOST}/api/users/login`, {
         method: 'POST',
         headers: jsonHeaders,
-        body: JSON.stringify({
-          username: 'sirwojtek',
-          password: 'alamakota'
-        })
+        body: JSON.stringify(creds)
       })
-    ).pipe(
-      switchMap(res => res.json()),
-      map((res: LoginResponse) => res.user)
-    );
+    ).pipe(switchMap(res => res.json()));
   }
 };
 

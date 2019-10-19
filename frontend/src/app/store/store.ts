@@ -1,27 +1,21 @@
-import {
-  Action,
-  applyMiddleware,
-  combineReducers,
-  createStore,
-  Store,
-} from 'redux';
-import {combineEpics, createEpicMiddleware} from 'redux-observable';
+import { applyMiddleware, combineReducers, createStore, Store } from 'redux';
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import fetchMonstersEpic from './epics/fetchMonstersEpic';
 import fetchSpawnAreasEpic from './epics/fetchSpawnAreasEpic';
-import fetchUserEpic from './epics/fetchUserEpic';
-import modalSlice, {IModalStore, ModalActions} from './slices/modalSlice';
+import loginEpic from './epics/loginEpic';
+import modalSlice, { IModalStore, ModalActions } from './slices/modalSlice';
 import monstersSlice, {
   IMonsterStore,
-  MonstersActions,
+  MonstersActions
 } from './slices/monstersSlice';
 import snackbarSlice, {
   ISnackbarStore,
-  SnackbarActions,
+  SnackbarActions
 } from './slices/snackbarSlice';
-import spawnAreasSlice, {SpawnAreaActions} from './slices/spawnAreasSlice';
-import userSlice, {UserActions} from './slices/userSlice';
-import {ISpawnArea} from './types/ISpawnArea';
-import {IUser} from './types/IUser';
+import spawnAreasSlice, { SpawnAreaActions } from './slices/spawnAreasSlice';
+import userSlice, { UserActions } from './slices/userSlice';
+import { ISpawnArea } from './types/ISpawnArea';
+import { IUser } from './types/IUser';
 
 export interface IStoreState {
   user: IUser;
@@ -36,20 +30,16 @@ const reducers = combineReducers({
   spawnAreas: spawnAreasSlice.reducer,
   monsters: monstersSlice.reducer,
   snackbar: snackbarSlice.reducer,
-  modal: modalSlice.reducer,
+  modal: modalSlice.reducer
 });
 
-const epics = combineEpics(
-  fetchSpawnAreasEpic,
-  fetchMonstersEpic,
-  fetchUserEpic,
-);
+const epics = combineEpics(fetchSpawnAreasEpic, fetchMonstersEpic, loginEpic);
 
 const epicMiddleware = createEpicMiddleware();
 
 const store: Store<IStoreState> = createStore(
   reducers,
-  applyMiddleware(epicMiddleware),
+  applyMiddleware(epicMiddleware)
 );
 
 epicMiddleware.run(epics);

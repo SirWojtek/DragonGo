@@ -5,7 +5,7 @@ import { IUser } from '../types/IUser';
 
 export const SET_LOCATION = 'user/setLocation';
 export const SET_USER = 'user/setUser';
-export const FETCH_USER = 'user/fetchUser';
+export const SET_CREDENTIALS = 'user/setCredentials';
 
 const USER_MAX_RANGE = 100;
 
@@ -25,10 +25,8 @@ const userSlice = createSlice({
     }),
     setCredentials: (state, action: SetCredentialAction) => ({
       ...state,
-      credentials: action.payload
-    }),
-    // NOTE: fetch logic in epic
-    fetchUser: state => state
+      credentials: { ...action.payload }
+    })
   }
 });
 

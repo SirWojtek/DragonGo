@@ -1,7 +1,7 @@
-import { Observable, of } from "rxjs";
+import { Observable, of } from 'rxjs';
 
-import { IMonster } from "../store/types/IMonster";
-import { monsters } from "./data/monsters";
+import { IMonster } from '../store/types/IMonster';
+import { monsters } from './data/monsters';
 
 const MonstersService = {
   fetchMonsters(ids: string[]): Observable<IMonster[]> {
