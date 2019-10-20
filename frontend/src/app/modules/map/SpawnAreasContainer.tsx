@@ -34,32 +34,31 @@ function mapStateToProps(state: IStoreState): IProps {
       coordinates: [
         {
           latitude: area.viewport.southwest.latitude,
-          longitude: area.viewport.northeast.longitude,
+          longitude: area.viewport.northeast.longitude
         },
         {
           latitude: area.viewport.northeast.latitude,
-          longitude: area.viewport.northeast.longitude,
+          longitude: area.viewport.northeast.longitude
         },
         {
           latitude: area.viewport.northeast.latitude,
-          longitude: area.viewport.southwest.longitude,
+          longitude: area.viewport.southwest.longitude
         },
         {
           latitude: area.viewport.southwest.latitude,
-          longitude: area.viewport.southwest.longitude,
-        },
+          longitude: area.viewport.southwest.longitude
+        }
       ],
       monsters: area.monsters.map(m => ({
         ...m,
         ...state.monsters[m.id]
-      })),
+      }))
     })),
-    user: state.user,
+    user: state.user
   };
 }
 
 class SpawnAreasContainer extends React.Component<IProps, IState> {
-
   constructor(props: IProps) {
     super(props);
 
@@ -73,43 +72,53 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
       return null;
     }
 
-    return this.props.spawnAreas.map((area, i) =>
+    return this.props.spawnAreas.map((area, i) => (
       <View key={'area-' + i}>
         <Polygon
           coordinates={area.coordinates}
           strokeWidth={3}
           fillColor={'rgba(0, 255, 0, 0.3)'}
-        / >
-        { area.monsters.map((monster, j) =>
-            <MonsterMarker
-              key={'area-' + i + '-monster-' + j}
-              coordinate={monster.location}
-              monster={monster}
-              onPress={(coords, m) => this.onMonsterMarkerPress(coords, m) }
-            />
-          )
-        }
+        />
+        {area.monsters.map((monster, j) => (
+          <MonsterMarker
+            key={'area-' + i + '-monster-' + j}
+            coordinate={monster.location}
+            monster={monster}
+            onPress={(coords, m) => this.onMonsterMarkerPress(coords, m)}
+          />
+        ))}
       </View>
-    );
-
+    ));
   }
 
   public onMonsterMarkerPress(coords: LatLng, monster: IMonster) {
-    if (__DEV__ || isPointWithinRadius(coords, this.props.user.location, this.props.user.maxRange)) {
-      store.dispatch(modalSlice.actions.show({
-        content: <MonsterInfo
-            monster={monster}
-            onExitClick={() => store.dispatch(modalSlice.actions.hide()) }
-          />
-      }));
+    if (
+      __DEV__ ||
+      isPointWithinRadius(
+        coords,
+        this.props.user.location,
+        this.props.user.maxRange
+      )
+    ) {
+      store.dispatch(
+        modalSlice.actions.show({
+          content: (
+            <MonsterInfo
+              monster={monster}
+              onExitClick={() => store.dispatch(modalSlice.actions.hide())}
+            />
+          )
+        })
+      );
     } else {
-      store.dispatch(snackbarSlice.actions.show({
-        content: 'You are out of range!',
-        duration: 3000
-      }));
+      store.dispatch(
+        snackbarSlice.actions.show({
+          content: 'You are out of range!',
+          duration: 3000
+        })
+      );
     }
   }
-
 }
 
 export default connect(mapStateToProps)(SpawnAreasContainer);

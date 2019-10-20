@@ -5,7 +5,7 @@ import store from '../store/store';
 
 const LocationService = {
   async init() {
-    const {status} = await Permissions.askAsync(Permissions.LOCATION);
+    const { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== 'granted') {
       // TODO: set state
       return;
@@ -15,9 +15,9 @@ const LocationService = {
         accuracy: Location.Accuracy.High,
         timeInterval: 5000,
         distanceInterval: 100,
-        mayShowUserSettingsDialog: true,
+        mayShowUserSettingsDialog: true
       },
-      LocationService._onLocationUpdate,
+      LocationService._onLocationUpdate
     );
   },
 
@@ -25,10 +25,10 @@ const LocationService = {
     store.dispatch(
       userSlice.actions.setLocation({
         latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      }),
+        longitude: location.coords.longitude
+      })
     );
-  },
+  }
 };
 
 export default LocationService;

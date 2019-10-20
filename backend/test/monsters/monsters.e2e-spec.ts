@@ -61,14 +61,11 @@ describe('MonstersGateway (e2e)', () => {
       .listen()
       .address();
     const baseAddress = `http://[${address.address}]:${address.port}`;
-    socketClient = io.connect(
-      `${baseAddress}/monsters`,
-      {
-        extraHeaders: {
-          Authorization: JSON.stringify(user),
-        },
-      } as SocketIOClient.ConnectOpts,
-    );
+    socketClient = io.connect(`${baseAddress}/monsters`, {
+      extraHeaders: {
+        Authorization: JSON.stringify(user),
+      },
+    } as SocketIOClient.ConnectOpts);
   });
 
   afterAll(async () => {

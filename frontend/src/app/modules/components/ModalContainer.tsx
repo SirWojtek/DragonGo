@@ -12,23 +12,25 @@ interface IProps extends IModalStore {
 }
 
 function mapStateToProps(state: IStoreState): IProps {
-
   return {
     ...state.modal,
     onDismiss: state.modal.onDismiss || defaultDismissFunction
-  }
+  };
 }
 
 class ModalContainer extends React.Component<IProps> {
-
   public render() {
-    return <Portal>
+    return (
+      <Portal>
         <Modal
           visible={this.props.visible}
           dismissable={this.props.dismissable}
           onDismiss={this.props.onDismiss}
-        >{this.props.content}</Modal>
+        >
+          {this.props.content}
+        </Modal>
       </Portal>
+    );
   }
 }
 

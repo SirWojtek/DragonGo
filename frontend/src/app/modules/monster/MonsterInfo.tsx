@@ -11,7 +11,6 @@ interface IProps {
 }
 
 class MonsterInfo extends React.Component<IProps> {
-
   public render() {
     if (!this.props.monster) {
       return null;
@@ -31,16 +30,16 @@ class MonsterInfo extends React.Component<IProps> {
           <Button
             style={buttonStyle}
             mode="contained"
-            onPress={() => this.props.onExitClick() }
-          >Exit</Button>
-          <Button
-            style={buttonStyle}
-            mode="contained"
-            disabled={true}
-          >Fight</Button>
+            onPress={() => this.props.onExitClick()}
+          >
+            Exit
+          </Button>
+          <Button style={buttonStyle} mode="contained" disabled={true}>
+            Fight
+          </Button>
         </Card.Actions>
       </Card>
-    )
+    );
   }
 }
 
@@ -50,7 +49,7 @@ const actionsStyle: StyleProp<ViewStyle> = {
 };
 
 const buttonStyle: StyleProp<ViewStyle> = {
-  marginRight: 8,
+  marginRight: 8
 };
 
 export default MonsterInfo;

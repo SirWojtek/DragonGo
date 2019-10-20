@@ -17,7 +17,6 @@ interface IState {
   previousPosition?: Point;
   previousTimestamp: number;
   heading: number;
-
 }
 
 const PAN_EVENT_TIMESTAMP_MAX_DELTA = 100;
@@ -25,24 +24,23 @@ const PANNING_SPEED = 0.1;
 
 function mapStateToProps(state: IStoreState): IProps {
   return {
-    user: state.user,
+    user: state.user
   };
 }
 
 class MapContainer extends React.Component<IProps, IState> {
-
   constructor(props: IProps) {
     super(props);
 
     this.state = {
       heading: 0,
-      previousTimestamp: 0,
-    }
+      previousTimestamp: 0
+    };
   }
 
   public render() {
     if (!this.props.user.location) {
-      return ( <Text>Loading location...</Text>);
+      return <Text>Loading location...</Text>;
     }
 
     return (
@@ -60,35 +58,41 @@ class MapContainer extends React.Component<IProps, IState> {
         camera={{
           center: {
             latitude: this.props.user.location.latitude,
-            longitude: this.props.user.location.longitude,
+            longitude: this.props.user.location.longitude
           },
           pitch: 45,
           heading: this.state.heading,
           altitude: 1000,
           zoom: 16
         }}
-        onPanDrag={event => this.onPanDrag(event.nativeEvent.position, event.timeStamp)}
+        onPanDrag={event =>
+          this.onPanDrag(event.nativeEvent.position, event.timeStamp)
+        }
       >
         <PlayerMarker
           coordinate={this.props.user.location}
           range={this.props.user.maxRange}
-      />
+        />
         <SpawnAreasContainer />
       </MapView>
     );
   }
 
   private onPanDrag(position: Point, timestamp: number) {
-    if (timestamp - this.state.previousTimestamp < PAN_EVENT_TIMESTAMP_MAX_DELTA  && this.state.previousPosition) {
+    if (
+      timestamp - this.state.previousTimestamp <
+        PAN_EVENT_TIMESTAMP_MAX_DELTA &&
+      this.state.previousPosition
+    ) {
       const deltaX = position.x - this.state.previousPosition.x;
 
       let alpha = pointDistance(position, this.state.previousPosition);
       if (deltaX < 0) {
-        alpha = - alpha;
+        alpha = -alpha;
       }
       const newHeading = this.state.heading + PANNING_SPEED * alpha;
 
-      this.setState({ heading: newHeading});
+      this.setState({ heading: newHeading });
     }
 
     this.setState({
@@ -99,4 +103,3 @@ class MapContainer extends React.Component<IProps, IState> {
 }
 
 export default connect(mapStateToProps)(MapContainer);
-

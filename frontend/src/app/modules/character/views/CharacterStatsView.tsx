@@ -8,7 +8,7 @@ interface IProps {
 
 class CharacterStatsView extends React.Component<IProps> {
   public render() {
-    return <Text>CHARACTER STATS</Text>
+    return <Text>CHARACTER STATS</Text>;
   }
 }
 

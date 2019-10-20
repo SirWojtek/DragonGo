@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native-paper';
-import {Action, createSlice, PayloadAction} from 'redux-starter-kit';
+import { Action, createSlice, PayloadAction } from 'redux-starter-kit';
 
 export interface IModalShow {
   content: React.ReactNode;
@@ -16,18 +16,18 @@ const modalSlice = createSlice({
   slice: 'modalSlice',
   initialState: {
     visible: false,
-    content: <Text />,
+    content: <Text />
   } as IModalStore,
   reducers: {
     show: (_, action: ShowModalAction) => ({
       visible: true,
-      ...action.payload,
+      ...action.payload
     }),
     hide: () => ({
       visible: false,
-      content: <Text />,
-    }),
-  },
+      content: <Text />
+    })
+  }
 });
 
 export type ShowModalAction = PayloadAction<IModalShow, string>;

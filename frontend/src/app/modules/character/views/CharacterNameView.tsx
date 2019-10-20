@@ -9,14 +9,18 @@ interface IProps {
 
 class CharacterNameView extends React.Component<IProps> {
   public render() {
-    const avatar = this.props.logoUrl ?
-      <Avatar.Image size={64} source={{ uri: this.props.logoUrl }} /> :
-      <Avatar.Icon size={64} icon='user' />;
+    const avatar = this.props.logoUrl ? (
+      <Avatar.Image size={64} source={{ uri: this.props.logoUrl }} />
+    ) : (
+      <Avatar.Icon size={64} icon="user" />
+    );
 
-    return <View style={containerStyle}>
-      { avatar }
-      <Title style={nameTextStyle}>{ this.props.name }</Title>
-    </View>
+    return (
+      <View style={containerStyle}>
+        {avatar}
+        <Title style={nameTextStyle}>{this.props.name}</Title>
+      </View>
+    );
   }
 }
 
@@ -27,7 +31,7 @@ const containerStyle: StyleProp<ViewStyle> = {
 };
 
 const nameTextStyle: StyleProp<ViewStyle> = {
-  marginLeft: 16,
+  marginLeft: 16
 };
 
 export default CharacterNameView;

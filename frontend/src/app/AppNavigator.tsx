@@ -9,26 +9,28 @@ interface ITabBarIconArgs {
   tintColor: string;
 }
 
-const AppNavigator = createMaterialBottomTabNavigator({
-  World: {
-    screen: MapContainer,
-    navigationOptions: {
-      tabBarIcon: ({ tintColor }: ITabBarIconArgs) => (
-        <Ionicons name='md-map' size={30} color={tintColor} />
-      )
+const AppNavigator = createMaterialBottomTabNavigator(
+  {
+    World: {
+      screen: MapContainer,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }: ITabBarIconArgs) => (
+          <Ionicons name="md-map" size={30} color={tintColor} />
+        )
+      }
+    },
+    Character: {
+      screen: CharacterContainer,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }: ITabBarIconArgs) => (
+          <Ionicons name="md-man" size={30} color={tintColor} />
+        )
+      }
     }
   },
-  Character: {
-    screen: CharacterContainer,
-    navigationOptions: {
-      tabBarIcon: ({ tintColor }: ITabBarIconArgs) => (
-        <Ionicons name='md-man' size={30} color={tintColor} />
-      )
-    }
-  },
-}, {
-  initialRouteName: 'World',
-}
-)
+  {
+    initialRouteName: 'World'
+  }
+);
 
 export default AppNavigator;

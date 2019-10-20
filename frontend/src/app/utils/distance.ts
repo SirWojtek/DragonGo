@@ -1,9 +1,9 @@
-import {LatLng, Point} from 'react-native-maps';
+import { LatLng, Point } from 'react-native-maps';
 
 export function latLngDistance(c1: LatLng, c2: LatLng): number {
   return pointDistance(
-    {x: c1.latitude, y: c1.longitude},
-    {x: c2.latitude, y: c2.longitude},
+    { x: c1.latitude, y: c1.longitude },
+    { x: c2.latitude, y: c2.longitude }
   );
 }
 

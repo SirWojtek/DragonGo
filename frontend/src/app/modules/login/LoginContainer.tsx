@@ -1,9 +1,17 @@
 import React from 'react';
-import {StyleProp, View, ViewStyle} from 'react-native';
-import {Button, Card, Headline, Text, TextInput, Theme, withTheme} from 'react-native-paper';
-import {connect} from 'react-redux';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import {
+  Button,
+  Card,
+  Headline,
+  Text,
+  TextInput,
+  Theme,
+  withTheme
+} from 'react-native-paper';
+import { connect } from 'react-redux';
 import userSlice from '../../store/slices/userSlice';
-import store, {IStoreState} from '../../store/store';
+import store, { IStoreState } from '../../store/store';
 
 interface IProps {
   loginError?: string;
@@ -21,19 +29,19 @@ function mapStateToProps(state: IStoreState): Partial<IProps> {
   };
 }
 
- class LoginContainer extends React.Component<IProps, IState> {
-   constructor(props: IProps) {
-     super(props);
+class LoginContainer extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
 
-     this.state = {
-       username: undefined,
-       password: undefined
-     };
-   }
+    this.state = {
+      username: undefined,
+      password: undefined
+    };
+  }
 
-   public onLogin() {
-     store.dispatch(userSlice.actions.setCredentials(this.state));
-   }
+  public onLogin() {
+    store.dispatch(userSlice.actions.setCredentials(this.state));
+  }
 
   public render() {
     const backgroundColor = this.props.theme.colors.background;
@@ -41,28 +49,30 @@ function mapStateToProps(state: IStoreState): Partial<IProps> {
     return (
       <View style={{ ...(viewStyle as object), backgroundColor }}>
         <Card>
-          <Card.Content style={ cardContentStyle }>
-            <Headline style={ headlineStyles }>DragonGo</Headline>
+          <Card.Content style={cardContentStyle}>
+            <Headline style={headlineStyles}>DragonGo</Headline>
             <View>
               <TextInput
-                style={ textInputStyle }
-                label='Username'
-                value={ this.state.username }
-                onChangeText={username => this.setState({username})}
+                style={textInputStyle}
+                label="Username"
+                value={this.state.username}
+                onChangeText={username => this.setState({ username })}
               />
               <TextInput
-                style={ textInputStyle }
+                style={textInputStyle}
                 secureTextEntry={true}
-                label='Password'
-                value={ this.state.password }
-                onChangeText={password => this.setState({password})}
+                label="Password"
+                value={this.state.password}
+                onChangeText={password => this.setState({ password })}
               />
             </View>
             <Button
-              style={ buttonStyle }
-              mode='contained'
-              onPress={ () => this.onLogin() }
-            >LOGIN</Button>
+              style={buttonStyle}
+              mode="contained"
+              onPress={() => this.onLogin()}
+            >
+              LOGIN
+            </Button>
           </Card.Content>
         </Card>
       </View>
@@ -74,25 +84,25 @@ const viewStyle: StyleProp<ViewStyle> = {
   height: '100%',
   width: '100%',
   paddingTop: '40%',
-  paddingHorizontal: 8,
+  paddingHorizontal: 8
 };
 
 const cardContentStyle: StyleProp<ViewStyle> = {
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: 'column'
 };
 
 const headlineStyles: StyleProp<ViewStyle> = {
   alignSelf: 'center',
   marginVertical: 32
-}
+};
 
 const textInputStyle: StyleProp<ViewStyle> = {
-  marginVertical: 8,
-}
+  marginVertical: 8
+};
 
 const buttonStyle: StyleProp<ViewStyle> = {
   marginTop: 32
-}
+};
 
 export default connect(mapStateToProps)(withTheme(LoginContainer));

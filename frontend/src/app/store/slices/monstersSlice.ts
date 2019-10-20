@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from 'redux-starter-kit';
-import {IMonster} from '../types/IMonster';
+import { createSlice, PayloadAction } from 'redux-starter-kit';
+import { IMonster } from '../types/IMonster';
 
 export const UPDATE_MONSTERS = 'monstersSlice/updateMonsters';
 export const FETCH_MONSTERS = 'monstersSlice/fetchMonsters';
@@ -16,13 +16,13 @@ const monstersSlice = createSlice({
       action.payload.reduce(
         (store, m) => ({
           [m.id]: m,
-          ...store,
+          ...store
         }),
-        state,
+        state
       ),
     // NOTE: fetch logic in epic
-    fetchMonsters: (state, action: FetchMonstersAction) => state,
-  },
+    fetchMonsters: (state, action: FetchMonstersAction) => state
+  }
 });
 
 export type UpdateMonstersAction = PayloadAction<IMonster[], string>;

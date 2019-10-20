@@ -8,13 +8,10 @@ interface IProps {
 }
 
 class PlayerMarker extends React.Component<IProps> {
-
   public render() {
     return (
       <View>
-        <Marker
-          coordinate={this.props.coordinate}
-        >
+        <Marker coordinate={this.props.coordinate}>
           <View style={markerStyle} />
         </Marker>
         <Circle
@@ -32,7 +29,7 @@ const markerStyle: StyleProp<ViewStyle> = {
   height: 12,
   width: 12,
   backgroundColor: 'red',
-  borderRadius: 6,
+  borderRadius: 6
 };
 
 export default PlayerMarker;

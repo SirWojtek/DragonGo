@@ -1,5 +1,5 @@
-import {ILocation} from './ILocation';
-import {IViewport} from './Iviewport';
+import { ILocation } from './ILocation';
+import { IViewport } from './Iviewport';
 
 export interface ISpawnArea {
   id: string;

@@ -1,8 +1,8 @@
-import {Action, createSlice, PayloadAction} from 'redux-starter-kit';
+import { Action, createSlice, PayloadAction } from 'redux-starter-kit';
 
 export interface ISnackbarShow {
   content: React.ReactNode;
-  action?: {label: string; accessibilityLabel?: string; onPress: () => void};
+  action?: { label: string; accessibilityLabel?: string; onPress: () => void };
   duration?: number;
   onDismiss?: () => void;
 }
@@ -15,18 +15,18 @@ const snackbarSlice = createSlice({
   slice: 'snackbarSlice',
   initialState: {
     visible: false,
-    content: '',
+    content: ''
   } as ISnackbarStore,
   reducers: {
     show: (state, action: ShowSnackbarAction) => ({
       visible: true,
-      ...action.payload,
+      ...action.payload
     }),
     hide: (state, action: HideSnackbarAction) => ({
       visible: false,
-      content: '',
-    }),
-  },
+      content: ''
+    })
+  }
 });
 
 export type ShowSnackbarAction = PayloadAction<ISnackbarShow, string>;
