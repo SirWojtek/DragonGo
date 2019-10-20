@@ -9,23 +9,22 @@ export const SET_LOCATION = 'user/setLocation';
 export const SET_USER = 'user/setUser';
 export const SET_CREDENTIALS = 'user/setCredentials';
 
-const USER_MAX_RANGE = 100;
-
 const userSlice = createSlice({
   slice: 'user',
   initialState: {
-    maxRange: USER_MAX_RANGE
+    credentials: {}
   } as IUser,
   reducers: {
     setLocation: (state, action: SetLocationAction) => ({
       ...state,
       location: { ...action.payload }
     }),
-    setUser: (state, action: SetUserAction) => merge(state, action.payload),
-    setCredentials: (state, action: SetCredentialAction) => ({
-      ...state,
-      credentials: merge(state.credentials, action.payload)
-    })
+    setUser: (state, action: SetUserAction) => {
+      merge(state, action.payload);
+    },
+    setCredentials: (state, action: SetCredentialAction) => {
+      merge(state.credentials, action.payload);
+    }
   }
 });
 
