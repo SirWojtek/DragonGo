@@ -1,4 +1,6 @@
+import { merge } from 'lodash';
 import { Action, createSlice, PayloadAction } from 'redux-starter-kit';
+import { RecursivePartial } from '../../utils/RecursivePartial';
 import { ICredentials } from '../types/ICredentials';
 import { ILocation } from '../types/ILocation';
 import { IUser } from '../types/IUser';
@@ -19,19 +21,16 @@ const userSlice = createSlice({
       ...state,
       location: { ...action.payload }
     }),
-    setUser: (state, action: SetUserAction) => ({
-      ...state,
-      ...action.payload
-    }),
+    setUser: (state, action: SetUserAction) => merge(state, action.payload),
     setCredentials: (state, action: SetCredentialAction) => ({
       ...state,
-      credentials: { ...action.payload }
+      credentials: merge(state.credentials, action.payload)
     })
   }
 });
 
 export type SetLocationAction = PayloadAction<ILocation, string>;
-export type SetUserAction = PayloadAction<Partial<IUser>, string>;
+export type SetUserAction = PayloadAction<RecursivePartial<IUser>, string>;
 export type SetCredentialAction = PayloadAction<Partial<ICredentials>, string>;
 export type FetchUserAction = Action;
 export type UserActions =

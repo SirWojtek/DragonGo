@@ -1,7 +1,7 @@
 import { from, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
-import { LoginResponse, User } from '../../../../api/user.api';
+import { LoginResponse } from '../../../../api/user.api';
 
 import { getEnv } from '../../environment/environment';
 import { jsonHeaders } from '../utils/http-headers';

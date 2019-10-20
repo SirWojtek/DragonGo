@@ -1,6 +1,6 @@
 import { Epic, ofType } from 'redux-observable';
 import { Action } from 'redux-starter-kit';
-import { catchError, flatMap, map, mergeMap, tap } from 'rxjs/operators';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 
 import { of } from 'rxjs';
 import UserService from '../../services/UserService';
@@ -21,13 +21,11 @@ const loginEpic: Epic<Action, Action, void> = action =>
       }).pipe(
         map(res =>
           userSlice.actions.setUser({
-            name: res.user.username,
             maxRange: res.user.maxRange,
             levelInfo: {
               level: res.user.level
             },
             credentials: {
-              isLogedIn: true,
               accessToken: res.accessToken
             }
           })

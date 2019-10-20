@@ -1,27 +1,26 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import AppNavigator from './AppNavigator';
 import LoginContainer from './modules/login/LoginContainer';
-import {IStoreState} from './store/store';
+import { IStoreState } from './store/store';
 
 interface IProps {
-  username: string | undefined;
+  isLogedIn: boolean;
 }
 
 const AppContainer = createAppContainer(AppNavigator);
 
-function mapStateToProps(state: IStoreState) {
+function mapStateToProps(state: IStoreState): IProps {
   return {
-    username: state.user.name
-  }
+    isLogedIn: !!state.user.credentials.accessToken
+  };
 }
 
 class ContentContainer extends React.Component<IProps> {
-
   public render() {
-    return this.props.username ? <AppContainer /> : <LoginContainer />
+    return this.props.isLogedIn ? <AppContainer /> : <LoginContainer />;
   }
 }
 

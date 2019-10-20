@@ -16,8 +16,8 @@ const StorageService = {
     }
 
     store.dispatch(
-      userSlice.actions.setUser({
-        name: username,
+      userSlice.actions.setCredentials({
+        username,
         password
       })
     );

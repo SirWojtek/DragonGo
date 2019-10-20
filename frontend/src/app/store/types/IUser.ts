@@ -5,9 +5,7 @@ import { ILocation } from './ILocation';
 import { IStats } from './IStats';
 
 export interface IUser {
-  name?: string;
-  credentials?: ICredentials;
-  password?: string;
+  credentials: ICredentials;
   logoUrl?: string;
   location: ILocation;
   maxRange: number;
