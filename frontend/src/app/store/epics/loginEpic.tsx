@@ -1,6 +1,6 @@
 import { Epic, ofType } from 'redux-observable';
 import { Action } from 'redux-starter-kit';
-import { catchError, flatMap, map, tap } from 'rxjs/operators';
+import { catchError, flatMap, map, mergeMap, tap } from 'rxjs/operators';
 
 import { of } from 'rxjs';
 import UserService from '../../services/UserService';
@@ -14,31 +14,32 @@ const loginEpic: Epic<Action, Action, void> = action =>
   action.pipe(
     // tap(console.log),
     ofType<Action, SetCredentialAction>(SET_CREDENTIALS),
-    flatMap(creds =>
+    mergeMap(creds =>
       UserService.login({
         username: creds.payload.username || '',
         password: creds.payload.password || ''
-      })
-    ),
-    map(res =>
-      userSlice.actions.setUser({
-        name: res.user.username,
-        maxRange: res.user.maxRange,
-        levelInfo: {
-          level: res.user.level
-        },
-        credentials: {
-          isLogedIn: true,
-          accessToken: res.accessToken
-        }
-      })
-    ),
-    catchError(err =>
-      of(
-        snackbarSlice.actions.show({
-          content: `Login failed. ${err && err.message}`,
-          duration: 5000
-        })
+      }).pipe(
+        map(res =>
+          userSlice.actions.setUser({
+            name: res.user.username,
+            maxRange: res.user.maxRange,
+            levelInfo: {
+              level: res.user.level
+            },
+            credentials: {
+              isLogedIn: true,
+              accessToken: res.accessToken
+            }
+          })
+        ),
+        catchError(err =>
+          of(
+            snackbarSlice.actions.show({
+              content: `Login failed. ${err && err.message}`,
+              duration: 5000
+            })
+          )
+        )
       )
     )
   );

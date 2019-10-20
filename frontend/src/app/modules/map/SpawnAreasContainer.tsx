@@ -1,18 +1,14 @@
 import { isPointWithinRadius } from 'geolib';
 import React from 'react';
-import { Text, View } from 'react-native';
-import { LatLng, MapEvent, Marker, Polygon } from 'react-native-maps';
-import { Modal, Portal, Snackbar } from 'react-native-paper';
+import { View } from 'react-native';
+import { LatLng, Polygon } from 'react-native-maps';
 import { connect } from 'react-redux';
 import modalSlice from '../../store/slices/modalSlice';
-import { IMonsterStore } from '../../store/slices/monstersSlice';
 import snackbarSlice from '../../store/slices/snackbarSlice';
 import store, { IStoreState } from '../../store/store';
 import { ILocation } from '../../store/types/ILocation';
 import { IMonster } from '../../store/types/IMonster';
-import { ISpawnArea } from '../../store/types/ISpawnArea';
 import { IUser } from '../../store/types/IUser';
-import { latLngDistance } from '../../utils/distance';
 import MonsterInfo from '../monster/MonsterInfo';
 import MonsterMarker from './markers/MonsterMarker';
 
@@ -103,7 +99,7 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
       store.dispatch(modalSlice.actions.show({
         content: <MonsterInfo
             monster={monster}
-            onExitClick={() => store.dispatch(modalSlice.actions.hide({})) }
+            onExitClick={() => store.dispatch(modalSlice.actions.hide()) }
           />
       }));
     } else {

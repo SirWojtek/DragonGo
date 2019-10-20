@@ -19,11 +19,11 @@ const modalSlice = createSlice({
     content: <Text />,
   } as IModalStore,
   reducers: {
-    show: (state, action: ShowModalAction) => ({
+    show: (_, action: ShowModalAction) => ({
       visible: true,
       ...action.payload,
     }),
-    hide: (state, action: HideModalAction) => ({
+    hide: () => ({
       visible: false,
       content: <Text />,
     }),

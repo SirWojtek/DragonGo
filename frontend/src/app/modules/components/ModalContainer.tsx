@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import modalSlice, { IModalStore } from '../../store/slices/modalSlice';
 import store, { IStoreState } from '../../store/store';
 
-const defaultDismissFunction = () => store.dispatch(modalSlice.actions.hide({}));
+const defaultDismissFunction = () => store.dispatch(modalSlice.actions.hide());
 
 interface IProps extends IModalStore {
   onDismiss: () => void;
