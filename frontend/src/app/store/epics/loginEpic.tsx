@@ -1,6 +1,6 @@
 import { Epic, ofType } from 'redux-observable';
 import { Action } from 'redux-starter-kit';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 
 import { of } from 'rxjs';
 import UserService from '../../services/UserService';
@@ -16,8 +16,8 @@ const loginEpic: Epic<Action, Action, void> = action =>
     ofType<Action, SetCredentialAction>(SET_CREDENTIALS),
     mergeMap(creds =>
       UserService.login({
-        username: creds.payload.username || '',
-        password: creds.payload.password || ''
+        username: creds.payload.username,
+        password: creds.payload.password
       }).pipe(
         map(res =>
           userSlice.actions.setUser({
