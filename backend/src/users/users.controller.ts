@@ -9,6 +9,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { LoginResponse, RegisterRequest } from '../../../api/user.api';
 import { UserEntity } from '../models/db/user.entity';
+import { ConfigKeyEnum, ConfigService } from '../services/config.service';
 import { AuthService } from './auth/auth.service';
 import { UsersService } from './users.service';
 
@@ -19,6 +20,7 @@ export class UsersController {
   constructor(
     private readonly authService: AuthService,
     private readonly usersService: UsersService,
+    private readonly configService: ConfigService,
   ) {}
 
   @UseGuards(AuthGuard('local'))
@@ -27,6 +29,9 @@ export class UsersController {
     this.logger.debug('/users/login');
 
     const accessToken = await this.authService.login(req.user);
+    const maxRange = this.configService.get(
+      ConfigKeyEnum.USER_RADIUS,
+    ) as number;
 
     return {
       accessToken,
@@ -34,6 +39,7 @@ export class UsersController {
         id: req.user.id,
         username: req.user.username,
         level: req.user.level,
+        maxRange,
       },
     };
   }

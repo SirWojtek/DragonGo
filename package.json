@@ -1,12 +1,13 @@
 {
-  "name": "DragonGo",
+  "name": "dragon-go",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "git@github.com:SirWojtek/DragonGo.git",
   "author": "SirWojtek",
   "license": "MIT",
   "private": false,
-  "scripts": {},
+  "scripts": {
+    "start": "(cd backend && yarn start:dev) & (cd frontend && yarn start)"
+  },
   "lint-staged": {
     "*.tsx": [
       "tslint --fix",
