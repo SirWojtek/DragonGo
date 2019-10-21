@@ -1,5 +1,5 @@
 import { getItemAsync, setItemAsync } from 'expo-secure-store';
-import { from, Observable } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import userSlice from '../store/slices/userSlice';
 import store from '../store/store';
@@ -22,11 +22,18 @@ const StorageService = {
       })
     );
   },
-  saveCredentials(username: string, password: string): Observable<void> {
+  saveCredentials(creds?: {
+    username?: string;
+    password?: string;
+  }): Observable<void> {
+    if (!creds || !creds.username || !creds.password) {
+      return of();
+    }
+
     return from(
       Promise.all([
-        setItemAsync(USERNAME_KEY, username),
-        setItemAsync(PASSWORD_KEY, password)
+        setItemAsync(USERNAME_KEY, creds.username),
+        setItemAsync(PASSWORD_KEY, creds.password)
       ])
     ).pipe(map(() => {}));
   }

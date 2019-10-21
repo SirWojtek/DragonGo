@@ -12,7 +12,9 @@ export const SET_CREDENTIALS = 'user/setCredentials';
 const userSlice = createSlice({
   slice: 'user',
   initialState: {
-    credentials: {}
+    credentials: {
+      rememberCredentials: false
+    }
   } as IUser,
   reducers: {
     setLocation: (state, action: SetLocationAction) => ({

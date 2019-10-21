@@ -3,6 +3,7 @@ import { StyleProp, View, ViewStyle } from 'react-native';
 import {
   Button,
   Card,
+  Checkbox,
   Headline,
   Text,
   TextInput,
@@ -21,6 +22,7 @@ interface IProps {
 interface IState {
   username?: string;
   password?: string;
+  rememberCredentials: boolean;
 }
 
 function mapStateToProps(state: IStoreState): Partial<IProps> {
@@ -35,7 +37,8 @@ class LoginContainer extends React.Component<IProps, IState> {
 
     this.state = {
       username: undefined,
-      password: undefined
+      password: undefined,
+      rememberCredentials: false
     };
   }
 
@@ -65,6 +68,18 @@ class LoginContainer extends React.Component<IProps, IState> {
                 value={this.state.password}
                 onChangeText={password => this.setState({ password })}
               />
+              <Checkbox
+                status={
+                  this.state.rememberCredentials ? 'checked' : 'unchecked'
+                }
+                onPress={() =>
+                  this.setState({
+                    rememberCredentials: !this.state.rememberCredentials
+                  })
+                }
+              >
+                Remember me
+              </Checkbox>
             </View>
             <Button
               style={buttonStyle}
