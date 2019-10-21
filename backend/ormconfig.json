@@ -5,6 +5,6 @@
   "username": "postgres",
   "password": "password",
   "database": "dragon-go",
-  "entities": [ "dist/models/db/*.entity.js" ],
+  "entities": [ "dist/backend/src/models/db/*.entity.js" ],
   "synchronize": true
 }

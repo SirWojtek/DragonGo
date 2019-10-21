@@ -20,7 +20,8 @@ export class AuthService {
     username: string,
     pass: string,
   ): Promise<Partial<UserEntity> | null> {
-    const user = await this.usersService.findByUsername(username);
+    const effectiveUsername = username.toLowerCase().trim();
+    const user = await this.usersService.findByUsername(effectiveUsername);
 
     if (!user) {
       return null;
