@@ -1,24 +1,27 @@
 import { getItemAsync, setItemAsync } from 'expo-secure-store';
-import { from, Observable, of } from 'rxjs';
+import { combineLatest, from, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import userSlice from '../store/slices/userSlice';
-import store from '../store/store';
 
 const USERNAME_KEY = 'USERNAME';
 const PASSWORD_KEY = 'PASSWORD';
 
-const StorageService = {
-  async loadCredentials() {
-    const username = await getItemAsync(USERNAME_KEY);
-    const password = await getItemAsync(PASSWORD_KEY);
-    if (!username || !password) {
-      return;
-    }
+interface ICreds {
+  username: string;
+  password: string;
+}
 
-    store.dispatch(
-      userSlice.actions.setCredentials({
-        username,
-        password
+const StorageService = {
+  loadCredentials(): Observable<ICreds | undefined> {
+    return combineLatest(
+      from(getItemAsync(USERNAME_KEY)),
+      from(getItemAsync(PASSWORD_KEY))
+    ).pipe(
+      map(([username, password]) => {
+        if (!username || !password) {
+          return undefined;
+        }
+
+        return { username, password };
       })
     );
   },

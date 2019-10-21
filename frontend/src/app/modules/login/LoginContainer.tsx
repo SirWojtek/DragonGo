@@ -68,18 +68,19 @@ class LoginContainer extends React.Component<IProps, IState> {
                 value={this.state.password}
                 onChangeText={password => this.setState({ password })}
               />
-              <Checkbox
-                status={
-                  this.state.rememberCredentials ? 'checked' : 'unchecked'
-                }
-                onPress={() =>
-                  this.setState({
-                    rememberCredentials: !this.state.rememberCredentials
-                  })
-                }
-              >
-                Remember me
-              </Checkbox>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Checkbox
+                  status={
+                    this.state.rememberCredentials ? 'checked' : 'unchecked'
+                  }
+                  onPress={() =>
+                    this.setState({
+                      rememberCredentials: !this.state.rememberCredentials
+                    })
+                  }
+                />
+                <Text>Remember me</Text>
+              </View>
             </View>
             <Button
               style={buttonStyle}

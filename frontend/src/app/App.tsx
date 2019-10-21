@@ -6,13 +6,13 @@ import ContentContainer from './ContentContainer';
 import ModalContainer from './modules/components/ModalContainer';
 import SnackbarContainer from './modules/components/SnackbarContainer';
 import LocationService from './services/LocationService';
-import StorageService from './services/StorageService';
+import userSlice from './store/slices/userSlice';
 import store from './store/store';
 
 export default class App extends React.Component<InitialProps> {
   public componentWillMount() {
     LocationService.init().then(() => {});
-    StorageService.loadCredentials().then(() => {});
+    store.dispatch(userSlice.actions.loadCredentials());
   }
 
   public render() {

@@ -8,6 +8,7 @@ import { IUser } from '../types/IUser';
 export const SET_LOCATION = 'user/setLocation';
 export const SET_USER = 'user/setUser';
 export const SET_CREDENTIALS = 'user/setCredentials';
+export const LOAD_CREDENTIALS = 'user/loadCredentials';
 
 const userSlice = createSlice({
   slice: 'user',
@@ -26,17 +27,19 @@ const userSlice = createSlice({
     },
     setCredentials: (state, action: SetCredentialAction) => {
       merge(state.credentials, action.payload);
-    }
+    },
+    loadCredentials: () => {}
   }
 });
 
 export type SetLocationAction = PayloadAction<ILocation, string>;
 export type SetUserAction = PayloadAction<RecursivePartial<IUser>, string>;
 export type SetCredentialAction = PayloadAction<Partial<ICredentials>, string>;
-export type FetchUserAction = Action;
+export type LoadCredentialsAction = Action;
 export type UserActions =
   | SetLocationAction
   | SetUserAction
-  | SetCredentialAction;
+  | SetCredentialAction
+  | LoadCredentialsAction;
 
 export default userSlice;
