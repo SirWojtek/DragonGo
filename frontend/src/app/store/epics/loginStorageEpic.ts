@@ -4,11 +4,12 @@ import { filter, ignoreElements, map, mergeMap } from 'rxjs/operators';
 
 import StorageService from '../../services/StorageService';
 import { SET_USER, SetUserAction } from '../slices/userSlice';
+import { IStoreState } from '../store';
 
-const loginStorageEpic: Epic<Action, Action, void> = action =>
+const loginStorageEpic: Epic<Action, Action, IStoreState> = (action, state) =>
   action.pipe(
     ofType<Action, SetUserAction>(SET_USER),
-    map(a => a.payload.credentials),
+    map(a => state.value.user.credentials),
     filter(
       creds => !!creds && !!creds.rememberCredentials && !!creds.accessToken
     ),

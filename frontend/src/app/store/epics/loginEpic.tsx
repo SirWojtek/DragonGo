@@ -1,23 +1,19 @@
 import { Epic, ofType } from 'redux-observable';
 import { Action } from 'redux-starter-kit';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, filter, map, mergeMap } from 'rxjs/operators';
 
 import { of } from 'rxjs';
 import UserService from '../../services/UserService';
 import snackbarSlice from '../slices/snackbarSlice';
-import userSlice, {
-  SET_CREDENTIALS,
-  SetCredentialAction
-} from '../slices/userSlice';
+import userSlice, { SET_USER, SetUserAction } from '../slices/userSlice';
 
 const loginEpic: Epic<Action, Action, void> = action =>
   action.pipe(
-    ofType<Action, SetCredentialAction>(SET_CREDENTIALS),
+    ofType<Action, SetUserAction>(SET_USER),
+    map(a => a.payload.credentials),
+    filter(creds => !!creds && !creds.accessToken),
     mergeMap(creds =>
-      UserService.login({
-        username: creds.payload.username,
-        password: creds.payload.password
-      }).pipe(
+      UserService.login(creds).pipe(
         map(res =>
           userSlice.actions.setUser({
             maxRange: res.user.maxRange,

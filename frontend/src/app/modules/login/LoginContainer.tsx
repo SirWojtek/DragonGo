@@ -43,7 +43,7 @@ class LoginContainer extends React.Component<IProps, IState> {
   }
 
   public onLogin() {
-    store.dispatch(userSlice.actions.setCredentials(this.state));
+    store.dispatch(userSlice.actions.setUser({ credentials: this.state }));
   }
 
   public render() {

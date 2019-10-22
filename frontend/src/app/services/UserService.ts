@@ -8,12 +8,14 @@ import { jsonHeaders } from '../utils/http-headers';
 
 const env = getEnv();
 
+interface ICreds {
+  username?: string;
+  password?: string;
+}
+
 const UserService = {
-  login(creds: {
-    username?: string;
-    password?: string;
-  }): Observable<LoginResponse> {
-    if (!creds.username || !creds.password) {
+  login(creds: ICreds | undefined): Observable<LoginResponse> {
+    if (!creds || !creds.username || !creds.password) {
       return throwError({ message: 'Empty username or password' });
     }
 

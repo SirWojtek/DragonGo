@@ -1,9 +1,10 @@
 import Constants from 'expo-constants';
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { Card } from 'react-native-paper';
+import { Button, Card } from 'react-native-paper';
 import { connect } from 'react-redux';
-import { IStoreState } from '../../store/store';
+import userSlice from '../../store/slices/userSlice';
+import store, { IStoreState } from '../../store/store';
 import CharacterNameView from './views/CharacterNameView';
 
 interface IProps {
@@ -19,6 +20,10 @@ function mapStateToProps(state: IStoreState): IProps {
 }
 
 class CharacterContainer extends React.Component<IProps> {
+  public onLogout() {
+    store.dispatch(userSlice.actions.setUser({ credentials: {} }));
+  }
+
   public render() {
     return (
       <Card style={cardStyle}>
@@ -26,6 +31,7 @@ class CharacterContainer extends React.Component<IProps> {
           name={this.props.username}
           logoUrl={this.props.logoUrl}
         />
+        <Button onPress={() => this.onLogout()}>LOGOUT</Button>
       </Card>
     );
   }

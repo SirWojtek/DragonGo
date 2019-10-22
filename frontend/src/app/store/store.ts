@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, createStore, Store } from 'redux';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import fetchMonstersEpic from './epics/fetchMonstersEpic';
 import fetchSpawnAreasEpic from './epics/fetchSpawnAreasEpic';
+import loadCredentialsEpic from './epics/loadCredentialsEpic';
 import loginEpic from './epics/loginEpic';
 import loginStorageEpic from './epics/loginStorageEpic';
 import modalSlice, { IModalStore, ModalActions } from './slices/modalSlice';
@@ -38,7 +39,8 @@ const epics = combineEpics(
   fetchSpawnAreasEpic,
   fetchMonstersEpic,
   loginEpic,
-  loginStorageEpic
+  loginStorageEpic,
+  loadCredentialsEpic
 );
 
 const epicMiddleware = createEpicMiddleware();
