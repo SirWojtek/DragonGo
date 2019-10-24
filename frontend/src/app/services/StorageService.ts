@@ -1,4 +1,4 @@
-import { getItemAsync, setItemAsync } from 'expo-secure-store';
+import { deleteItemAsync, getItemAsync, setItemAsync } from 'expo-secure-store';
 import { combineLatest, from, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -37,6 +37,14 @@ const StorageService = {
       Promise.all([
         setItemAsync(USERNAME_KEY, creds.username),
         setItemAsync(PASSWORD_KEY, creds.password)
+      ])
+    ).pipe(map(() => {}));
+  },
+  clearCredentials(): Observable<void> {
+    return from(
+      Promise.all([
+        deleteItemAsync(USERNAME_KEY),
+        deleteItemAsync(PASSWORD_KEY)
       ])
     ).pipe(map(() => {}));
   }

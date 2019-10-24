@@ -5,6 +5,7 @@ import fetchSpawnAreasEpic from './epics/fetchSpawnAreasEpic';
 import loadCredentialsEpic from './epics/loadCredentialsEpic';
 import loginEpic from './epics/loginEpic';
 import loginStorageEpic from './epics/loginStorageEpic';
+import logoutStorageEpic from './epics/logoutStorageEpic';
 import modalSlice, { IModalStore, ModalActions } from './slices/modalSlice';
 import monstersSlice, {
   IMonsterStore,
@@ -40,6 +41,7 @@ const epics = combineEpics(
   fetchMonstersEpic,
   loginEpic,
   loginStorageEpic,
+  logoutStorageEpic,
   loadCredentialsEpic
 );
 

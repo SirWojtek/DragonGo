@@ -14,14 +14,14 @@ interface IProps {
 
 function mapStateToProps(state: IStoreState): IProps {
   return {
-    username: state.user.credentials.username,
+    username: state.user.credentials.username || '',
     logoUrl: state.user.logoUrl
   };
 }
 
 class CharacterContainer extends React.Component<IProps> {
   public onLogout() {
-    store.dispatch(userSlice.actions.setUser({ credentials: {} }));
+    store.dispatch(userSlice.actions.logout());
   }
 
   public render() {

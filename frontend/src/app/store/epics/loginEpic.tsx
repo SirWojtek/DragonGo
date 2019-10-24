@@ -5,12 +5,12 @@ import { catchError, filter, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import UserService from '../../services/UserService';
 import snackbarSlice from '../slices/snackbarSlice';
-import userSlice, { SET_USER, SetUserAction } from '../slices/userSlice';
+import userSlice, { LOGIN, LoginAction } from '../slices/userSlice';
 
 const loginEpic: Epic<Action, Action, void> = action =>
   action.pipe(
-    ofType<Action, SetUserAction>(SET_USER),
-    map(a => a.payload.credentials),
+    ofType<Action, LoginAction>(LOGIN),
+    map(a => a.payload),
     filter(creds => !!creds && !creds.accessToken),
     mergeMap(creds =>
       UserService.login(creds).pipe(
