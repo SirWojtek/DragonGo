@@ -5,18 +5,21 @@ import { jsonHeaders } from './http-headers';
 
 const env = getEnv();
 
-const DEFAULT_REQUEST_OPTS: RequestInit = {
-  method: 'POST',
-  headers: jsonHeaders
-};
-
-export function fetchWrapper<ResponseType>(
+export function fetchPostWrapper<ResponseType>(
   uri: string,
-  options: RequestInit
+  body: any,
+  accessToken?: string
 ): Observable<ResponseType> {
+  const headers = new Headers(jsonHeaders);
+
+  if (accessToken) {
+    headers.set('Authorization', `Bearer ${accessToken}`);
+  }
+
   const opts = {
-    ...DEFAULT_REQUEST_OPTS,
-    ...options
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers
   };
 
   const sanitazedUri = uri.startsWith('/') ? uri.substr(1) : uri;

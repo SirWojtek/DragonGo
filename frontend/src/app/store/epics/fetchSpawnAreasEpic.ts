@@ -1,4 +1,4 @@
-import { flatten, uniq } from 'lodash';
+import { filter, flatten, uniq } from 'lodash';
 import { Epic, ofType } from 'redux-observable';
 import { Action } from 'redux-starter-kit';
 import { concat, of } from 'rxjs';
@@ -7,16 +7,27 @@ import SpawnAreaService from '../../services/SpawnAreaService';
 import monstersSlice from '../slices/monstersSlice';
 import spawnAreasSlice from '../slices/spawnAreasSlice';
 import { SET_LOCATION, SetLocationAction } from '../slices/userSlice';
+import { IStoreState } from '../store';
 import { ISpawnArea } from '../types/ISpawnArea';
 
 function extractMonsterIds(spawnAreas: ISpawnArea[]): string[] {
   return uniq(flatten(spawnAreas.map(a => a.monsters.map(m => m.id))));
 }
 
-const fetchSpawnAreasEpic: Epic<Action, Action, void> = action =>
+const fetchSpawnAreasEpic: Epic<Action, Action, IStoreState> = (
+  action,
+  state
+) =>
   action.pipe(
     ofType<Action, SetLocationAction>(SET_LOCATION),
-    flatMap(a => SpawnAreaService.getSpawnAreas(a.payload)),
+    flatMap(a => {
+      const accessToken = state.value.user.credentials.accessToken;
+      if (!accessToken) {
+        return of([]);
+      }
+
+      return SpawnAreaService.getSpawnAreas(a.payload, accessToken);
+    }),
     map(areas =>
       areas.map(a => ({
         id: a.id,

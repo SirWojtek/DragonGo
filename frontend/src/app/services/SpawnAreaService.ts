@@ -2,10 +2,13 @@ import { Observable, of } from 'rxjs';
 import { ILocation } from '../store/types/ILocation';
 
 import { GetSpawnAreas, SpawnArea } from '../../../../api/spawn-areas.api';
-import { fetchWrapper } from '../utils/fetch-utils';
+import { fetchPostWrapper } from '../utils/fetch-utils';
 
 const SpawnAreaService = {
-  getSpawnAreas(loc: ILocation | undefined): Observable<SpawnArea[]> {
+  getSpawnAreas(
+    loc: ILocation | undefined,
+    accessToken: string
+  ): Observable<SpawnArea[]> {
     if (!loc || !loc.lat || !loc.lng) {
       return of([]);
     }
@@ -17,9 +20,11 @@ const SpawnAreaService = {
       }
     };
 
-    return fetchWrapper('/api/spawn-areas/get-spawn-areas', {
-      body: JSON.stringify(request)
-    });
+    return fetchPostWrapper(
+      '/api/spawn-areas/get-spawn-areas',
+      request,
+      accessToken
+    );
   }
 };
 

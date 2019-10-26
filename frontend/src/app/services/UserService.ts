@@ -1,7 +1,7 @@
 import { Observable, throwError } from 'rxjs';
 
 import { LoginResponse } from '../../../../api/user.api';
-import { fetchWrapper } from '../utils/fetch-utils';
+import { fetchPostWrapper } from '../utils/fetch-utils';
 
 interface ICreds {
   username?: string;
@@ -14,9 +14,7 @@ const UserService = {
       return throwError({ message: 'Empty username or password' });
     }
 
-    return fetchWrapper('/api/users/login', {
-      body: JSON.stringify(creds)
-    });
+    return fetchPostWrapper('/api/users/login', creds);
   }
 };
 
