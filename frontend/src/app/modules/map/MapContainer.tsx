@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import MapView, { Camera, LatLng, Marker, Point } from 'react-native-maps';
+import MapView, { Point } from 'react-native-maps';
 import { connect } from 'react-redux';
 import { IStoreState } from '../../store/store';
 import { IUser } from '../../store/types/IUser';
@@ -57,8 +57,8 @@ class MapContainer extends React.Component<IProps, IState> {
         moveOnMarkerPress={false}
         camera={{
           center: {
-            latitude: this.props.user.location.latitude,
-            longitude: this.props.user.location.longitude
+            latitude: this.props.user.location.lat,
+            longitude: this.props.user.location.lng
           },
           pitch: 45,
           heading: this.state.heading,

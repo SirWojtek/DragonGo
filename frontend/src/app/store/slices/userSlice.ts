@@ -42,7 +42,7 @@ const userSlice = createSlice({
 export type SetLocationAction = PayloadAction<ILocation, string>;
 export type SetUserAction = PayloadAction<RecursivePartial<IUser>, string>;
 export type LoadCredentialsAction = Action;
-export type LoginAction = PayloadAction<ICredentials, string>;
+export type LoginAction = PayloadAction<Partial<ICredentials>, string>;
 export type LogoutAction = Action;
 
 export type UserActions =

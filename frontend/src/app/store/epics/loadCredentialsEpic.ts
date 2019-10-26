@@ -13,7 +13,7 @@ const loadCredentialsEpic: Epic<Action, Action, void> = action =>
     ofType<Action, LoadCredentialsAction>(LOAD_CREDENTIALS),
     mergeMap(() => StorageService.loadCredentials()),
     filter(creds => !!creds),
-    map(creds => userSlice.actions.login(creds))
+    map(creds => userSlice.actions.login(creds || {}))
   );
 
 export default loadCredentialsEpic;

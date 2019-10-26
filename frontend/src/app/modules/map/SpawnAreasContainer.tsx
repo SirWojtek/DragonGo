@@ -33,20 +33,20 @@ function mapStateToProps(state: IStoreState): IProps {
     spawnAreas: state.spawnAreas.map(area => ({
       coordinates: [
         {
-          latitude: area.viewport.southwest.latitude,
-          longitude: area.viewport.northeast.longitude
+          latitude: area.viewport.southwest.lat,
+          longitude: area.viewport.northeast.lng
         },
         {
-          latitude: area.viewport.northeast.latitude,
-          longitude: area.viewport.northeast.longitude
+          latitude: area.viewport.northeast.lat,
+          longitude: area.viewport.northeast.lng
         },
         {
-          latitude: area.viewport.northeast.latitude,
-          longitude: area.viewport.southwest.longitude
+          latitude: area.viewport.northeast.lat,
+          longitude: area.viewport.southwest.lng
         },
         {
-          latitude: area.viewport.southwest.latitude,
-          longitude: area.viewport.southwest.longitude
+          latitude: area.viewport.southwest.lat,
+          longitude: area.viewport.southwest.lng
         }
       ],
       monsters: area.monsters.map(m => ({
@@ -82,7 +82,10 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
         {area.monsters.map((monster, j) => (
           <MonsterMarker
             key={'area-' + i + '-monster-' + j}
-            coordinate={monster.location}
+            coordinate={{
+              latitude: monster.location.lat,
+              longitude: monster.location.lng
+            }}
             monster={monster}
             onPress={(coords, m) => this.onMonsterMarkerPress(coords, m)}
           />

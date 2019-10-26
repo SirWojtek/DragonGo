@@ -1,12 +1,7 @@
-import { from, Observable, throwError } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 import { LoginResponse } from '../../../../api/user.api';
-
-import { getEnv } from '../../environment/environment';
-import { jsonHeaders } from '../utils/http-headers';
-
-const env = getEnv();
+import { fetchWrapper } from '../utils/fetch-utils';
 
 interface ICreds {
   username?: string;
@@ -19,22 +14,9 @@ const UserService = {
       return throwError({ message: 'Empty username or password' });
     }
 
-    return from(
-      fetch(`${env.API_HOST}/api/users/login`, {
-        method: 'POST',
-        headers: jsonHeaders,
-        body: JSON.stringify(creds)
-      })
-    ).pipe(
-      switchMap(res => res.json()),
-      map(res => {
-        if (res.error) {
-          throw new Error(res.error);
-        } else {
-          return res;
-        }
-      })
-    );
+    return fetchWrapper('/api/users/login', {
+      body: JSON.stringify(creds)
+    });
   }
 };
 

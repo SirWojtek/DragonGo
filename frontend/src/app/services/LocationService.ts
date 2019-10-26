@@ -24,8 +24,8 @@ const LocationService = {
   _onLocationUpdate(location: Location.LocationData) {
     store.dispatch(
       userSlice.actions.setLocation({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude
+        lat: location.coords.latitude,
+        lng: location.coords.longitude
       })
     );
   }
