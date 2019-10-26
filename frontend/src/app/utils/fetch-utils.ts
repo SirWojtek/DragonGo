@@ -19,7 +19,9 @@ export function fetchWrapper<ResponseType>(
     ...options
   };
 
-  return from(fetch(`${env.API_HOST}/${uri}`, opts)).pipe(
+  const sanitazedUri = uri.startsWith('/') ? uri.substr(1) : uri;
+
+  return from(fetch(`${env.API_HOST}/${sanitazedUri}`, opts)).pipe(
     switchMap(res => res.json()),
     map(res => {
       if (res.error) {
