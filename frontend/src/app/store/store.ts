@@ -3,6 +3,7 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import fetchMonstersEpic from './epics/fetchMonstersEpic';
 import fetchSpawnAreasEpic from './epics/fetchSpawnAreasEpic';
 import loadCredentialsEpic from './epics/loadCredentialsEpic';
+import locationEpic from './epics/locationEpic';
 import loginEpic from './epics/loginEpic';
 import loginStorageEpic from './epics/loginStorageEpic';
 import logoutStorageEpic from './epics/logoutStorageEpic';
@@ -42,7 +43,8 @@ const epics = combineEpics(
   loginEpic,
   loginStorageEpic,
   logoutStorageEpic,
-  loadCredentialsEpic
+  loadCredentialsEpic,
+  locationEpic
 );
 
 const epicMiddleware = createEpicMiddleware();

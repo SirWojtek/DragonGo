@@ -5,13 +5,11 @@ import { Provider as StoreProvider } from 'react-redux';
 import ContentContainer from './ContentContainer';
 import ModalContainer from './modules/components/ModalContainer';
 import SnackbarContainer from './modules/components/SnackbarContainer';
-import LocationService from './services/LocationService';
 import userSlice from './store/slices/userSlice';
 import store from './store/store';
 
 export default class App extends React.Component<InitialProps> {
   public componentWillMount() {
-    LocationService.init().then(() => {});
     store.dispatch(userSlice.actions.loadCredentials());
   }
 
