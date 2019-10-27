@@ -55,8 +55,8 @@ export class SpawnAreasService {
     });
   }
 
-  async getSpawnArea(id: string): Promise<SpawnAreaEntity | null> {
-    return this.spawnAreaRepository.findOne(id);
+  async getSpawnAreaWithMonsters(id: string): Promise<SpawnAreaEntity | null> {
+    return this.spawnAreaRepository.findOne(id, { relations: [ 'monsterInstances' ] });
   }
 
   async setMonsters(

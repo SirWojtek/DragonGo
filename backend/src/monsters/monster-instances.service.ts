@@ -43,7 +43,7 @@ export class MonsterInstancesService {
     spawnAreaId: string,
     userLevel: number,
   ): Promise<BehaviorSubject<SpawnAreaEntity>> {
-    let spawnArea = await this.spawnAreasService.getSpawnArea(spawnAreaId);
+    let spawnArea = await this.spawnAreasService.getSpawnAreaWithMonsters(spawnAreaId);
 
     if (!spawnArea) {
       throw new BadRequestException('Cannot find spawn area with given id');
