@@ -6,12 +6,17 @@ import {
 } from '@nestjs/websockets';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Monster } from '../../../api/monsters.api';
+import { GetSpawnAreaMonsters, Monster } from '../../../api/monsters.api';
 import { HttpToWsExceptionFilter } from '../filters/HttpToWsExceptionFilter';
 import { UserEntity } from '../models/db/user.entity';
 import { WsJwtGuard } from '../users/auth/ws-jwt.guard';
 import { toMonster } from '../utils/mappers';
 import { MonsterInstancesService } from './monster-instances.service';
+
+interface IHandleSpawnAreaMonstersData extends GetSpawnAreaMonsters {
+  // NOTE: filled in `WsJswtGuard`
+  user: UserEntity;
+}
 
 @WebSocketGateway({ namespace: 'monsters' })
 @UseFilters(new HttpToWsExceptionFilter())
@@ -21,7 +26,7 @@ export class MonstersGateway {
   @UseGuards(WsJwtGuard)
   @SubscribeMessage('spawn-area-monsters')
   async handleSpawnAreaMonsters(
-    data: any,
+    data: IHandleSpawnAreaMonstersData,
   ): Promise<Observable<WsResponse<Monster[]>>> {
     const user: UserEntity = data.user;
     const monsters = await this.monsterInstancesService.observeSpawnAreaMonsters(
