@@ -12,10 +12,14 @@ const MonstersService = {
     accessToken: string
   ): Observable<Monster[]> {
     const socket = io.connect(`${env.API_HOST}/monsters`, {
-      extraHeaders: {
-        Authorization: `Bearer ${accessToken}`
+      transportOptions: {
+        polling: {
+          extraHeaders: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        }
       }
-    } as SocketIOClient.ConnectOpts);
+    });
 
     return new Observable(observer => {
       socket.on('connect', () => {
