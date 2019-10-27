@@ -6,9 +6,9 @@ import { ILocation } from '../types/ILocation';
 import { IUser } from '../types/IUser';
 
 export const SET_LOCATION = 'user/setLocation';
-export const SET_USER = 'user/setUser';
 export const LOAD_CREDENTIALS = 'user/loadCredentials';
 export const LOGIN = 'user/login';
+export const LOGIN_SUCCEED = 'user/loginSucceed';
 export const LOGOUT = 'user/logout';
 
 const userSlice = createSlice({
@@ -23,12 +23,12 @@ const userSlice = createSlice({
       ...state,
       location: { ...action.payload }
     }),
-    setUser: (state, action: SetUserAction) => {
-      merge(state, action.payload);
-    },
     loadCredentials: () => {},
     login: (state, action: LoginAction) => {
       merge(state.credentials, action.payload);
+    },
+    loginSucceed: (state, action: LoginSucceedAction) => {
+      merge(state, action.payload);
     },
     logout: state => ({
       ...state,
@@ -40,14 +40,14 @@ const userSlice = createSlice({
 });
 
 export type SetLocationAction = PayloadAction<ILocation, string>;
-export type SetUserAction = PayloadAction<RecursivePartial<IUser>, string>;
+export type LoginSucceedAction = PayloadAction<RecursivePartial<IUser>, string>;
 export type LoadCredentialsAction = Action;
 export type LoginAction = PayloadAction<Partial<ICredentials>, string>;
 export type LogoutAction = Action;
 
 export type UserActions =
   | SetLocationAction
-  | SetUserAction
+  | LoginSucceedAction
   | LoadCredentialsAction
   | LoginAction
   | LogoutAction;

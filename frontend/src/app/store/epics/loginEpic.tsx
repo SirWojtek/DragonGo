@@ -15,7 +15,7 @@ const loginEpic: Epic<Action, Action, void> = action =>
     mergeMap(creds =>
       UserService.login(creds).pipe(
         map(res =>
-          userSlice.actions.setUser({
+          userSlice.actions.loginSucceed({
             maxRange: res.user.maxRange,
             levelInfo: {
               level: res.user.level
