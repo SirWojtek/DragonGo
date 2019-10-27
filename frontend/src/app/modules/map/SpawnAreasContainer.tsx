@@ -17,10 +17,10 @@ interface IMonsterWithLocation extends IMonster {
 }
 
 interface IProps {
-  spawnAreas: Array<{
+  spawnAreas: {
     coordinates: LatLng[];
     monsters: IMonsterWithLocation[];
-  }>;
+  }[];
   user: IUser;
 }
 
