@@ -1,4 +1,4 @@
-import { filter, flatten, uniq } from 'lodash';
+import { flatten, uniq } from 'lodash';
 import { Epic, ofType } from 'redux-observable';
 import { Action } from 'redux-starter-kit';
 import { concat, of } from 'rxjs';
