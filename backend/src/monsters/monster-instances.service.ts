@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Repository } from 'typeorm';
 import { MonsterInstanceEntity } from '../models/db/monster-instance.entity';
 import { MonsterMetadataEntity } from '../models/db/monster-metadata.entity';

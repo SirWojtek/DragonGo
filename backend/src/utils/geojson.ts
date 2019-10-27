@@ -9,6 +9,17 @@ export function toPoint(latLng: LatLng): Point {
   };
 }
 
+export function toLatLng(point: Point) {
+  if (!point.coordinates[0] || !point.coordinates[1]) {
+    throw new Error('Invalid point');
+  }
+
+  return {
+    lat: point.coordinates[0],
+    lng: point.coordinates[1],
+  };
+}
+
 export function toPolygon(rect: Rect): Polygon {
   return {
     type: 'Polygon',
@@ -24,7 +35,7 @@ export function toPolygon(rect: Rect): Polygon {
   };
 }
 
-export function toRect(polygon: Polygon): Rect | null {
+export function toRect(polygon: Polygon): Rect {
   if (
     !polygon.coordinates ||
     !polygon.coordinates[0] ||
