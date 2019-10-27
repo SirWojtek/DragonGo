@@ -1,10 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Socket } from 'socket.io';
 import * as io from 'socket.io-client';
-import { anything, deepEqual, instance, mock, when } from 'ts-mockito';
+import { anything, instance, mock, when } from 'ts-mockito';
 import { Repository } from 'typeorm';
-import uuid = require('uuid');
 import { MapFragmentEntity } from '../../src/models/db/map-fragment.entity';
 import { MonsterInstanceEntity } from '../../src/models/db/monster-instance.entity';
 import { MonsterMetadataEntity } from '../../src/models/db/monster-metadata.entity';
