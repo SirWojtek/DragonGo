@@ -1,12 +1,9 @@
-import { ILocation } from './ILocation';
+import { IMonster } from './IMonster';
 import { IViewport } from './Iviewport';
 
 export interface ISpawnArea {
   id: string;
   name: string;
   viewport: IViewport;
-  monsters: Array<{
-    id: string;
-    location: ILocation;
-  }>;
+  monsters: IMonster[];
 }

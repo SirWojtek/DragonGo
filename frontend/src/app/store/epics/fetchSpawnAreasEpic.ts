@@ -1,18 +1,11 @@
-import { flatten, uniq } from 'lodash';
 import { Epic, ofType } from 'redux-observable';
 import { Action } from 'redux-starter-kit';
-import { concat, of } from 'rxjs';
+import { throwError } from 'rxjs';
 import { flatMap, map } from 'rxjs/operators';
 import SpawnAreaService from '../../services/SpawnAreaService';
-import monstersSlice from '../slices/monstersSlice';
 import spawnAreasSlice from '../slices/spawnAreasSlice';
 import { SET_LOCATION, SetLocationAction } from '../slices/userSlice';
 import { IStoreState } from '../store';
-import { ISpawnArea } from '../types/ISpawnArea';
-
-function extractMonsterIds(spawnAreas: ISpawnArea[]): string[] {
-  return uniq(flatten(spawnAreas.map(a => a.monsters.map(m => m.id))));
-}
 
 const fetchSpawnAreasEpic: Epic<Action, Action, IStoreState> = (
   action,
@@ -23,7 +16,7 @@ const fetchSpawnAreasEpic: Epic<Action, Action, IStoreState> = (
     flatMap(a => {
       const accessToken = state.value.user.credentials.accessToken;
       if (!accessToken) {
-        return of([]);
+        return throwError({ message: 'Access token not present' });
       }
 
       return SpawnAreaService.getSpawnAreas(a.payload, accessToken);
@@ -36,12 +29,7 @@ const fetchSpawnAreasEpic: Epic<Action, Action, IStoreState> = (
         monsters: []
       }))
     ),
-    flatMap(spawnAreas =>
-      concat(
-        of(spawnAreasSlice.actions.setSpawnAreas(spawnAreas)),
-        of(monstersSlice.actions.fetchMonsters(extractMonsterIds(spawnAreas)))
-      )
-    )
+    map(spawnAreas => spawnAreasSlice.actions.setSpawnAreas(spawnAreas))
   );
 
 export default fetchSpawnAreasEpic;
