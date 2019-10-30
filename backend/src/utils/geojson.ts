@@ -1,5 +1,5 @@
 import { Point, Polygon } from 'geojson';
-import { sortBy, uniq } from 'lodash';
+import { random, sortBy, uniq } from 'lodash';
 import { LatLng, Rect } from '../../../api/spawn-areas.api';
 
 export function toPoint(latLng: LatLng): Point {
@@ -57,4 +57,16 @@ export function toRect(polygon: Polygon): Rect {
     southwest: { lat: uniqLats[0], lng: uniqLngs[0] },
     northeast: { lat: uniqLats[1], lng: uniqLngs[1] },
   };
+}
+
+export function generatePointWithinPolygon(polygon: Polygon): Point {
+  const rect = toRect(polygon);
+
+  const lat = random(rect.southwest.lat, rect.northeast.lat);
+  const lng = random(rect.southwest.lng, rect.northeast.lng);
+
+  return toPoint({
+    lat,
+    lng,
+  });
 }

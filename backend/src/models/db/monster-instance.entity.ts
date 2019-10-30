@@ -21,7 +21,7 @@ export class MonsterInstanceEntity {
   monsterMetadataId: string;
 
   @ManyToOne(
-    type => MonsterMetadataEntity,
+    () => MonsterMetadataEntity,
     monsterMetadata => monsterMetadata.id,
     { eager: true },
   )
