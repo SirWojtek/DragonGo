@@ -4,24 +4,18 @@ import { IMonster } from '../types/IMonster';
 export const UPDATE_MONSTERS = 'monstersSlice/updateMonsters';
 export const FETCH_MONSTERS = 'monstersSlice/fetchMonsters';
 
-export interface IMonsterStore {
-  [id: string]: IMonster;
-}
+export type IMonsterStore = IMonster[];
 
 const monstersSlice = createSlice({
   slice: 'monstersSlice',
-  initialState: {} as IMonsterStore,
+  initialState: [] as IMonster[],
   reducers: {
-    updateMonsters: (state, action: UpdateMonstersAction) =>
-      action.payload.reduce(
-        (store, m) => ({
-          [m.id]: m,
-          ...store
-        }),
-        state
-      ),
+    updateMonsters: (state, action: UpdateMonstersAction) => [
+      ...state,
+      ...action.payload
+    ],
     // NOTE: fetch logic in epic
-    fetchMonsters: (state, action: FetchMonstersAction) => state
+    fetchMonsters: (state, _: FetchMonstersAction) => state
   }
 });
 

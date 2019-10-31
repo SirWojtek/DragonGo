@@ -4,8 +4,8 @@ import {
   WebSocketGateway,
   WsResponse,
 } from '@nestjs/websockets';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { from, Observable, throwError } from 'rxjs';
+import { catchError, flatMap, map, tap } from 'rxjs/operators';
 import { Socket } from 'socket.io';
 import { GetSpawnAreaMonsters, Monster } from '../../../api/monsters.api';
 import { HttpToWsExceptionFilter } from '../filters/HttpToWsExceptionFilter';
@@ -28,19 +28,20 @@ export class MonstersGateway {
 
   @UseGuards(WsJwtGuard)
   @SubscribeMessage('spawn-area-monsters')
-  async handleSpawnAreaMonsters(
+  handleSpawnAreaMonsters(
     _: Socket,
     data: IHandleSpawnAreaMonstersData,
-  ): Promise<Observable<WsResponse<Monster[]>>> {
+  ): Observable<WsResponse<Monster[]>> {
     this.logger.debug('/monsters/spawn-area-monsters');
 
     const user: UserEntity = data.user;
-    const monsters = await this.monsterInstancesService.observeSpawnAreaMonsters(
+    const monstersObPromise = this.monsterInstancesService.observeSpawnAreaMonsters(
       data.spawnAreaId,
       user.level,
     );
 
-    return monsters.pipe(
+    return from(monstersObPromise).pipe(
+      flatMap(m => m),
       map(monsterInstances => monsterInstances.map(toMonster)),
       map(m => ({ event: 'spawn-area-monsters', data: m })),
     );

@@ -49,10 +49,7 @@ function mapStateToProps(state: IStoreState): IProps {
           longitude: area.viewport.southwest.lng
         }
       ],
-      monsters: area.monsters.map(m => ({
-        ...m,
-        ...state.monsters[m.id]
-      }))
+      monsters: state.monsters.filter(m => m.spawnAreaId === area.id)
     })),
     user: state.user
   };

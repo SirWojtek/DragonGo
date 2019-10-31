@@ -86,8 +86,8 @@ export class MonsterInstancesService {
     const countToBeGenerated = random(1, maxMonsters - currentMonsterCount);
 
     const matchingMonstersMetadata = await this.monsterMetadataRepository.find({
-      minLevel: MoreThanOrEqual(level),
-      maxLevel: LessThanOrEqual(level),
+      minLevel: LessThanOrEqual(level),
+      maxLevel: MoreThanOrEqual(level),
     });
 
     if (!matchingMonstersMetadata.length) {
