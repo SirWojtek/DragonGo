@@ -4,7 +4,7 @@ import * as request from 'supertest';
 
 import { anyString, anything, instance, mock, when } from 'ts-mockito';
 import { Repository } from 'typeorm';
-import { GetSpawnAreas } from '../../src/models/api/spawn-areas.api';
+import { GetSpawnAreas } from '../../../api/spawn-areas.api';
 import { MapFragmentEntity } from '../../src/models/db/map-fragment.entity';
 import { SpawnAreaEntity } from '../../src/models/db/spawn-area.entity';
 import {

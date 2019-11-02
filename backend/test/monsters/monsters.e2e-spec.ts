@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as io from 'socket.io-client';
 import { anything, instance, mock, when } from 'ts-mockito';
 import { Repository } from 'typeorm';
+import { Monster } from '../../../api/monsters.api';
 import { MapFragmentEntity } from '../../src/models/db/map-fragment.entity';
 import { MonsterInstanceEntity } from '../../src/models/db/monster-instance.entity';
 import { MonsterMetadataEntity } from '../../src/models/db/monster-metadata.entity';
@@ -112,16 +113,16 @@ describe('MonstersGateway (e2e)', () => {
       updatedAt: new Date(),
       createdAt: new Date(),
     };
-    when(spawnAreaEntityRepositoryMock.findOne(spawnAreaId)).thenResolve(
-      spawnArea,
-    );
+    when(
+      spawnAreaEntityRepositoryMock.findOne(spawnAreaId, anything()),
+    ).thenResolve(spawnArea);
     when(spawnAreaEntityRepositoryMock.save(anything())).thenCall(args => args);
 
     socketClient.on('connect', () => {
       const request = { spawnAreaId };
       socketClient.emit('spawn-area-monsters', request);
 
-      socketClient.on('spawn-area-monsters', response => {
+      socketClient.on('spawn-area-monsters', (response: Monster[]) => {
         expect(response).toEqual([
           {
             id: monsterInstance.id,
