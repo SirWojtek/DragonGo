@@ -13,8 +13,9 @@ import {
 } from '../../src/services/google-maps.service';
 import { ServicesModule } from '../../src/services/services.module';
 import { SpawnAreasModule } from '../../src/spawn-areas/spawn-areas.module';
-import { toPolygon, toRect } from '../../src/utils/geojson';
+import { toRect } from '../../src/utils/geojson';
 import { NoopStrategy } from '../auth/noop-strategy';
+import { generateMapFragment, generateSpawnArea } from '../utils/generators';
 
 describe('SpawnAreasController (e2e)', () => {
   let app: INestApplication;
@@ -34,41 +35,27 @@ describe('SpawnAreasController (e2e)', () => {
         lng: 60,
       },
     };
-    spawnArea = {
-      id: 'test-spawn-area',
-      name: 'Test Spawn Area',
-      coords: toPolygon({
-        northeast: {
-          lat: 55,
-          lng: 55,
-        },
-        southwest: {
-          lat: 53,
-          lng: 53,
-        },
-      }),
-      monsterInstances: [],
-      mapFragment: null,
-      updatedAt: new Date(),
-      createdAt: new Date(),
-    };
+    spawnArea = generateSpawnArea({
+      northeast: {
+        lat: 55,
+        lng: 55,
+      },
+      southwest: {
+        lat: 53,
+        lng: 53,
+      },
+    });
 
-    mapFragment = {
-      id: 'test-map-fragment',
-      coords: toPolygon({
-        northeast: {
-          lat: 70,
-          lng: 70,
-        },
-        southwest: {
-          lat: 50,
-          lng: 50,
-        },
-      }),
-      spawnAreas: null,
-      updatedAt: new Date(),
-      createdAt: new Date(),
-    };
+    mapFragment = generateMapFragment({
+      northeast: {
+        lat: 70,
+        lng: 70,
+      },
+      southwest: {
+        lat: 50,
+        lng: 50,
+      },
+    });
   });
 
   beforeEach(async () => {

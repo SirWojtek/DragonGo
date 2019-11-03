@@ -9,6 +9,11 @@ import { MonsterMetadataEntity } from '../../src/models/db/monster-metadata.enti
 import { SpawnAreaEntity } from '../../src/models/db/spawn-area.entity';
 import { UserEntity } from '../../src/models/db/user.entity';
 import { MonstersModule } from '../../src/monsters/monsters.module';
+import {
+  generateMonsterInstance,
+  generateSpawnArea,
+  generateUser,
+} from '../utils/generators';
 
 describe('MonstersGateway (e2e)', () => {
   let app;
@@ -24,11 +29,7 @@ describe('MonstersGateway (e2e)', () => {
   let mapFragmentEntityRepositoryMock: Repository<MapFragmentEntity>;
 
   beforeEach(async () => {
-    user = {
-      id: 'test-id',
-      username: 'test-name',
-      level: 1,
-    };
+    user = await generateUser();
 
     monsterInstanceRepositoryMock = mock(Repository);
     monsterMetadataRepositoryMock = mock(Repository);
@@ -85,41 +86,17 @@ describe('MonstersGateway (e2e)', () => {
   });
 
   it('returns spawn area', done => {
-    const spawnAreaId = 'test';
-    const monsterInstance: MonsterInstanceEntity = {
-      id: 'test-monster',
-      level: 1,
-      monsterMetadataId: null,
-      monsterMetadata: {
-        id: null,
-        name: 'Test Monster',
-        description: 'This is test monster',
-        minLevel: 1,
-        maxLevel: 2,
-        monsterInstances: [],
-        updatedAt: new Date(),
-        createdAt: new Date(),
-      },
-      latLng: null,
-      updatedAt: new Date(),
-      createdAt: new Date(),
-    };
-    const spawnArea: SpawnAreaEntity = {
-      id: spawnAreaId,
-      name: 'Test Spawn Area',
-      coords: null,
-      monsterInstances: [monsterInstance],
-      mapFragment: null,
-      updatedAt: new Date(),
-      createdAt: new Date(),
-    };
+    const monsterInstance = generateMonsterInstance();
+    const spawnArea = generateSpawnArea();
+    spawnArea.monsterInstances = [monsterInstance];
+
     when(
-      spawnAreaEntityRepositoryMock.findOne(spawnAreaId, anything()),
+      spawnAreaEntityRepositoryMock.findOne(spawnArea.id, anything()),
     ).thenResolve(spawnArea);
     when(spawnAreaEntityRepositoryMock.save(anything())).thenCall(args => args);
 
     socketClient.on('connect', () => {
-      const request = { spawnAreaId };
+      const request = { spawnAreaId: spawnArea.id };
       socketClient.emit('spawn-area-monsters', request);
 
       socketClient.on('spawn-area-monsters', (response: Monster[]) => {

@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { RegisterRequest } from '../../..//api/user.api';
 import { UserEntity } from '../../src/models/db/user.entity';
 import { UsersModule } from '../../src/users/users.module';
-import { hash } from '../../src/utils/bcrypt';
+import { generateUser } from '../utils/generators';
 
 describe('UsersController (e2e)', () => {
   let app;
@@ -16,15 +16,8 @@ describe('UsersController (e2e)', () => {
 
   beforeEach(async () => {
     plainPassword = 'test_pass';
-    user = {
-      id: 'test-id',
-      username: 'test-user',
-      password: await hash(plainPassword),
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      hashPassword: null,
-      level: 1,
-    };
+    user = await generateUser(plainPassword);
+
     userRepositoryMock = mock(Repository);
 
     when(
