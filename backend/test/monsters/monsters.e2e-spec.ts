@@ -85,10 +85,13 @@ describe('MonstersGateway (e2e)', () => {
     });
   });
 
-  it('returns spawn area', done => {
-    const monsterInstance = generateMonsterInstance();
+  it('returns spawn area monsters without generation', done => {
+    const monsterInstances = [
+      generateMonsterInstance(),
+      generateMonsterInstance(),
+    ];
     const spawnArea = generateSpawnArea();
-    spawnArea.monsterInstances = [monsterInstance];
+    spawnArea.monsterInstances = monsterInstances;
 
     when(
       spawnAreaEntityRepositoryMock.findOne(spawnArea.id, anything()),
@@ -100,14 +103,10 @@ describe('MonstersGateway (e2e)', () => {
       socketClient.emit('spawn-area-monsters', request);
 
       socketClient.on('spawn-area-monsters', (response: Monster[]) => {
-        expect(response).toEqual([
-          {
-            id: monsterInstance.id,
-            name: monsterInstance.monsterMetadata.name,
-            description: monsterInstance.monsterMetadata.description,
-            level: monsterInstance.level,
-          },
-        ]);
+        expect(response.length).toEqual(2);
+        const ids = response.map(m => m.id);
+        expect(ids).toContain(monsterInstances[0].id);
+        expect(ids).toContain(monsterInstances[1].id);
         done();
       });
     });
