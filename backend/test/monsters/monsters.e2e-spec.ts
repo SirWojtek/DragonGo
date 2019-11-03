@@ -59,7 +59,7 @@ describe('MonstersGateway (e2e)', () => {
       .getHttpServer()
       .listen()
       .address();
-    const baseAddress = `http://[${address.address}]:${address.port}`;
+    const baseAddress = `http://localhost:${address.port}`;
     console.log(baseAddress);
     socketClient = io.connect(`${baseAddress}/monsters`, {
       extraHeaders: {
