@@ -65,6 +65,8 @@ describe('MonstersGateway (e2e)', () => {
         Authorization: JSON.stringify(user),
       },
     } as SocketIOClient.ConnectOpts);
+
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
   });
 
   afterAll(async () => {
