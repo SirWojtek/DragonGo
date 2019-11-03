@@ -65,8 +65,6 @@ describe('MonstersGateway (e2e)', () => {
         Authorization: JSON.stringify(user),
       },
     } as SocketIOClient.ConnectOpts);
-
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
   });
 
   afterAll(async () => {
@@ -80,9 +78,11 @@ describe('MonstersGateway (e2e)', () => {
     socketClient.on('connect', () => {
       const request = { spawnAreaId };
       socketClient.emit('spawn-area-monsters', request);
+      console.log('emit');
     });
     socketClient.on('exception', error => {
       expect(error.message).toContain('find spawn area');
+      console.log('exception');
       done();
     });
   });
