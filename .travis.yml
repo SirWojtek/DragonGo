@@ -1,4 +1,4 @@
-dist: trusty
+dist: xenial
 language: node_js
 node_js:
   - lts/*
@@ -9,4 +9,4 @@ install:
 script:
   - yarn lint
   - yarn build
-  # - yarn test
+  - yarn test
