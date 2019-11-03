@@ -69,6 +69,7 @@ describe('MonstersGateway (e2e)', () => {
 
   afterEach(async () => {
     await app.close();
+    socketClient.close();
   });
 
   it('throws if there is no spawn area with given id', done => {
