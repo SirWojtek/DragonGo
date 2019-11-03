@@ -11,5 +11,10 @@
     "no-empty": false,
     "array-type": [true, "array"],
     "jsx-no-lambda": false
+  },
+  "linterOptions": {
+    "exclude": [
+      "./src/app/utils/RecursivePartial.ts"
+    ]
   }
 }
