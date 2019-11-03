@@ -41,54 +41,58 @@ describe('UsersController (e2e)', () => {
     await app.close();
   });
 
-  it('returns 401 on for not existing username', async () => {
+  it('returns 401 on for not existing username', done => {
     const loginRequest = {
       username: 'not_existing',
       password: 'test',
     };
-    const loginResponse = await request(app.getHttpServer())
+    request(app.getHttpServer())
       .post('/users/login')
       .send(loginRequest)
       .set('Accept', 'application/json')
-      .expect(401);
+      .expect(401)
+      .end(done);
   });
 
-  it('returns 401 on for not wrong password', async () => {
+  it('returns 401 on for not wrong password', done => {
     const loginRequest = {
       username: user.username,
       password: 'wrong-password',
     };
-    const loginResponse = await request(app.getHttpServer())
+    request(app.getHttpServer())
       .post('/users/login')
       .send(loginRequest)
       .set('Accept', 'application/json')
-      .expect(401);
+      .expect(401)
+      .end(done);
   });
 
-  it('registers not existing user', async () => {
+  it('registers not existing user', done => {
     const registerRequest: RegisterRequest = {
       username: 'not-existing-user',
       password: 'test',
     };
 
-    const registerResponse = await request(app.getHttpServer())
+    request(app.getHttpServer())
       .post('/users/register')
       .send(registerRequest)
       .set('Accept', 'application/json')
-      .expect(201);
-    expect(registerResponse.body).toBeTruthy();
+      .expect(201)
+      .expect(res => expect(res.body).toBeTruthy())
+      .end(done);
   });
 
-  it('logins registered user', async () => {
+  it('logins registered user', done => {
     const loginRequest = {
       username: user.username,
       password: plainPassword,
     };
-    const loginResponse = await request(app.getHttpServer())
+    request(app.getHttpServer())
       .post('/users/login')
       .send(loginRequest)
       .set('Accept', 'application/json')
-      .expect(201);
-    expect(loginResponse).toBeTruthy();
+      .expect(201)
+      .expect(res => expect(res.body).toBeTruthy())
+      .end(done);
   });
 });

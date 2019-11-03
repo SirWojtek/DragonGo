@@ -83,7 +83,7 @@ describe('SpawnAreasController (e2e)', () => {
     await app.close();
   });
 
-  it('returns spawn areas for existing map fragment', async () => {
+  it('returns spawn areas for existing map fragment', done => {
     when(mapFragmentRepositoryMock.query(anyString(), anything())).thenResolve([
       mapFragment.id,
     ]);
@@ -92,22 +92,24 @@ describe('SpawnAreasController (e2e)', () => {
     ]);
     when(spawnAreaRepositoryMock.find(anything())).thenResolve([spawnArea]);
 
-    const response = await request(app.getHttpServer())
+    request(app.getHttpServer())
       .post('/spawn-areas/get-spawn-areas')
       .send(req)
       .set('Accept', 'application/json')
-      .expect(201);
-
-    expect(response.body).toEqual([
-      {
-        id: spawnArea.id,
-        name: spawnArea.name,
-        rect: toRect(spawnArea.coords),
-      },
-    ]);
+      .expect(201)
+      .expect(response =>
+        expect(response.body).toEqual([
+          {
+            id: spawnArea.id,
+            name: spawnArea.name,
+            rect: toRect(spawnArea.coords),
+          },
+        ]),
+      )
+      .end(done);
   });
 
-  it('returns spawn areas for not existing map fragments', async () => {
+  it('returns spawn areas for not existing map fragments', done => {
     const place: IPlace = {
       name: 'Test Place',
       viewport: {
@@ -136,17 +138,19 @@ describe('SpawnAreasController (e2e)', () => {
     when(spawnAreaRepositoryMock.create(anything())).thenCall(res => res);
     when(spawnAreaRepositoryMock.save(anything())).thenCall(res => res);
 
-    const response = await request(app.getHttpServer())
+    request(app.getHttpServer())
       .post('/spawn-areas/get-spawn-areas')
       .send(req)
       .set('Accept', 'application/json')
-      .expect(201);
-
-    expect(response.body).toEqual([
-      {
-        name: place.name,
-        rect: place.viewport,
-      },
-    ]);
+      .expect(201)
+      .expect(response =>
+        expect(response.body).toEqual([
+          {
+            name: place.name,
+            rect: place.viewport,
+          },
+        ]),
+      )
+      .end(done);
   });
 });

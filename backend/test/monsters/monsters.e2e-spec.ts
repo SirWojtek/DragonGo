@@ -59,7 +59,7 @@ describe('MonstersGateway (e2e)', () => {
       .getHttpServer()
       .listen()
       .address();
-    const baseAddress = `http://[${address.address}]:${address.port}`;
+    const baseAddress = `http://localhost:${address.port}`;
     socketClient = io.connect(`${baseAddress}/monsters`, {
       extraHeaders: {
         Authorization: JSON.stringify(user),
@@ -67,8 +67,9 @@ describe('MonstersGateway (e2e)', () => {
     } as SocketIOClient.ConnectOpts);
   });
 
-  afterAll(async () => {
+  afterEach(async () => {
     await app.close();
+    socketClient.close();
   });
 
   it('throws if there is no spawn area with given id', done => {
