@@ -6,7 +6,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "tslint --project tsconfig.json --fix"
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "test": "echo 'No frontend test available'"
   },
   "dependencies": {
     "expo": "^33.0.0",

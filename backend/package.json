@@ -1,5 +1,5 @@
 {
-  "name": "DragonGo_backend",
+  "name": "dragon-go-backend",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -12,7 +12,7 @@
     "start:debug": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect-brk dist/backend/src/main.js\"",
     "start:prod": "NODE_ENV=prod node dist/backend/src/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
-    "test": "jest",
+    "test": "yarn test:e2e",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",

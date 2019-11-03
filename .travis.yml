@@ -1,0 +1,14 @@
+dist: trusty
+services:
+  - postgresql
+language: node_js
+node_js:
+  - 8
+  - node
+cache: yarn
+install:
+  - yarn && cd frontend && yarn && cd - && cd backend && yarn && cd -
+script:
+  - yarn lint
+  - yarn build
+  - yarn test

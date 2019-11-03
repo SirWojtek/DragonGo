@@ -6,7 +6,10 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "(cd backend && yarn start:dev) & (cd frontend && yarn start)"
+    "start": "(cd backend && yarn start:dev) & (cd frontend && yarn start)",
+    "lint": "cd backend && yarn lint && cd - && cd frontend && yarn lint",
+    "build": "cd backend && yarn build && cd - && cd frontend && yarn build",
+    "test": "cd backend && yarn test && cd - && cd frontend && yarn test"
   },
   "lint-staged": {
     "*.tsx": [
