@@ -60,6 +60,7 @@ describe('MonstersGateway (e2e)', () => {
       .listen()
       .address();
     const baseAddress = `http://[${address.address}]:${address.port}`;
+    console.log(baseAddress);
     socketClient = io.connect(`${baseAddress}/monsters`, {
       extraHeaders: {
         Authorization: JSON.stringify(user),
@@ -78,11 +79,9 @@ describe('MonstersGateway (e2e)', () => {
     socketClient.on('connect', () => {
       const request = { spawnAreaId };
       socketClient.emit('spawn-area-monsters', request);
-      console.log('emit');
     });
     socketClient.on('exception', error => {
       expect(error.message).toContain('find spawn area');
-      console.log('exception');
       done();
     });
   });
