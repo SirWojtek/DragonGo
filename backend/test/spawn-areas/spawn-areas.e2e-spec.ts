@@ -79,7 +79,7 @@ describe('SpawnAreasController (e2e)', () => {
     await app.init();
   });
 
-  afterEach(async () => {
+  afterAll(async () => {
     await app.close();
   });
 
@@ -106,7 +106,7 @@ describe('SpawnAreasController (e2e)', () => {
           },
         ]),
       )
-      .end(() => done());
+      .end(done);
   });
 
   it('returns spawn areas for not existing map fragments', done => {
@@ -151,6 +151,6 @@ describe('SpawnAreasController (e2e)', () => {
           },
         ]),
       )
-      .end(() => done());
+      .end(done);
   });
 });

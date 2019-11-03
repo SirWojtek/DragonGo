@@ -37,7 +37,7 @@ describe('UsersController (e2e)', () => {
     await app.init();
   });
 
-  afterEach(async () => {
+  afterAll(async () => {
     await app.close();
   });
 
@@ -51,7 +51,7 @@ describe('UsersController (e2e)', () => {
       .send(loginRequest)
       .set('Accept', 'application/json')
       .expect(401)
-      .end(() => done());
+      .end(done);
   });
 
   it('returns 401 on for not wrong password', done => {
@@ -64,7 +64,7 @@ describe('UsersController (e2e)', () => {
       .send(loginRequest)
       .set('Accept', 'application/json')
       .expect(401)
-      .end(() => done());
+      .end(done);
   });
 
   it('registers not existing user', done => {
@@ -79,7 +79,7 @@ describe('UsersController (e2e)', () => {
       .set('Accept', 'application/json')
       .expect(201)
       .expect(res => expect(res.body).toBeTruthy())
-      .end(() => done());
+      .end(done);
   });
 
   it('logins registered user', done => {
@@ -93,6 +93,6 @@ describe('UsersController (e2e)', () => {
       .set('Accept', 'application/json')
       .expect(201)
       .expect(res => expect(res.body).toBeTruthy())
-      .end(() => done());
+      .end(done);
   });
 });
