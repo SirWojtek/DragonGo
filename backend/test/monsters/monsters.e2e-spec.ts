@@ -11,6 +11,8 @@ import { UserEntity } from '../../src/models/db/user.entity';
 import { MonstersModule } from '../../src/monsters/monsters.module';
 import {
   generateMonsterInstance,
+  generateMonsterMetadata,
+  generateRect,
   generateSpawnArea,
   generateUser,
 } from '../utils/generators';
@@ -108,6 +110,42 @@ describe('MonstersGateway (e2e)', () => {
         const ids = response.map(m => m.id);
         expect(ids).toContain(monsterInstances[0].id);
         expect(ids).toContain(monsterInstances[1].id);
+        done();
+      });
+    });
+
+    socketClient.on('exception', error => {
+      done.fail(error);
+    });
+  });
+
+  it('returns spawn area monsters with generation', done => {
+    const monsterInstances = [generateMonsterInstance()];
+    const monstersMetadata = [
+      generateMonsterMetadata(),
+      generateMonsterMetadata(),
+    ];
+    const spawnArea = generateSpawnArea(generateRect());
+    spawnArea.monsterInstances = monsterInstances;
+
+    when(
+      spawnAreaEntityRepositoryMock.findOne(spawnArea.id, anything()),
+    ).thenResolve(spawnArea);
+    when(monsterMetadataRepositoryMock.find(anything())).thenResolve(
+      monstersMetadata,
+    );
+    when(monsterInstanceRepositoryMock.create(anything())).thenCall(
+      args => args,
+    );
+    when(monsterInstanceRepositoryMock.save(anything())).thenCall(args => args);
+    when(spawnAreaEntityRepositoryMock.save(anything())).thenCall(args => args);
+
+    socketClient.on('connect', () => {
+      const request = { spawnAreaId: spawnArea.id };
+      socketClient.emit('spawn-area-monsters', request);
+
+      socketClient.on('spawn-area-monsters', (response: Monster[]) => {
+        expect(response.length).toBeGreaterThanOrEqual(2);
         done();
       });
     });

@@ -1,7 +1,7 @@
 import { Point } from 'geojson';
 import { random } from 'lodash';
 import { v4 } from 'uuid';
-import { Rect } from '../../../api/spawn-areas.api';
+import { LatLng, Rect } from '../../../api/spawn-areas.api';
 import { MapFragmentEntity } from '../../src/models/db/map-fragment.entity';
 import { MonsterInstanceEntity } from '../../src/models/db/monster-instance.entity';
 import { MonsterMetadataEntity } from '../../src/models/db/monster-metadata.entity';
@@ -71,8 +71,19 @@ export function generateMonsterInstance(): MonsterInstanceEntity {
 }
 
 export function generatePoint(): Point {
-  return toPoint({
+  return toPoint(generateLatLng());
+}
+
+export function generateLatLng(): LatLng {
+  return {
     lat: random(-180, 180, true),
     lng: random(-90, 90, true),
-  });
+  };
+}
+
+export function generateRect(): Rect {
+  return {
+    northeast: generateLatLng(),
+    southwest: generateLatLng(),
+  };
 }

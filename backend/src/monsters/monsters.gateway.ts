@@ -4,8 +4,8 @@ import {
   WebSocketGateway,
   WsResponse,
 } from '@nestjs/websockets';
-import { from, Observable, throwError } from 'rxjs';
-import { catchError, flatMap, map, tap } from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
+import { flatMap, map } from 'rxjs/operators';
 import { Socket } from 'socket.io';
 import { GetSpawnAreaMonsters, Monster } from '../../../api/monsters.api';
 import { HttpToWsExceptionFilter } from '../filters/HttpToWsExceptionFilter';
