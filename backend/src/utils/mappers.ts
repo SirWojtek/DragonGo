@@ -7,8 +7,8 @@ import { toLatLng, toRect } from './geojson';
 export function toMonster(entity: MonsterInstanceEntity): Monster {
   return {
     id: entity.id,
-    name: entity.monsterMetadata.name,
-    description: entity.monsterMetadata.description,
+    name: entity.monsterMetadata && entity.monsterMetadata.name,
+    description: entity.monsterMetadata && entity.monsterMetadata.description,
     level: entity.level,
     location: toLatLng(entity.latLng),
   };
