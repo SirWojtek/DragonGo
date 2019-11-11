@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"1"},"creationTimestamp":"2019-11-09T08:52:26Z","generation":1,"labels":{"app":"dragon-go"},"name":"dragon-go","namespace":"dragon-go","resourceVersion":"10453611","selfLink":"/apis/apps/v1/namespaces/dragon-go/deployments/dragon-go","uid":"9510a654-b35e-4cc2-addf-eec255229e7c"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app":"dragon-go"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"dragon-go"}},"spec":{"containers":[{"image":"sirwojtek/dragon-go:latest","imagePullPolicy":"Always","name":"dragon-go","resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30}}},"status":{"conditions":[{"lastTransitionTime":"2019-11-09T08:52:29Z","lastUpdateTime":"2019-11-09T08:52:29Z","message":"Deployment does not have minimum availability.","reason":"MinimumReplicasUnavailable","status":"False","type":"Available"},{"lastTransitionTime":"2019-11-09T08:52:27Z","lastUpdateTime":"2019-11-09T08:52:29Z","message":"ReplicaSet \"dragon-go-c9f8cf645\" is progressing.","reason":"ReplicaSetUpdated","status":"True","type":"Progressing"}],"observedGeneration":1,"replicas":1,"unavailableReplicas":1,"updatedReplicas":1}}
+  creationTimestamp: "2019-11-09T17:55:17Z"
+  generation: 1
+  labels:
+    app: dragon-go
+  name: dragon-go
+  namespace: dragon-go
+  resourceVersion: "205838"
+  selfLink: /apis/apps/v1/namespaces/dragon-go/deployments/dragon-go
+  uid: 36c5ef3e-c002-4445-8e08-8109f9fc79bf
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: dragon-go
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dragon-go
+    spec:
+      containers:
+      - image: sirwojtek/dragon-go:latest
+        imagePullPolicy: Always
+        name: dragon-go
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        env:
+          - name: TYPEORM_CONNECTION
+            value: postgres
+          - name: TYPEORM_HOST
+            value: "${POSTGRES_SERVICE_HOST}"
+          - name: TYPEORM_USERNAME
+            value: "postgres"
+          - name: TYPEORM_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: postgres-secret
+          - name: TYPEORM_DATABASE
+            value: "dragon-go"
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  conditions:
+  - lastTransitionTime: "2019-11-09T17:55:17Z"
+    lastUpdateTime: "2019-11-09T17:56:12Z"
+    message: ReplicaSet "dragon-go-c9f8cf645" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2019-11-11T07:55:33Z"
+    lastUpdateTime: "2019-11-11T07:55:33Z"
+    message: Deployment does not have minimum availability.
+    reason: MinimumReplicasUnavailable
+    status: "False"
+    type: Available
+  observedGeneration: 1
+  replicas: 1
+  unavailableReplicas: 1
+  updatedReplicas: 1
