@@ -9,5 +9,4 @@ spec:
   ports:
     - port: 5432
   selector:
-    app: dragon-go
-    tier: postgres
+    app: postgres
