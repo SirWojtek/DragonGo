@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: dragon-go
+spec:
+  rules:
+  - host: dragon-go.d20md.com
+    http:
+      paths:
+      - backend:
+          serviceName: dragon-go
+          servicePort: 3000
