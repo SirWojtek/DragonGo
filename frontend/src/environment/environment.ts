@@ -19,9 +19,9 @@ const envs: { [name: string]: IEnvironment } = {
 };
 
 export function getEnv(): IEnvironment {
-  if (!__DEV__ || process.env.NODE_ENV === 'remote') {
-    return envs.prod;
-  } else {
+  if (__DEV__) {
     return envs.local;
+  } else {
+    return envs.prod;
   }
 }
