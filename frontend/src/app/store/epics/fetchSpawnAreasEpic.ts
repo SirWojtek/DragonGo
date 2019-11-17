@@ -22,7 +22,7 @@ const fetchSpawnAreasEpic: Epic<Action, Action, IStoreState> = (
       return SpawnAreaService.getSpawnAreas(a.payload, accessToken);
     }),
     map(areas =>
-      areas.map(a => ({
+      (areas || []).map(a => ({
         id: a.id,
         name: a.name,
         viewport: a.rect,

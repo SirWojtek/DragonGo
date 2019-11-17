@@ -8,7 +8,7 @@ const SpawnAreaService = {
   getSpawnAreas(
     loc: ILocation | undefined,
     accessToken: string
-  ): Observable<SpawnArea[]> {
+  ): Observable<SpawnArea[] | undefined> {
     if (!loc || !loc.lat || !loc.lng) {
       return of([]);
     }
