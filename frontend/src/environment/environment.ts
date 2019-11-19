@@ -14,7 +14,7 @@ const envs: { [name: string]: IEnvironment } = {
   },
   prod: {
     IS_PRODUCTION: true,
-    API_HOST: 'http://dragon-go.d20md.com'
+    API_HOST: 'https://dragon-go.d20md.com'
   }
 };
 
