@@ -26,8 +26,8 @@ class PlayerMarker extends React.Component<IProps> {
             longitude: this.props.coordinate.lng
           }}
           radius={this.props.range}
-          strokeWidth={3}
-          strokeColor={'rgba(0, 0, 150, 0.5)'}
+          strokeWidth={2}
+          strokeColor={'rgba(0, 0, 150, 0.3)'}
         />
       </View>
     );

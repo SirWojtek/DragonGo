@@ -1,6 +1,6 @@
-import React, { BaseSyntheticEvent } from 'react';
+import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { LatLng, MapEvent, Marker } from 'react-native-maps';
+import { LatLng, Marker } from 'react-native-maps';
 import { IMonster } from '../../../store/types/IMonster';
 
 interface IProps {

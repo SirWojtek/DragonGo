@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { Avatar, Button, Card, Paragraph, Title } from 'react-native-paper';
-import { defaultIfEmpty } from 'rxjs/operators';
+import { Avatar, Button, Card, Paragraph } from 'react-native-paper';
 import { IMonster } from '../../store/types/IMonster';
 
 interface IProps {
@@ -19,11 +18,10 @@ class MonsterInfo extends React.Component<IProps> {
     return (
       <Card>
         <Card.Title
-          title="Monster Information"
+          title={this.props.monster.name}
           left={props => <Avatar.Icon {...props} icon="info" />}
         />
         <Card.Content>
-          <Title>{this.props.monster.name}</Title>
           <Paragraph>Monster level: {this.props.monster.level}</Paragraph>
         </Card.Content>
         <Card.Actions style={actionsStyle}>
