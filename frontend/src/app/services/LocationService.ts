@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 const LOCATION_OPTIONS: LocationOptions = {
   accuracy: Accuracy.High,
   timeInterval: 5000,
-  distanceInterval: 100,
+  distanceInterval: 10,
   mayShowUserSettingsDialog: true
 };
 
