@@ -73,8 +73,8 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
       <View key={'area-' + i}>
         <Polygon
           coordinates={area.coordinates}
-          strokeWidth={3}
-          fillColor={'rgba(0, 255, 0, 0.3)'}
+          strokeWidth={0}
+          fillColor={'rgba(0, 255, 0, 0.1)'}
         />
         {area.monsters.map((monster, j) => (
           <MonsterMarker
