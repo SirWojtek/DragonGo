@@ -1,7 +1,9 @@
+import Constants from 'expo-constants';
 import React from 'react';
 import { Snackbar } from 'react-native-paper';
 import { connect } from 'react-redux';
 
+import { StyleProp, ViewStyle } from 'react-native';
 import snackbarSlice, {
   ISnackbarStore
 } from '../../store/slices/snackbarSlice';
@@ -25,6 +27,7 @@ class SnackbarContainer extends React.Component<IProps> {
   public render() {
     return (
       <Snackbar
+        style={snackbarStyles}
         visible={this.props.visible}
         duration={this.props.duration}
         action={this.props.action}
@@ -35,5 +38,9 @@ class SnackbarContainer extends React.Component<IProps> {
     );
   }
 }
+
+const snackbarStyles: StyleProp<ViewStyle> = {
+  marginBottom: 64
+};
 
 export default connect(mapStateToProps)(SnackbarContainer);
