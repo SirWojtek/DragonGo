@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { computeDestinationPoint, getCenter } from 'geolib';
+import { computeDestinationPoint, getCenter, getDistance } from 'geolib';
 import { Repository } from 'typeorm';
 import { LatLng, Rect } from '../../../api/spawn-areas.api';
 import { MapFragmentEntity } from '../models/db/map-fragment.entity';
@@ -8,7 +8,7 @@ import { MonsterInstanceEntity } from '../models/db/monster-instance.entity';
 import { SpawnAreaEntity } from '../models/db/spawn-area.entity';
 import { ConfigKeyEnum, ConfigService } from '../services/config.service';
 import { GoogleMapsService, IPlace } from '../services/google-maps.service';
-import { toPolygon } from '../utils/geojson';
+import { toPolygon, toRect } from '../utils/geojson';
 
 const getMapFragmentsForRegionQuery = `
 select with_union.id
@@ -49,14 +49,22 @@ export class SpawnAreasService {
     const northeast = computeDestinationPoint(location, radius, 45);
     const southwest = computeDestinationPoint(location, radius, 225);
 
-    return this.findSpawnAreasForRegion({
+    const matchingSpawnAres = await this.findSpawnAreasForRegion({
       northeast: { lat: northeast.latitude, lng: northeast.longitude },
       southwest: { lat: southwest.latitude, lng: southwest.longitude },
     });
+
+    return matchingSpawnAres
+      .sort((s1, s2) => this.compareByDistance(s1, s2, location))
+      .slice(0, this.configService.get(
+        ConfigKeyEnum.SPAWN_AREAS_MAX_AREAS,
+      ) as number);
   }
 
   async getSpawnAreaWithMonsters(id: string): Promise<SpawnAreaEntity | null> {
-    return this.spawnAreaRepository.findOne(id, { relations: [ 'monsterInstances' ] });
+    return this.spawnAreaRepository.findOne(id, {
+      relations: ['monsterInstances'],
+    });
   }
 
   async setMonsters(
@@ -136,5 +144,29 @@ export class SpawnAreasService {
         }),
       ),
     );
+  }
+
+  private compareByDistance(
+    s1: SpawnAreaEntity,
+    s2: SpawnAreaEntity,
+    location: LatLng,
+  ): number {
+    const s1Rect = toRect(s1.coords);
+    const s2Rect = toRect(s2.coords);
+
+    const s1Center = getCenter([s1Rect.southwest, s1Rect.northeast]);
+    const s2Center = getCenter([s2Rect.southwest, s2Rect.northeast]);
+
+    if (!s1Center || !s2Center) {
+      this.logger.warn(
+        `Cannot compute center of spawn areas with id: ${s1.id} ${s2.id}`,
+      );
+      return 0;
+    }
+
+    const s1Distance = getDistance(s1Center, location);
+    const s2Distance = getDistance(s2Center, location);
+
+    return s1Distance - s2Distance;
   }
 }
