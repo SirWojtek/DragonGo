@@ -25,8 +25,6 @@ describe('SpawnAreasController (e2e)', () => {
   let googleMapsServiceMock: GoogleMapsService;
 
   let req: GetSpawnAreas;
-  let spawnArea: SpawnAreaEntity;
-  let mapFragment: MapFragmentEntity;
 
   beforeEach(() => {
     req = {
@@ -35,27 +33,6 @@ describe('SpawnAreasController (e2e)', () => {
         lng: 60,
       },
     };
-    spawnArea = generateSpawnArea({
-      northeast: {
-        lat: 55,
-        lng: 55,
-      },
-      southwest: {
-        lat: 53,
-        lng: 53,
-      },
-    });
-
-    mapFragment = generateMapFragment({
-      northeast: {
-        lat: 70,
-        lng: 70,
-      },
-      southwest: {
-        lat: 50,
-        lng: 50,
-      },
-    });
   });
 
   beforeEach(async () => {
@@ -83,14 +60,59 @@ describe('SpawnAreasController (e2e)', () => {
     await app.close();
   });
 
-  it('returns spawn areas for existing map fragment', done => {
+  it('returns closest spawn areas for existing map fragment', done => {
+    const spawnArea1 = generateSpawnArea({
+      northeast: {
+        lat: 55,
+        lng: 55,
+      },
+      southwest: {
+        lat: 53,
+        lng: 53,
+      },
+    });
+    const spawnArea2 = generateSpawnArea({
+      northeast: {
+        lat: 60,
+        lng: 60,
+      },
+      southwest: {
+        lat: 65,
+        lng: 65,
+      },
+    });
+    const spawnArea3 = generateSpawnArea({
+      northeast: {
+        lat: 50,
+        lng: 50,
+      },
+      southwest: {
+        lat: 51,
+        lng: 51,
+      },
+    });
+    const mapFragment = generateMapFragment({
+      northeast: {
+        lat: 70,
+        lng: 70,
+      },
+      southwest: {
+        lat: 50,
+        lng: 50,
+      },
+    });
+
     when(mapFragmentRepositoryMock.query(anyString(), anything())).thenResolve([
       mapFragment.id,
     ]);
     when(mapFragmentRepositoryMock.findByIds(anything())).thenResolve([
       mapFragment,
     ]);
-    when(spawnAreaRepositoryMock.find(anything())).thenResolve([spawnArea]);
+    when(spawnAreaRepositoryMock.find(anything())).thenResolve([
+      spawnArea1,
+      spawnArea2,
+      spawnArea3,
+    ]);
 
     request(app.getHttpServer())
       .post('/spawn-areas/get-spawn-areas')
@@ -100,9 +122,14 @@ describe('SpawnAreasController (e2e)', () => {
       .expect(response =>
         expect(response.body).toEqual([
           {
-            id: spawnArea.id,
-            name: spawnArea.name,
-            rect: toRect(spawnArea.coords),
+            id: spawnArea2.id,
+            name: spawnArea2.name,
+            rect: toRect(spawnArea2.coords),
+          },
+          {
+            id: spawnArea1.id,
+            name: spawnArea1.name,
+            rect: toRect(spawnArea1.coords),
           },
         ]),
       )
