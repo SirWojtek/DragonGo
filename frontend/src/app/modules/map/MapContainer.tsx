@@ -17,10 +17,13 @@ interface IState {
   previousPosition?: Point;
   previousTimestamp: number;
   heading: number;
+  zoom: number;
 }
 
 const PAN_EVENT_TIMESTAMP_MAX_DELTA = 100;
 const PANNING_SPEED = 0.1;
+const ZOOM_OUT = 16;
+const ZOOM_IN = 20;
 
 function mapStateToProps(state: IStoreState): IProps {
   return {
@@ -34,6 +37,7 @@ class MapContainer extends React.Component<IProps, IState> {
 
     this.state = {
       heading: 0,
+      zoom: ZOOM_OUT,
       previousTimestamp: 0
     };
   }
@@ -47,8 +51,8 @@ class MapContainer extends React.Component<IProps, IState> {
       <MapView
         style={{ flex: 1 }}
         customMapStyle={mapStyle}
-        minZoomLevel={16}
-        maxZoomLevel={16}
+        minZoomLevel={this.state.zoom}
+        maxZoomLevel={this.state.zoom}
         scrollEnabled={false}
         pitchEnabled={false}
         zoomEnabled={false}
@@ -63,11 +67,12 @@ class MapContainer extends React.Component<IProps, IState> {
           pitch: 45,
           heading: this.state.heading,
           altitude: 1000,
-          zoom: 16
+          zoom: this.state.zoom
         }}
         onPanDrag={event =>
           this.onPanDrag(event.nativeEvent.position, event.timeStamp)
         }
+        onDoublePress={() => this.onDoublePress()}
       >
         <PlayerMarker
           coordinate={this.props.user.location}
@@ -99,6 +104,11 @@ class MapContainer extends React.Component<IProps, IState> {
       previousPosition: position,
       previousTimestamp: timestamp
     });
+  }
+
+  private onDoublePress() {
+    const zoom = this.state.zoom === ZOOM_OUT ? ZOOM_IN : ZOOM_OUT;
+    this.setState({ zoom });
   }
 }
 
