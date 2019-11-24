@@ -1,4 +1,4 @@
-import { Constants } from 'expo-contants';
+import Constants from 'expo-constants';
 import React from 'react';
 import { Snackbar } from 'react-native-paper';
 import { connect } from 'react-redux';
@@ -40,9 +40,7 @@ class SnackbarContainer extends React.Component<IProps> {
 }
 
 const snackbarStyles: StyleProp<ViewStyle> = {
-  position: 'absolute',
-  top: Constants.statusBarHeight,
-  left: 0
+  marginBottom: 64
 };
 
 export default connect(mapStateToProps)(SnackbarContainer);
