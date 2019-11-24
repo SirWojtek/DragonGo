@@ -1,4 +1,3 @@
-import { merge } from 'lodash';
 import { createSlice, PayloadAction } from 'redux-starter-kit';
 import { ISpawnArea } from '../types/ISpawnArea';
 
@@ -8,9 +7,7 @@ const spawnAreasSlice = createSlice({
   slice: 'spawnAreas',
   initialState: [] as ISpawnArea[],
   reducers: {
-    setSpawnAreas: (state, action: SetSpawnAreasAction) => {
-      merge(state, action.payload);
-    }
+    setSpawnAreas: (_, action: SetSpawnAreasAction) => action.payload
   }
 });
 
