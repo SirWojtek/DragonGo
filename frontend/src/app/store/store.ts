@@ -1,4 +1,5 @@
 import { applyMiddleware, combineReducers, createStore, Store } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import fetchMonstersEpic from './epics/fetchMonstersEpic';
 import fetchSpawnAreasEpic from './epics/fetchSpawnAreasEpic';
@@ -49,10 +50,9 @@ const epics = combineEpics(
 
 const epicMiddleware = createEpicMiddleware();
 
-const store: Store<IStoreState> = createStore(
-  reducers,
-  applyMiddleware(epicMiddleware)
-);
+const enhancer = composeWithDevTools({})(applyMiddleware(epicMiddleware));
+
+const store: Store<IStoreState> = createStore(reducers, enhancer);
 
 epicMiddleware.run(epics);
 

@@ -29,6 +29,7 @@
     "react-navigation-material-bottom-tabs": "^1.0.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
     "redux-observable": "^1.1.0",
     "redux-starter-kit": "^0.5.1",
     "rxjs": "^6.5.2",
