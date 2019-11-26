@@ -1,3 +1,4 @@
+import { uniqBy } from 'lodash';
 import { createSlice, PayloadAction } from 'redux-starter-kit';
 import { IMonster } from '../types/IMonster';
 
@@ -10,10 +11,8 @@ const monstersSlice = createSlice({
   slice: 'monstersSlice',
   initialState: [] as IMonster[],
   reducers: {
-    updateMonsters: (state, action: UpdateMonstersAction) => [
-      ...state,
-      ...action.payload
-    ],
+    updateMonsters: (state, action: UpdateMonstersAction) =>
+      uniqBy([...state, ...action.payload], 'id'),
     // NOTE: fetch logic in epic
     fetchMonsters: (state, _: FetchMonstersAction) => state
   }
