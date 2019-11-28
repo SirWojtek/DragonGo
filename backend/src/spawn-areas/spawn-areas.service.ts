@@ -46,6 +46,7 @@ export class SpawnAreasService {
     const radius = this.configService.get(
       ConfigKeyEnum.SPAWN_AREAS_LOCATION_RADIUS,
     ) as number;
+    this.logger.debug('findSpawnAreasForLocation: ' + JSON.stringify(location));
     const northeast = computeDestinationPoint(location, radius, 45);
     const southwest = computeDestinationPoint(location, radius, 225);
 
@@ -78,6 +79,7 @@ export class SpawnAreasService {
   private async findSpawnAreasForRegion(
     region: Rect,
   ): Promise<SpawnAreaEntity[]> {
+    this.logger.debug('findSpawnAreasForRegion: ' + JSON.stringify(region));
     const mapFragments: MapFragmentEntity[] = await this.mapFragmentEntityRepository
       .query(getMapFragmentsForRegionQuery, [toPolygon(region)])
       .then((ids: string[]) => this.mapFragmentEntityRepository.findByIds(ids));
@@ -86,6 +88,7 @@ export class SpawnAreasService {
       this.logger.log('Could not find map fragment in DB, calling google maps');
       return this.fetchFragment(region);
     } else {
+      this.logger.log('Found map fragment for region');
       const fragmentIds = mapFragments.map(f => f.id);
       return this.spawnAreaRepository.find({
         where: { mapFragmentId: fragmentIds },
