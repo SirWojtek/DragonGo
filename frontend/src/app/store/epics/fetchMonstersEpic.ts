@@ -16,7 +16,7 @@ const fetchMonstersEpic: Epic<Action, Action, IStoreState> = (action, state) =>
   action.pipe(
     ofType<Action, SetSpawnAreasAction>(SET_SPAWN_AREAS),
     map(a => a.payload),
-    mergeMap(spawnAreas => {
+    mergeMap(({ spawnAreas }) => {
       const accessToken = state.value.user.credentials.accessToken;
       if (!accessToken) {
         return throwError({ message: 'Access token not present' });

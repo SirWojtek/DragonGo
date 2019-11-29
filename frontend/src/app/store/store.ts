@@ -17,14 +17,16 @@ import snackbarSlice, {
   ISnackbarStore,
   SnackbarActions
 } from './slices/snackbarSlice';
-import spawnAreasSlice, { SpawnAreaActions } from './slices/spawnAreasSlice';
+import spawnAreasSlice, {
+  ISpawnAreasStore,
+  SpawnAreaActions
+} from './slices/spawnAreasSlice';
 import userSlice, { UserActions } from './slices/userSlice';
-import { ISpawnArea } from './types/ISpawnArea';
 import { IUser } from './types/IUser';
 
 export interface IStoreState {
   user: IUser;
-  spawnAreas: ISpawnArea[];
+  spawnAreas: ISpawnAreasStore;
   monsters: IMonsterStore;
   snackbar: ISnackbarStore;
   modal: IModalStore;

@@ -1,4 +1,9 @@
 import { LatLng, Point } from 'react-native-maps';
+import { ILocation } from '../store/types/ILocation';
+
+export function locationDistance(c1: ILocation, c2: ILocation): number {
+  return pointDistance({ x: c1.lat, y: c1.lng }, { x: c2.lat, y: c2.lng });
+}
 
 export function latLngDistance(c1: LatLng, c2: LatLng): number {
   return pointDistance(

@@ -30,7 +30,7 @@ interface IState {
 
 function mapStateToProps(state: IStoreState): IProps {
   return {
-    spawnAreas: state.spawnAreas.map(area => ({
+    spawnAreas: state.spawnAreas.spawnAreas.map(area => ({
       coordinates: [
         {
           latitude: area.viewport.southwest.lat,
