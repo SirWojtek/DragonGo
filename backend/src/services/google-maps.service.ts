@@ -2,6 +2,7 @@ import {
   createClient,
   GoogleMapsClient,
   PlaceSearchResult,
+  PlacesNearbyRequest,
 } from '@google/maps';
 import { Injectable, Logger } from '@nestjs/common';
 import { LatLng, Rect } from '../../../api/spawn-areas.api';
@@ -44,7 +45,8 @@ export class GoogleMapsService {
       i < this.configService.get(ConfigKeyEnum.GOOGLE_MAPS_MAX_PAGES)
     ) {
       const page = await this.client
-        .placesNearby({ location, pagetoken })
+        // NOTE: cannot mix `location` and `pagetoken` together
+        .placesNearby({ pagetoken } as PlacesNearbyRequest)
         .asPromise();
 
       places.push(...this.convertToPlaces(page.json.results));
