@@ -14,8 +14,8 @@ const envs: { [name: string]: IEnvironment } = {
     IS_PRODUCTION: false,
     API_HOST: 'http://' + debuggerHost.split(`:`)[0].concat(`:3000`),
     INITIAL_LOCATION: {
-      latitude: 17.068423,
-      longitude: 51.301637
+      latitude: 51.301637,
+      longitude: 17.068423
     }
   },
   prod: {

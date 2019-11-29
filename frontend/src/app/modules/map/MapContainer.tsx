@@ -3,10 +3,12 @@ import { StyleProp, Text, View, ViewStyle } from 'react-native';
 import MapView, { Point } from 'react-native-maps';
 import { FAB } from 'react-native-paper';
 import { connect } from 'react-redux';
+import { getEnv } from '../../../environment/environment';
 import { IStoreState } from '../../store/store';
 import { IUser } from '../../store/types/IUser';
 import { pointDistance } from '../../utils/distance';
 import { mapStyle } from './data/mapStyle';
+import DevLocationButtons from './DevLocationButtons';
 import PlayerMarker from './markers/PlayerMarker';
 import SpawnAreasContainer from './SpawnAreasContainer';
 
@@ -20,6 +22,8 @@ interface IState {
   heading: number;
   zoom: number;
 }
+
+const env = getEnv();
 
 const PAN_EVENT_TIMESTAMP_MAX_DELTA = 100;
 const PANNING_SPEED = 0.1;
@@ -96,6 +100,7 @@ class MapContainer extends React.Component<IProps, IState> {
             onPress={() => this.onZoom(-1)}
           />
         </View>
+        {env.INITIAL_LOCATION && <DevLocationButtons />}
       </View>
     );
   }
