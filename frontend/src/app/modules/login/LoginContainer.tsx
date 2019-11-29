@@ -67,6 +67,7 @@ class LoginContainer extends React.Component<IProps, IState> {
                 label="Password"
                 value={this.state.password}
                 onChangeText={password => this.setState({ password })}
+                onSubmitEditing={() => this.onLogin()}
               />
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Checkbox
