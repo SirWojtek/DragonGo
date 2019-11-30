@@ -1,10 +1,10 @@
+import { getDistance } from 'geolib';
 import { Epic, ofType } from 'redux-observable';
 import { Action } from 'redux-starter-kit';
 import { throwError } from 'rxjs';
 import { filter, flatMap, map } from 'rxjs/operators';
 import { getEnv } from '../../../environment/environment';
 import SpawnAreaService from '../../services/SpawnAreaService';
-import { locationDistance } from '../../utils/distance';
 import spawnAreasSlice from '../slices/spawnAreasSlice';
 import { SET_LOCATION, SetLocationAction } from '../slices/userSlice';
 import { IStoreState } from '../store';
@@ -21,7 +21,7 @@ const fetchSpawnAreasEpic: Epic<Action, Action, IStoreState> = (
       const { lastFetchLocation } = state.value.spawnAreas;
       return (
         !lastFetchLocation ||
-        locationDistance(lastFetchLocation, a.payload) >
+        getDistance(lastFetchLocation, a.payload) >
           env.SPAWN_AREA_FETCH_DISTANCE
       );
     }),
