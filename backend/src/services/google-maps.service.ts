@@ -44,9 +44,11 @@ export class GoogleMapsService {
       pagetoken &&
       i < this.configService.get(ConfigKeyEnum.GOOGLE_MAPS_MAX_PAGES)
     ) {
+      // NOTE: cannot mix `location` and `pagetoken` together
+      const request = pagetoken ? { pagetoken } : { location };
+
       const page = await this.client
-        // NOTE: cannot mix `location` and `pagetoken` together
-        .placesNearby({ pagetoken } as PlacesNearbyRequest)
+        .placesNearby(request as PlacesNearbyRequest)
         .asPromise();
 
       places.push(...this.convertToPlaces(page.json.results));
