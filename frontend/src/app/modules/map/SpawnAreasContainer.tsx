@@ -93,7 +93,6 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
 
   public onMonsterMarkerPress(coords: LatLng, monster: IMonster) {
     if (
-      __DEV__ ||
       isPointWithinRadius(
         coords,
         this.props.user.location,
