@@ -15,8 +15,12 @@ const envs: { [name: string]: IEnvironment } = {
     IS_PRODUCTION: false,
     API_HOST: 'http://' + debuggerHost.split(`:`)[0].concat(`:3000`),
     INITIAL_LOCATION: {
-      latitude: 51.301637,
-      longitude: 17.068423
+      // scianka
+      latitude: 51.086437,
+      longitude: 17.051632
+      // dom
+      // latitude: 51.301637,
+      // longitude: 17.068423
     },
     SPAWN_AREA_FETCH_DISTANCE: 100
   },

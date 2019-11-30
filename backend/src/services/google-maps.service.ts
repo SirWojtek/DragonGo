@@ -23,6 +23,7 @@ export class GoogleMapsService {
   constructor(private configService: ConfigService) {
     this.client = createClient({
       key: this.configService.get(ConfigKeyEnum.GOOGLE_MAPS_API_KEY) as string,
+      rate: { limit: 50 },
       Promise,
     });
   }
@@ -45,11 +46,8 @@ export class GoogleMapsService {
       pagetoken &&
       i < this.configService.get(ConfigKeyEnum.GOOGLE_MAPS_MAX_PAGES)
     ) {
-      // NOTE: cannot mix `location` and `pagetoken` together
-      const request = pagetoken ? { pagetoken } : { location };
-
       const page = await this.client
-        .placesNearby(request as PlacesNearbyRequest)
+        .placesNearby({ pagetoken } as PlacesNearbyRequest)
         .asPromise();
 
       places.push(...this.convertToPlaces(page.json.results));
