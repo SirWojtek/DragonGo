@@ -9,6 +9,7 @@ import { LatLng, Rect } from '../../../api/spawn-areas.api';
 import { ConfigKeyEnum, ConfigService } from './config.service';
 
 export interface IPlace {
+  id: string;
   name: string;
   viewport: Rect;
 }
@@ -63,6 +64,7 @@ export class GoogleMapsService {
 
   private convertToPlaces(results: PlaceSearchResult[]): IPlace[] {
     return results.map(r => ({
+      id: r.place_id,
       name: r.name,
       viewport: r.geometry.viewport,
     }));

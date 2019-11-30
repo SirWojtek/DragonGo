@@ -11,7 +11,6 @@ import {
 } from 'typeorm';
 import { MapFragmentEntity } from './map-fragment.entity';
 import { MonsterInstanceEntity } from './monster-instance.entity';
-import { MonsterMetadataEntity } from './monster-metadata.entity';
 
 @Entity('spawn_area')
 export class SpawnAreaEntity {
@@ -20,6 +19,9 @@ export class SpawnAreaEntity {
 
   @Column()
   name: string;
+
+  @Column({ unique: true })
+  placeId: string;
 
   @Column('geometry', { spatialFeatureType: 'Polygon' })
   coords: Polygon;
