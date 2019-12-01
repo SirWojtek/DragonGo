@@ -5,6 +5,7 @@ import {
   PlacesNearbyRequest,
 } from '@google/maps';
 import { Injectable, Logger } from '@nestjs/common';
+import { msleep } from 'sleep';
 import { LatLng, Rect } from '../../../api/spawn-areas.api';
 import { ConfigKeyEnum, ConfigService } from './config.service';
 
@@ -46,6 +47,10 @@ export class GoogleMapsService {
       pagetoken &&
       i < this.configService.get(ConfigKeyEnum.GOOGLE_MAPS_MAX_PAGES)
     ) {
+      // NOTE: it takes some time until the pagetoken becomes valid (from docs)
+      // so we need to wait a bit.
+      msleep(1000);
+
       const page = await this.client
         .placesNearby({ pagetoken } as PlacesNearbyRequest)
         .asPromise();
