@@ -25,6 +25,12 @@ export function fetchPostWrapper<ResponseType>(
   const sanitazedUri = uri.startsWith('/') ? uri.substr(1) : uri;
 
   return from(fetch(`${env.API_HOST}/${sanitazedUri}`, opts)).pipe(
+    map(res => {
+      if (!res.ok) {
+        throw new Error(`Response code: ${res.status}`);
+      }
+      return res;
+    }),
     switchMap(res => res.json()),
     map(res => {
       if (res.error) {
