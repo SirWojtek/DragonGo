@@ -31,7 +31,7 @@ export class ConfigService {
   }
 
   get(key: ConfigKeyEnum): string | number | boolean {
-    const value = this.envConfig[key];
+    const value = process.env[key] || this.envConfig[key];
 
     if (!isNaN(+value)) {
       return +value;

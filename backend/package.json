@@ -42,6 +42,7 @@
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3",
+    "sleep": "^6.1.0",
     "typeorm": "^0.2.18"
   },
   "devDependencies": {
@@ -54,6 +55,7 @@
     "@types/jest": "24.0.11",
     "@types/lodash": "^4.14.136",
     "@types/node": "11.13.4",
+    "@types/sleep": "^0.0.7",
     "@types/socket.io": "^2.1.2",
     "@types/socket.io-client": "^1.4.32",
     "@types/supertest": "2.0.7",

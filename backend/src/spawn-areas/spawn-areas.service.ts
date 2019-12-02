@@ -9,6 +9,7 @@ import { SpawnAreaEntity } from '../models/db/spawn-area.entity';
 import { ConfigKeyEnum, ConfigService } from '../services/config.service';
 import { GoogleMapsService, IPlace } from '../services/google-maps.service';
 import { toPolygon, toRect } from '../utils/geojson';
+import { toSpawnAreaEntity } from '../utils/mappers';
 
 const getMapFragmentsForRegionQuery = `
 select with_union.id
@@ -46,6 +47,7 @@ export class SpawnAreasService {
     const radius = this.configService.get(
       ConfigKeyEnum.SPAWN_AREAS_LOCATION_RADIUS,
     ) as number;
+    this.logger.debug('findSpawnAreasForLocation: ' + JSON.stringify(location));
     const northeast = computeDestinationPoint(location, radius, 45);
     const southwest = computeDestinationPoint(location, radius, 225);
 
@@ -78,6 +80,7 @@ export class SpawnAreasService {
   private async findSpawnAreasForRegion(
     region: Rect,
   ): Promise<SpawnAreaEntity[]> {
+    this.logger.debug('findSpawnAreasForRegion: ' + JSON.stringify(region));
     const mapFragments: MapFragmentEntity[] = await this.mapFragmentEntityRepository
       .query(getMapFragmentsForRegionQuery, [toPolygon(region)])
       .then((ids: string[]) => this.mapFragmentEntityRepository.findByIds(ids));
@@ -86,6 +89,7 @@ export class SpawnAreasService {
       this.logger.log('Could not find map fragment in DB, calling google maps');
       return this.fetchFragment(region);
     } else {
+      this.logger.log('Found map fragment for region');
       const fragmentIds = mapFragments.map(f => f.id);
       return this.spawnAreaRepository.find({
         where: { mapFragmentId: fragmentIds },
@@ -111,7 +115,14 @@ export class SpawnAreasService {
     });
 
     const spawnAreas = await this.createSpawnAreas(places, mapFragment);
-    return this.spawnAreaRepository.save(spawnAreas);
+    await this.spawnAreaRepository
+      .createQueryBuilder()
+      .insert()
+      .values(spawnAreas)
+      .onConflict('("placeId") do nothing')
+      .execute();
+
+    return spawnAreas;
   }
 
   private createMapFragment(center: LatLng): Promise<MapFragmentEntity> {
@@ -137,11 +148,7 @@ export class SpawnAreasService {
   ): Promise<SpawnAreaEntity[]> {
     return Promise.all(
       places.map(place =>
-        this.spawnAreaRepository.create({
-          name: place.name,
-          coords: toPolygon(place.viewport),
-          mapFragment,
-        }),
+        this.spawnAreaRepository.create(toSpawnAreaEntity(place, mapFragment)),
       ),
     );
   }

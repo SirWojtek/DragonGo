@@ -5,7 +5,10 @@ import {
   watchPositionAsync
 } from 'expo-location';
 import * as Permissions from 'expo-permissions';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { getEnv } from '../../environment/environment';
+
+const env = getEnv();
 
 const LOCATION_OPTIONS: LocationOptions = {
   accuracy: Accuracy.High,
@@ -16,6 +19,19 @@ const LOCATION_OPTIONS: LocationOptions = {
 
 const LocationService = {
   startWatching(): Observable<LocationData> {
+    if (env.INITIAL_LOCATION) {
+      return of({
+        coords: {
+          ...env.INITIAL_LOCATION,
+          altitude: 0,
+          accuracy: 1,
+          heading: 1,
+          speed: 1
+        },
+        timestamp: new Date().getDate()
+      });
+    }
+
     return new Observable(observer => {
       Permissions.askAsync(Permissions.LOCATION).then(res => {
         if (res.status !== 'granted') {

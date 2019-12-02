@@ -30,7 +30,7 @@ interface IState {
 
 function mapStateToProps(state: IStoreState): IProps {
   return {
-    spawnAreas: state.spawnAreas.map(area => ({
+    spawnAreas: state.spawnAreas.spawnAreas.map(area => ({
       coordinates: [
         {
           latitude: area.viewport.southwest.lat,
@@ -93,7 +93,6 @@ class SpawnAreasContainer extends React.Component<IProps, IState> {
 
   public onMonsterMarkerPress(coords: LatLng, monster: IMonster) {
     if (
-      __DEV__ ||
       isPointWithinRadius(
         coords,
         this.props.user.location,

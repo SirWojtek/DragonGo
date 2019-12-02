@@ -1,5 +1,7 @@
 import { Point } from 'geojson';
 import { random } from 'lodash';
+import { anything, instance, mock, when } from 'ts-mockito';
+import { InsertQueryBuilder, SelectQueryBuilder } from 'typeorm';
 import { v4 } from 'uuid';
 import { LatLng, Rect } from '../../../api/spawn-areas.api';
 import { MapFragmentEntity } from '../../src/models/db/map-fragment.entity';
@@ -26,6 +28,7 @@ export function generateSpawnArea(coords?: Rect): SpawnAreaEntity {
   return {
     id: v4(),
     name: v4(),
+    placeId: v4(),
     coords: coords ? toPolygon(coords) : undefined,
     monsterInstances: [],
     mapFragment: null,
@@ -86,4 +89,19 @@ export function generateRect(): Rect {
     northeast: generateLatLng(),
     southwest: generateLatLng(),
   };
+}
+
+export function queryBuilderMock<TEntity>(): SelectQueryBuilder<TEntity> {
+  const selectBuilderMock = mock(SelectQueryBuilder);
+  const insertQueryBuilderMock = mock(InsertQueryBuilder);
+
+  when(selectBuilderMock.insert()).thenReturn(instance(insertQueryBuilderMock));
+  when(insertQueryBuilderMock.values(anything())).thenReturn(
+    instance(insertQueryBuilderMock),
+  );
+  when(insertQueryBuilderMock.onConflict(anything())).thenReturn(
+    instance(insertQueryBuilderMock),
+  );
+
+  return selectBuilderMock;
 }

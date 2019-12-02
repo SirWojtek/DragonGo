@@ -80,10 +80,16 @@ export class MonsterInstancesService {
     currentMonsterCount: number,
     bounds: Polygon,
   ): Promise<MonsterInstanceEntity[]> {
+    const minMonsters = this.configService.get(
+      ConfigKeyEnum.MONSTER_INSTANCES_MIN_MONSTERS,
+    ) as number;
     const maxMonsters = this.configService.get(
       ConfigKeyEnum.MONSTER_INSTANCES_MAX_MONSTERS,
     ) as number;
-    const countToBeGenerated = random(1, maxMonsters - currentMonsterCount);
+    const countToBeGenerated = random(
+      minMonsters,
+      maxMonsters - currentMonsterCount,
+    );
 
     const matchingMonstersMetadata = await this.monsterMetadataRepository.find({
       minLevel: LessThanOrEqual(level),

@@ -15,9 +15,13 @@ import { ServicesModule } from '../../src/services/services.module';
 import { SpawnAreasModule } from '../../src/spawn-areas/spawn-areas.module';
 import { toRect } from '../../src/utils/geojson';
 import { NoopStrategy } from '../auth/noop-strategy';
-import { generateMapFragment, generateSpawnArea } from '../utils/generators';
+import {
+  generateMapFragment,
+  generateSpawnArea,
+  queryBuilderMock,
+} from '../utils/generators';
 
-describe('SpawnAreasController (e2e)', () => {
+fdescribe('SpawnAreasController (e2e)', () => {
   let app: INestApplication;
 
   let spawnAreaRepositoryMock: Repository<SpawnAreaEntity>;
@@ -139,6 +143,7 @@ describe('SpawnAreasController (e2e)', () => {
   it('returns spawn areas for not existing map fragments', done => {
     const place: IPlace = {
       name: 'Test Place',
+      id: 'test_id',
       viewport: {
         northeast: {
           lat: 55,
@@ -150,6 +155,7 @@ describe('SpawnAreasController (e2e)', () => {
         },
       },
     };
+    const qbMock = queryBuilderMock<SpawnAreaEntity>();
 
     when(googleMapsServiceMock.getPlaces(anything(), anything())).thenResolve([
       place,
@@ -163,7 +169,9 @@ describe('SpawnAreasController (e2e)', () => {
     when(mapFragmentRepositoryMock.create(anything())).thenCall(res => res);
 
     when(spawnAreaRepositoryMock.create(anything())).thenCall(res => res);
-    when(spawnAreaRepositoryMock.save(anything())).thenCall(res => res);
+    when(spawnAreaRepositoryMock.createQueryBuilder()).thenReturn(
+      instance(qbMock),
+    );
 
     request(app.getHttpServer())
       .post('/spawn-areas/get-spawn-areas')
