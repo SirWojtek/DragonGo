@@ -22,16 +22,20 @@ const fetchMonstersEpic: Epic<Action, Action, IStoreState> = (action, state) =>
         return throwError({ message: 'Access token not present' });
       }
 
-      const monstersObs: Observable<IMonster[]>[] = spawnAreas.map(sa =>
-        MonstersService.watchSpawnAreaMonsters(sa.id, accessToken).pipe(
-          map(monsters =>
-            monsters.map(m => ({
-              ...m,
-              spawnAreaId: sa.id
-            }))
+      const monstersObs: Observable<IMonster[]>[] = spawnAreas
+        // NOTE: do not fetch if they are monsters from spawn area
+        // If so, it means that the app is watching for changes
+        .filter(sa => !state.value.monsters.some(m => m.spawnAreaId === sa.id))
+        .map(sa =>
+          MonstersService.watchSpawnAreaMonsters(sa.id, accessToken).pipe(
+            map(monsters =>
+              monsters.map(m => ({
+                ...m,
+                spawnAreaId: sa.id
+              }))
+            )
           )
-        )
-      );
+        );
 
       return combineLatest(monstersObs);
     }),

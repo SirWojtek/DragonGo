@@ -1,8 +1,8 @@
 import { getDistance } from 'geolib';
 import { Epic, ofType } from 'redux-observable';
 import { Action } from 'redux-starter-kit';
-import { throwError } from 'rxjs';
-import { filter, flatMap, map } from 'rxjs/operators';
+import { of, throwError } from 'rxjs';
+import { catchError, filter, flatMap, map } from 'rxjs/operators';
 import { getEnv } from '../../../environment/environment';
 import SpawnAreaService from '../../services/SpawnAreaService';
 import spawnAreasSlice from '../slices/spawnAreasSlice';
@@ -35,6 +35,7 @@ const fetchSpawnAreasEpic: Epic<Action, Action, IStoreState> = (
         map(areas => ({ areas, lastFetchLocation: a.payload }))
       );
     }),
+    catchError(() => of({ areas: [], lastFetchLocation: undefined })),
     map(({ areas, lastFetchLocation }) => ({
       spawnAreas: (areas || []).map(a => ({
         id: a.id,

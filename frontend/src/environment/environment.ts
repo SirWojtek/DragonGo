@@ -16,11 +16,11 @@ const envs: { [name: string]: IEnvironment } = {
     API_HOST: 'http://' + debuggerHost.split(`:`)[0].concat(`:3000`),
     INITIAL_LOCATION: {
       // scianka
-      latitude: 51.086437,
-      longitude: 17.051632
+      // latitude: 51.086437,
+      // longitude: 17.051632
       // dom
-      // latitude: 51.301637,
-      // longitude: 17.068423
+      latitude: 51.301637,
+      longitude: 17.068423
     },
     SPAWN_AREA_FETCH_DISTANCE: 100
   },

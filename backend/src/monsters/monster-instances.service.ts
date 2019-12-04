@@ -122,6 +122,7 @@ export class MonsterInstancesService {
 
       return this.monsterInstanceRepository.create({
         monsterMetadataId: pickedMetadata.id,
+        monsterMetadata: pickedMetadata,
         level,
         latLng: generatePointWithinPolygon(bounds),
       });
