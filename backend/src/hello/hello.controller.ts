@@ -6,4 +6,9 @@ export class HelloController {
   async helloWorld() {
     return 'Hello World!';
   }
+
+  @Get('exception')
+  async helloException() {
+    throw new Error('Hello exception!');
+  }
 }
