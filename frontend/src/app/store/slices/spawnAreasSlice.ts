@@ -22,7 +22,7 @@ const spawnAreasSlice = createSlice({
 
 interface ISetSpawnAreas {
   spawnAreas: ISpawnArea[];
-  lastFetchLocation: ILocation;
+  lastFetchLocation: ILocation | undefined;
 }
 
 export type SetSpawnAreasAction = PayloadAction<ISetSpawnAreas, string>;
