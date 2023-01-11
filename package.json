@@ -33,6 +33,6 @@
     "lint-staged": "^9.2.1"
   },
   "dependencies": {
-    "class-validator": "^0.10.2"
+    "class-validator": "^0.14.0"
   }
 }
