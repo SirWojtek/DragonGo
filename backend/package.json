@@ -32,7 +32,7 @@
     "@sentry/node": "5.9.0",
     "bcrypt": "^3.0.6",
     "class-transformer": "^0.2.3",
-    "class-validator": "^0.9.1",
+    "class-validator": "^0.14.0",
     "geojson": "^0.5.0",
     "geolib": "^3.0.4",
     "lodash": "^4.17.15",
